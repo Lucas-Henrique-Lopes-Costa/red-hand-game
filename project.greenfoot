@@ -1,14 +1,17 @@
 #Greenfoot project file
 class.Lenhador.image=lenhador.png
-class.MeuMundo.image=fundo.jpeg
+class.MeuMundo.image=fundo.jpg
 class.TroncoGalho.image=tree.png
-class.TroncoNormal.image=brick.jpg
-editor.fx.0.height=737
-editor.fx.0.width=814
-editor.fx.0.x=456
-editor.fx.0.y=82
+class.TroncoNormal.image=troncoNormal.png
+dependency1.from=MeuMundo
+dependency1.to=Lenhador
+dependency1.type=UsesDependency
+editor.fx.0.height=784
+editor.fx.0.width=1382
+editor.fx.0.x=90
+editor.fx.0.y=-776
 height=878
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=4
 project.charset=UTF-8
 publish.hasSource=false
