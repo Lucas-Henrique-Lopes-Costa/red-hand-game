@@ -1,32 +1,40 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Lenhador here.
- * 
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Lenhador extends Actor {
-    /**
-     * Act - do whatever the Lenhador wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
+    private boolean ladoDireito;
+    private boolean ladoEsquerdo;
+    
     public Lenhador() {
         getImage().scale(200, 200);
+        ladoDireito = true;
+        ladoEsquerdo = true;
     }
-
+    
     public void act() {
         if (Greenfoot.isKeyDown("left")) {
-            setImage("lenhador.jpeg");
-            setLocation(789, 568);
+            setImage("lenhador.png");
+            setLocation(573, 568);
             getImage().scale(200, 200);
+            ladoDireito = false;
+            ladoEsquerdo = true;
             // Greenfoot.playSound("corte.wav");
         } else if (Greenfoot.isKeyDown("right")) {
-            setImage("lenhador.jpeg");
+            setImage("lenhador.png");
             setLocation(789, 568);
             getImage().mirrorHorizontally();
             getImage().scale(200, 200);
+            ladoDireito = true;
+            ladoEsquerdo = false;
             // Greenfoot.playSound("corte.wav");
+        }
+    }
+    
+    public void bater(boolean ladoDireito) {
+        if (ladoDireito) {
+            // bate do lado direito
+        } else if (ladoEsquerdo) {
+            // bate do lado esquerdo
         }
     }
 }
