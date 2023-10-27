@@ -51,7 +51,7 @@ public class Lenhador extends Actor {
 
     private void animate() {
         currentFrame = 0;
-        for (int i = 0; i <= 4; i++){
+        for (int i = 0; i <= 4; i++) {
             setImage(animationFrames[currentFrame]);
             if (currentFrame == animationFrames.length - 1) {
                 frameDirection = -1;
@@ -64,4 +64,3 @@ public class Lenhador extends Actor {
         currentFrame = 0;
     }
 }
-
