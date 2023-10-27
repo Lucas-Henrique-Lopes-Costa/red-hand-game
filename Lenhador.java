@@ -18,11 +18,12 @@ public class Lenhador extends Actor {
     public void act() {
         if (Greenfoot.isKeyDown("left")) {
             setImage("lenhador.jpeg");
+            setLocation(789, 568);
             getImage().scale(200, 200);
             // Greenfoot.playSound("corte.wav");
-        }
-        if (Greenfoot.isKeyDown("right")) {
+        } else if (Greenfoot.isKeyDown("right")) {
             setImage("lenhador.jpeg");
+            setLocation(789, 568);
             getImage().mirrorHorizontally();
             getImage().scale(200, 200);
             // Greenfoot.playSound("corte.wav");
