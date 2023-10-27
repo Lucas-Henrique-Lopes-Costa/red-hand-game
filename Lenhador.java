@@ -9,7 +9,7 @@ public class Lenhador extends Actor {
     private int frameDirection;
 
     public Lenhador() {
-        getImage().scale(200, 200);
+        getImage().scale(250, 300);
         ladoDireito = true;
         ladoEsquerdo = true;
 
@@ -40,7 +40,7 @@ public class Lenhador extends Actor {
             }
             setLocation(789, 568);
             getImage().mirrorHorizontally();
-            getImage().scale(200, 200);
+            getImage().scale(250, 300);
             ladoDireito = true;
             ladoEsquerdo = false;
 
