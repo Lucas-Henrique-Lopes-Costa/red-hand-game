@@ -16,6 +16,16 @@ public class MeuMundo extends World
         // Cria uma imagem do tamanho do mundo
         GreenfootImage imagemFundo = new GreenfootImage(1152, 1152);
         // Seta a imagem fundo
-        setBackground(imagemFundo);
+        setBackground("fundo.jpeg");
+        prepare();
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Lenhador lenhador = new Lenhador();
+        addObject(lenhador,532,510);
     }
 }
