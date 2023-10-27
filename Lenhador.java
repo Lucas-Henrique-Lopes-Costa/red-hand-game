@@ -14,16 +14,16 @@ public class Lenhador extends Actor {
     public Lenhador() {
         getImage().scale(200, 200);
     }
-    
+
     public void act() {
         if (Greenfoot.isKeyDown("left")) {
             setImage("lenhador.jpeg");
-            getImage().mirrorHorizontally();
             getImage().scale(200, 200);
             // Greenfoot.playSound("corte.wav");
         }
         if (Greenfoot.isKeyDown("right")) {
             setImage("lenhador.jpeg");
+            getImage().mirrorHorizontally();
             getImage().scale(200, 200);
             // Greenfoot.playSound("corte.wav");
         }
