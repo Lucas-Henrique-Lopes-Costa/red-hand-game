@@ -7,7 +7,7 @@ public class Lenhador extends Actor {
     private GreenfootImage[] animationFrames;
     private int currentFrame;
     private int frameDirection;
-
+    
     public Lenhador() {
         ladoDireito = true;
         ladoEsquerdo = true;
@@ -23,6 +23,7 @@ public class Lenhador extends Actor {
 
         currentFrame = 0;
         frameDirection = 1;
+        
     }
 
     public void act() {
@@ -35,7 +36,6 @@ public class Lenhador extends Actor {
 
             ladoDireito = false;
             ladoEsquerdo = true;
-
             animate();
         } else if (Greenfoot.isKeyDown("right")) {
             for (int i = 0; i < animationFrames.length; i++) {
@@ -65,4 +65,6 @@ public class Lenhador extends Actor {
         }
         currentFrame = 0;
     }
+    
+    
 }

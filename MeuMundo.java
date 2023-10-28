@@ -8,8 +8,9 @@ import java.util.ArrayList;
  */
 public class MeuMundo extends World
 {
-
+    private int contador;
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
+    private Lenhador lenhador = new Lenhador();
     /**
      * Constructor for objects of class MeuMundo.
      * 
@@ -27,25 +28,24 @@ public class MeuMundo extends World
      */
     private void prepare()
     {
-        Lenhador lenhador = new Lenhador();
         addObject(lenhador,128,465);
-        TroncoNormal tronco1 = new TroncoNormal();
+        TroncoNormal tronco1 = new TroncoNormal("normal");
         addObject(tronco1,393,500);
-        TroncoNormal tronco2 = new TroncoNormal();
+        TroncoNormal tronco2 = new TroncoNormal("normal");
         addObject(tronco2,393,450);
-        TroncoNormal tronco3 = new TroncoNormal();
+        TroncoNormal tronco3 = new TroncoNormal("normal");
         addObject(tronco3,393,400);
-        TroncoNormal tronco4 = new TroncoNormal();
+        TroncoNormal tronco4 = new TroncoNormal("normal");
         addObject(tronco4,393,350);
-        TroncoNormal tronco5 = new TroncoNormal();
+        TroncoNormal tronco5 = new TroncoNormal("normal");
         addObject(tronco5,393,300);
-        TroncoNormal tronco6 = new TroncoNormal();
+        TroncoNormal tronco6 = new TroncoNormal("normal");
         addObject(tronco6,393,250);
-        TroncoNormal tronco7 = new TroncoNormal();
+        TroncoNormal tronco7 = new TroncoNormal("normal");
         addObject(tronco7,393,200);
-        TroncoNormal tronco8 = new TroncoNormal();
+        TroncoNormal tronco8 = new TroncoNormal("normal");
         addObject(tronco8,393,150);
-        
+
         listaTroncos.add(tronco1);
         listaTroncos.add(tronco2);
         listaTroncos.add(tronco3);
@@ -54,16 +54,27 @@ public class MeuMundo extends World
         listaTroncos.add(tronco6);
         listaTroncos.add(tronco7);
         listaTroncos.add(tronco8);
+
     }
     
     public void act()
     {
-        int aux = checarLado();
-        if(aux==2 && !listaTroncos.isEmpty())
+        //Lenhador está/vai para a direita e bate
+        // E o tronco voa para a esquerda
+        String aux = checarLado();
+        if(aux.equals("direita") && !listaTroncos.isEmpty())
         {
             TroncoNormal tronco0 = listaTroncos.get(0);
-            tronco0.move(-300);/*
-            removeObject(tronco0);*/
+            tronco0.move(-300);
+            for(int i =0; i<100; i++)
+            {
+                tronco0.turn(1);
+            }
+            if(listaTroncos.get(1).getLado().equals("direita"))
+            {
+                //removeObject(lenhador);
+            }
+            //removeObject(tronco0);
             listaTroncos.remove(0);
             for(int i=0; i<listaTroncos.size(); i++)
             {
@@ -75,13 +86,26 @@ public class MeuMundo extends World
                 }
                 
             }
+            criaTronco();
+            addContador();
         }
         
-        if(aux==1 && !listaTroncos.isEmpty())
+        
+        //Lenhador está/vai para a esquerda e bate
+        // E o tronco voa para a direita
+        if(aux.equals("esquerda") && !listaTroncos.isEmpty())
         {
             TroncoNormal tronco0 = listaTroncos.get(0);
-            tronco0.move(300);/*
-            removeObject(tronco0);*/
+            tronco0.move(300);
+            for(int i =0; i<100; i++)
+            {
+                tronco0.turn(1);
+            }
+            if(listaTroncos.get(1).getLado().equals("esquerda"))
+            {
+                //removeObject(lenhador);
+            }
+            //removeObject(tronco0);
             listaTroncos.remove(0);
             for(int i=0; i<listaTroncos.size(); i++)
             {
@@ -93,30 +117,34 @@ public class MeuMundo extends World
                 }
                 
             }
+            criaTronco();
+            addContador();
+            
         }
     }
     
-    public int checarLado()
+    public String checarLado()
     {
         String tecla = Greenfoot.getKey();
         if(tecla!=null)
         {
             if(tecla.equals("left"))
             {
-                return 1;
+                return "esquerda";
             }
             else if (tecla.equals("right"))
             {
-                return 2;
+                return "direita";
             }
             else
             {
-                return 0;
+                return "nulo";
             }
             
         }
-        return 0;
+        return "0";
     }
+    
     public boolean checarEsquerda()
     {
         String tecla = Greenfoot.getKey();
@@ -144,6 +172,40 @@ public class MeuMundo extends World
         
         return false;
     }
-
+    
+    public void criaTronco()
+    {
+        int random = Greenfoot.getRandomNumber(11);
+        {
+            if(random<2)
+            {
+                TroncoNormal tronco = new TroncoNormal("esquerda");
+                addObject(tronco,393,150);
+                listaTroncos.add(tronco);
+            }
+            else if(random>8)
+            {
+                TroncoNormal tronco = new TroncoNormal("direita");
+                addObject(tronco,393,150);
+                listaTroncos.add(tronco);
+            }
+            else
+            {
+                TroncoNormal tronco = new TroncoNormal("normal");
+                addObject(tronco,393,150);
+                listaTroncos.add(tronco);
+            }
+        }
+    }
+    
+    public void addContador()
+    {
+        contador++;
+    }
+    
+    public int getContador()
+    {
+        return contador;
+    }
 }
 
