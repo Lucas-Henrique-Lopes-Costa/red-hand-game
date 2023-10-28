@@ -19,7 +19,7 @@ public class Lenhador extends Actor {
         }
 
         setLocation(128, 465);
-        getImage().scale(250, 300);
+        getImage().scale(300, 300);
 
         currentFrame = 0;
         frameDirection = 1;
@@ -30,7 +30,7 @@ public class Lenhador extends Actor {
             for (int i = 0; i < animationFrames.length; i++) {
                 animationFrames[i] = new GreenfootImage("lenhador" + i + ".png");
                 setLocation(128, 465);
-                animationFrames[i].scale(250, 300);
+                animationFrames[i].scale(300, 300);
             }
 
             ladoDireito = false;
@@ -41,7 +41,7 @@ public class Lenhador extends Actor {
             for (int i = 0; i < animationFrames.length; i++) {
                 animationFrames[i] = new GreenfootImage("lenhadorInvertido" + i + ".png");
                 setLocation(623, 465);
-                animationFrames[i].scale(250, 300);
+                animationFrames[i].scale(300, 300);
             }
 
             ladoDireito = true;
@@ -60,7 +60,7 @@ public class Lenhador extends Actor {
             } else if (currentFrame == 0) {
                 frameDirection = 1;
             }
-            Greenfoot.delay(10);
+            Greenfoot.delay(4);
             currentFrame += frameDirection;
         }
         currentFrame = 0;
