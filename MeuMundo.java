@@ -65,7 +65,16 @@ public class MeuMundo extends World
             tronco0.move(-300);/*
             removeObject(tronco0);*/
             listaTroncos.remove(0);
-            
+            for(int i=0; i<listaTroncos.size(); i++)
+            {
+                for(int j=1; j<25; j++)
+                {
+                    listaTroncos.get(i).setLocation(
+                    listaTroncos.get(i).getX(),
+                    listaTroncos.get(i).getY()+2);
+                }
+                
+            }
         }
         
         if(aux==1 && !listaTroncos.isEmpty())
@@ -74,6 +83,16 @@ public class MeuMundo extends World
             tronco0.move(300);/*
             removeObject(tronco0);*/
             listaTroncos.remove(0);
+            for(int i=0; i<listaTroncos.size(); i++)
+            {
+                for(int j=1; j<25; j++)
+                {
+                    listaTroncos.get(i).setLocation(
+                    listaTroncos.get(i).getX(),
+                    listaTroncos.get(i).getY()+2);
+                }
+                
+            }
         }
     }
     
