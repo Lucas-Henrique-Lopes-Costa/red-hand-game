@@ -10,6 +10,7 @@ public class MeuMundo extends World
 {
 
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
+    private ArrayList<TroncoGalho> listaTroncosGalho = new ArrayList<>();
     /**
      * Constructor for objects of class MeuMundo.
      * 
@@ -29,31 +30,13 @@ public class MeuMundo extends World
     {
         Lenhador lenhador = new Lenhador();
         addObject(lenhador,128,465);
-        TroncoNormal tronco1 = new TroncoNormal();
-        addObject(tronco1,393,500);
-        TroncoNormal tronco2 = new TroncoNormal();
-        addObject(tronco2,393,450);
-        TroncoNormal tronco3 = new TroncoNormal();
-        addObject(tronco3,393,400);
-        TroncoNormal tronco4 = new TroncoNormal();
-        addObject(tronco4,393,350);
-        TroncoNormal tronco5 = new TroncoNormal();
-        addObject(tronco5,393,300);
-        TroncoNormal tronco6 = new TroncoNormal();
-        addObject(tronco6,393,250);
-        TroncoNormal tronco7 = new TroncoNormal();
-        addObject(tronco7,393,200);
-        TroncoNormal tronco8 = new TroncoNormal();
-        addObject(tronco8,393,150);
-        
-        listaTroncos.add(tronco1);
-        listaTroncos.add(tronco2);
-        listaTroncos.add(tronco3);
-        listaTroncos.add(tronco4);
-        listaTroncos.add(tronco5);
-        listaTroncos.add(tronco6);
-        listaTroncos.add(tronco7);
-        listaTroncos.add(tronco8);
+        TroncoNormal tronco = new TroncoNormal();
+        addObject(tronco,394,372);
+        TroncoGalho troncoGalho = new TroncoGalho();
+        addObject(troncoGalho,298,125);
+
+        listaTroncos.add(tronco);
+        listaTroncosGalho.add(troncoGalho);
     }
     
     public void act()

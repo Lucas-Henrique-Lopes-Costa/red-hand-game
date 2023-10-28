@@ -16,11 +16,10 @@ public class TroncoNormal extends Actor
      */
     public TroncoNormal ()
     {
-
+        getImage().scale(240, 250);
     }
     
     public void act()
     {
-        
     }
 }
