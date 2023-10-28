@@ -1,9 +1,10 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+
 /**
  * Write a description of class MeuMundo here.
  * 
- * @author (your name) 
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class MeuMundo extends World
@@ -15,13 +16,12 @@ public class MeuMundo extends World
      * Constructor for objects of class MeuMundo.
      * 
      */
-    public MeuMundo()
-    {    
+    public MeuMundo() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(750, 750, 1); 
+        super(750, 750, 1);
         prepare();
     }
-    
+
     /**
      * Prepara o mundo para o início do programa.
      * Ou seja: criar os objetos iniciais e adicioná-los ao mundo.
@@ -76,15 +76,13 @@ public class MeuMundo extends World
             }
             //removeObject(tronco0);
             listaTroncos.remove(0);
-            for(int i=0; i<listaTroncos.size(); i++)
-            {
-                for(int j=1; j<25; j++)
-                {
+            for (int i = 0; i < listaTroncos.size(); i++) {
+                for (int j = 1; j < 25; j++) {
                     listaTroncos.get(i).setLocation(
-                    listaTroncos.get(i).getX(),
-                    listaTroncos.get(i).getY()+2);
+                            listaTroncos.get(i).getX(),
+                            listaTroncos.get(i).getY() + 2);
                 }
-                
+
             }
             criaTronco();
             addContador();
@@ -107,15 +105,13 @@ public class MeuMundo extends World
             }
             //removeObject(tronco0);
             listaTroncos.remove(0);
-            for(int i=0; i<listaTroncos.size(); i++)
-            {
-                for(int j=1; j<25; j++)
-                {
+            for (int i = 0; i < listaTroncos.size(); i++) {
+                for (int j = 1; j < 25; j++) {
                     listaTroncos.get(i).setLocation(
-                    listaTroncos.get(i).getX(),
-                    listaTroncos.get(i).getY()+2);
+                            listaTroncos.get(i).getX(),
+                            listaTroncos.get(i).getY() + 2);
                 }
-                
+
             }
             criaTronco();
             addContador();
@@ -140,7 +136,7 @@ public class MeuMundo extends World
             {
                 return "nulo";
             }
-            
+
         }
         return "0";
     }
@@ -148,28 +144,23 @@ public class MeuMundo extends World
     public boolean checarEsquerda()
     {
         String tecla = Greenfoot.getKey();
-        if(tecla!=null)
-        {
-            if(tecla.equals("left"))
-            {
+        if (tecla != null) {
+            if (tecla.equals("left")) {
                 return true;
             }
         }
-        
+
         return false;
     }
-    
-    public boolean checarDireita()
-    {
+
+    public boolean checarDireita() {
         String tecla = Greenfoot.getKey();
-        if(tecla!=null)
-        {
-            if(tecla.equals("right"))
-            {
+        if (tecla != null) {
+            if (tecla.equals("right")) {
                 return true;
             }
         }
-        
+
         return false;
     }
     

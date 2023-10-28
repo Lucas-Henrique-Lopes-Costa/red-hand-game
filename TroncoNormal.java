@@ -41,6 +41,5 @@ public class TroncoNormal extends Actor
     
     public void act()
     {
-        
     }
 }
