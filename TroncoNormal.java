@@ -16,7 +16,7 @@ public class TroncoNormal extends Actor
      */
     public TroncoNormal ()
     {
-        getImage().scale(240, 250);
+        getImage().scale(205, 105);
     }
     
     public void act()

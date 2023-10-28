@@ -10,7 +10,7 @@ public class TroncoGalho extends Actor
 {
     public TroncoGalho ()
     {
-        getImage().scale(435, 250);
+        getImage().scale(365, 105);
     }
 
     /**
