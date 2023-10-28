@@ -58,19 +58,20 @@ public class MeuMundo extends World
     
     public void act()
     {
-        
-        if(checarLado()==2 && !listaTroncos.isEmpty())
+        int aux = checarLado();
+        if(aux==2 && !listaTroncos.isEmpty())
         {
             TroncoNormal tronco0 = listaTroncos.get(0);
-            tronco0.move(-100);/*
+            tronco0.move(-300);/*
             removeObject(tronco0);*/
             listaTroncos.remove(0);
+            
         }
         
-        if(checarLado()==1 && !listaTroncos.isEmpty())
+        if(aux==1 && !listaTroncos.isEmpty())
         {
             TroncoNormal tronco0 = listaTroncos.get(0);
-            tronco0.move(100);/*
+            tronco0.move(300);/*
             removeObject(tronco0);*/
             listaTroncos.remove(0);
         }

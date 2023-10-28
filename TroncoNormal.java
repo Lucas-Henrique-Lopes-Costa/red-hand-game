@@ -19,11 +19,6 @@ public class TroncoNormal extends Actor
 
     }
     
-    public void addNaLista(TroncoNormal tronco)
-    {
-        
-    }
-    
     public void act()
     {
         
