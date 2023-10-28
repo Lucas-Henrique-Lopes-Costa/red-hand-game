@@ -20,16 +20,20 @@ public class TroncoNormal extends Actor
         if(tipo.equals("normal"))
         {
             setImage("troncoNormal.png");
+            getImage().scale(160, 160);
             lado=tipo;
         }
         else if(tipo.equals("esquerda"))
         {
-            setImage("tree.png");
+            setImage("troncoGalho.png");
+            getImage().scale(283, 160);
             lado=tipo;
         }
         else if (tipo.equals("direita"))
         {
-            setImage("baby2.png");
+            setImage("troncoGalho.png");
+            getImage().mirrorHorizontally();
+            getImage().scale(283, 160);
             lado=tipo;
         }
     }

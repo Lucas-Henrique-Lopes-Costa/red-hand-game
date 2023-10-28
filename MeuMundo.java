@@ -12,6 +12,7 @@ public class MeuMundo extends World
     private int contador;
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private Lenhador lenhador = new Lenhador();
+
     /**
      * Constructor for objects of class MeuMundo.
      * 
@@ -28,33 +29,31 @@ public class MeuMundo extends World
      */
     private void prepare()
     {
-        addObject(lenhador,128,465);
+        addObject(lenhador,215,663);
+
+        BaseTronco baseTronco = new BaseTronco();
+        addObject(baseTronco,378,713);
+
         TroncoNormal tronco1 = new TroncoNormal("normal");
-        addObject(tronco1,393,500);
-        TroncoNormal tronco2 = new TroncoNormal("normal");
-        addObject(tronco2,393,450);
+        addObject(tronco1,377,614);
+
+        TroncoNormal tronco2 = new TroncoNormal("esquerda");
+        addObject(tronco2,314,454);
+
         TroncoNormal tronco3 = new TroncoNormal("normal");
-        addObject(tronco3,393,400);
-        TroncoNormal tronco4 = new TroncoNormal("normal");
-        addObject(tronco4,393,350);
+        addObject(tronco3,377,294);
+
+        TroncoNormal tronco4 = new TroncoNormal("direita");
+        addObject(tronco4,439,134);
+
         TroncoNormal tronco5 = new TroncoNormal("normal");
-        addObject(tronco5,393,300);
-        TroncoNormal tronco6 = new TroncoNormal("normal");
-        addObject(tronco6,393,250);
-        TroncoNormal tronco7 = new TroncoNormal("normal");
-        addObject(tronco7,393,200);
-        TroncoNormal tronco8 = new TroncoNormal("normal");
-        addObject(tronco8,393,150);
+        addObject(tronco5,377,-26);
 
         listaTroncos.add(tronco1);
         listaTroncos.add(tronco2);
         listaTroncos.add(tronco3);
         listaTroncos.add(tronco4);
         listaTroncos.add(tronco5);
-        listaTroncos.add(tronco6);
-        listaTroncos.add(tronco7);
-        listaTroncos.add(tronco8);
-
     }
     
     public void act()
@@ -72,15 +71,15 @@ public class MeuMundo extends World
             }
             if(listaTroncos.get(1).getLado().equals("direita"))
             {
-                //removeObject(lenhador);
+                removeObject(lenhador);
             }
-            //removeObject(tronco0);
+            removeObject(tronco0);
             listaTroncos.remove(0);
             for (int i = 0; i < listaTroncos.size(); i++) {
-                for (int j = 1; j < 25; j++) {
+                for (int j = 1; j < 160; j++) {
                     listaTroncos.get(i).setLocation(
                             listaTroncos.get(i).getX(),
-                            listaTroncos.get(i).getY() + 2);
+                            listaTroncos.get(i).getY() + 1);
                 }
 
             }
@@ -101,15 +100,15 @@ public class MeuMundo extends World
             }
             if(listaTroncos.get(1).getLado().equals("esquerda"))
             {
-                //removeObject(lenhador);
+                removeObject(lenhador);
             }
-            //removeObject(tronco0);
+            removeObject(tronco0);
             listaTroncos.remove(0);
             for (int i = 0; i < listaTroncos.size(); i++) {
-                for (int j = 1; j < 25; j++) {
+                for (int j = 1; j < 160; j++) {
                     listaTroncos.get(i).setLocation(
                             listaTroncos.get(i).getX(),
-                            listaTroncos.get(i).getY() + 2);
+                            listaTroncos.get(i).getY() + 1);
                 }
 
             }
@@ -171,19 +170,19 @@ public class MeuMundo extends World
             if(random<2)
             {
                 TroncoNormal tronco = new TroncoNormal("esquerda");
-                addObject(tronco,393,150);
+                addObject(tronco,317,-40);
                 listaTroncos.add(tronco);
             }
             else if(random>8)
             {
                 TroncoNormal tronco = new TroncoNormal("direita");
-                addObject(tronco,393,150);
+                addObject(tronco,442,-40);
                 listaTroncos.add(tronco);
             }
             else
             {
                 TroncoNormal tronco = new TroncoNormal("normal");
-                addObject(tronco,393,150);
+                addObject(tronco,380,-40);
                 listaTroncos.add(tronco);
             }
         }
