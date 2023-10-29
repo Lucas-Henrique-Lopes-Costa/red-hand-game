@@ -7,9 +7,8 @@ public class Lenhador extends Actor {
     private GreenfootImage[] animationFrames;
     private int currentFrame;
     private int frameDirection;
-
+    
     public Lenhador() {
-        getImage().scale(200, 200);
         ladoDireito = true;
         ladoEsquerdo = true;
 
@@ -18,50 +17,54 @@ public class Lenhador extends Actor {
         for (int i = 0; i < animationFrames.length; i++) {
             animationFrames[i] = new GreenfootImage("lenhador" + i + ".png");
         }
+
+        setLocation(215,663);
+        getImage().scale(160, 160);
+
         currentFrame = 0;
         frameDirection = 1;
+        
     }
 
     public void act() {
         if (Greenfoot.isKeyDown("left")) {
             for (int i = 0; i < animationFrames.length; i++) {
                 animationFrames[i] = new GreenfootImage("lenhador" + i + ".png");
+                setLocation(215,663);
+                animationFrames[i].scale(160, 160);
             }
-            setLocation(573, 568);
-            getImage().scale(200, 200);
+
             ladoDireito = false;
             ladoEsquerdo = true;
-
             animate();
-
         } else if (Greenfoot.isKeyDown("right")) {
             for (int i = 0; i < animationFrames.length; i++) {
                 animationFrames[i] = new GreenfootImage("lenhadorInvertido" + i + ".png");
+                setLocation(530,663);
+                animationFrames[i].scale(160, 160);
             }
-            setLocation(789, 568);
-            getImage().mirrorHorizontally();
-            getImage().scale(200, 200);
+
             ladoDireito = true;
             ladoEsquerdo = false;
 
             animate();
-
         }
     }
 
     private void animate() {
         currentFrame = 0;
-        for (int i = 0; i <= 4; i++){
+        for (int i = 0; i <= 4; i++) {
             setImage(animationFrames[currentFrame]);
             if (currentFrame == animationFrames.length - 1) {
                 frameDirection = -1;
             } else if (currentFrame == 0) {
                 frameDirection = 1;
             }
-            Greenfoot.delay(10);
+            Greenfoot.delay(4);
             currentFrame += frameDirection;
         }
         currentFrame = 0;
     }
+    
+    
 }
-
