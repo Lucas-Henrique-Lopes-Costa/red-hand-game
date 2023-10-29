@@ -71,7 +71,9 @@ public class MeuMundo extends World
             }
             if(listaTroncos.get(1).getLado().equals("direita"))
             {
-                removeObject(lenhador);
+                //gera o mundo de game over caso o lenhador tenha contato com o tronco
+                LoseWorld w = new LoseWorld();
+                Greenfoot.setWorld(w);
             }
             removeObject(tronco0);
             listaTroncos.remove(0);
@@ -100,7 +102,8 @@ public class MeuMundo extends World
             }
             if(listaTroncos.get(1).getLado().equals("esquerda"))
             {
-                removeObject(lenhador);
+                LoseWorld w = new LoseWorld();
+                Greenfoot.setWorld(w);
             }
             removeObject(tronco0);
             listaTroncos.remove(0);
