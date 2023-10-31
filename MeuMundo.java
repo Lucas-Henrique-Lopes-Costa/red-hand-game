@@ -7,11 +7,12 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
+
 public class MeuMundo extends World
 {
-    private int contador;
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private Lenhador lenhador = new Lenhador();
+    private static int score;
 
     /**
      * Constructor for objects of class MeuMundo.
@@ -29,6 +30,7 @@ public class MeuMundo extends World
      */
     private void prepare()
     {
+        score=0;
         addObject(lenhador,215,663);
 
         BaseTronco baseTronco = new BaseTronco();
@@ -58,6 +60,8 @@ public class MeuMundo extends World
     
     public void act()
     {
+        
+        showText("Pontos: " + score, 50, 25);
         //Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
         String aux = checarLado();
@@ -86,7 +90,7 @@ public class MeuMundo extends World
 
             }
             criaTronco();
-            addContador();
+            score++;
         }
         
         
@@ -116,7 +120,7 @@ public class MeuMundo extends World
 
             }
             criaTronco();
-            addContador();
+            score++;
             
         }
     }
@@ -191,14 +195,5 @@ public class MeuMundo extends World
         }
     }
     
-    public void addContador()
-    {
-        contador++;
-    }
-    
-    public int getContador()
-    {
-        return contador;
-    }
 }
 
