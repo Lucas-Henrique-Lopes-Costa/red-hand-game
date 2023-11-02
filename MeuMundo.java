@@ -72,8 +72,10 @@ public class MeuMundo extends World {
                 // Aparece o Lose no meio da tela
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
-                Greenfoot.stop();
 
+                lenhador.trocarParaLapide();
+
+                Greenfoot.stop();
             }
             removeObject(tronco0);
             listaTroncos.remove(0);
@@ -101,6 +103,9 @@ public class MeuMundo extends World {
                 // Aparece o Lose no meio da tela
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
+
+                lenhador.trocarParaLapide();
+
                 Greenfoot.stop();
             }
             removeObject(tronco0);
