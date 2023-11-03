@@ -28,7 +28,7 @@ public class MeuMundo extends World {
      * Ou seja: criar os objetos iniciais e adicioná-los ao mundo.
      */
     private void prepare() {
-        score = 0;
+       score = 0;
         addObject(lenhador, 215, 663);
 
         BaseTronco baseTronco = new BaseTronco();
