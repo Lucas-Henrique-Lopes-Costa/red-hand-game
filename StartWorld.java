@@ -16,6 +16,8 @@ public class StartWorld extends World
 
     public void act()
     {
+        showText("Pressione ENTER para iniciar", 375, 675);
+        
         if(Greenfoot.isKeyDown("enter"))
         {
             Greenfoot.setWorld(new MeuMundo());
