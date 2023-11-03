@@ -75,6 +75,10 @@ public class MeuMundo extends World {
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
 
+                // Aparece a pontuação
+                showText("Seus pontos: " + score, 375, 450);
+
+                // Troca o lenhador pela lapide
                 lenhador.trocarParaLapide();
 
                 Greenfoot.stop();
@@ -98,6 +102,10 @@ public class MeuMundo extends World {
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
 
+                // Aparece a pontuação
+                showText("Seus pontos: " + score, 375, 450);
+
+                // Troca o lenhador pela lapide
                 lenhador.trocarParaLapide();
 
                 Greenfoot.stop();
