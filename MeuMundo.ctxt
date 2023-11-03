@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=MeuMundo
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MeuMundo\ here.\r\n\ \r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ MeuMundo\ here.\n\ \n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=MeuMundo()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MeuMundo.\r\n\ \r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MeuMundo.\n\ \n
 comment2.params=
 comment2.target=void\ prepare()
-comment2.text=\r\n\ Prepara\ o\ mundo\ para\ o\ in\u00EDcio\ do\ programa.\r\n\ Ou\ seja\:\ criar\ os\ objetos\ iniciais\ e\ adicion\u00E1-los\ ao\ mundo.\r\n
+comment2.text=\n\ Prepara\ o\ mundo\ para\ o\ in\u00EDcio\ do\ programa.\n\ Ou\ seja\:\ criar\ os\ objetos\ iniciais\ e\ adicion\u00E1-los\ ao\ mundo.\n
 comment3.params=
 comment3.target=void\ act()
 comment4.params=
