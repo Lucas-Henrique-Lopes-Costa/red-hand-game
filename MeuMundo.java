@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import greenfoot.GreenfootSound;
 
 /**
- * Write a description of class MeuMundo here.
+ * Write a description of class BaseTronco here.
  * 
- * @author (your name)
+ * @Lucas, Pedro, Guilherme e Alex
+ * 
  * @version (a version number or a date)
  */
-
 public class MeuMundo extends World {
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private Lenhador lenhador = new Lenhador();
@@ -145,6 +145,9 @@ public class MeuMundo extends World {
             // Para o Jogo
             Greenfoot.stop();
 
+            removeObjects(getObjects(TroncoNormal.class));
+            removeObjects(getObjects(BaseTronco.class));
+
         } else {
             showText("Pontos: " + score, 375, 200);
         }
@@ -152,11 +155,12 @@ public class MeuMundo extends World {
 
     public String checarLado() {
         String tecla = Greenfoot.getKey();
-        somMadeira.play();
         if (tecla != null) {
             if (tecla.equals("left")) {
+                // somMadeira.play();
                 return "esquerda";
             } else if (tecla.equals("right")) {
+                // somMadeira.play();
                 return "direita";
             } else {
                 return "nulo";

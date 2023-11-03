@@ -1,10 +1,9 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Classe que cuida da barra que domonstra quanto de experiencia o player
- * acumulou apara aumentar de nivel
+ * Write a description of class BaseTronco here.
  * 
- * @author (your name)
+ * @Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
 public class Timer extends Actor {

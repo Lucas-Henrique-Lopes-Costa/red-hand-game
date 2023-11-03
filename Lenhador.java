@@ -1,5 +1,11 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+/**
+ * Write a description of class BaseTronco here.
+ * 
+ * @Lucas, Pedro, Guilherme e Alex
+ * @version (a version number or a date)
+ */
 public class Lenhador extends Actor {
 
     private boolean ladoDireito;
