@@ -100,13 +100,14 @@ public class MeuMundo extends World {
         }
 
         if (gameOver) {
+            showText("", 375, 200);
             // Aparece o Lose no meio da tela
             Lose lose = new Lose();
             setPaintOrder(Lose.class, TroncoNormal.class);
             addObject(lose, 375, 375);
 
             // Aparece a pontuação
-            showText("Seus pontos: " + score, 375, 450);
+            showText("Seus pontos: " + (score - 1), 375, 450);
 
             // Troca o lenhador pela lapide
             lenhador.trocarParaLapide();
