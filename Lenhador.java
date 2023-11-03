@@ -1,14 +1,24 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+/**
+ * Esse é o ator que representa o lenhador
+ * Ele é responsável por fazer a animação do lenhador e movimentação
+ * 
+ * @author Lucas, Pedro, Guilherme e Alex
+ * @version (a version number or a date)
+ */
 public class Lenhador extends Actor {
-
+    // Atributos da classe
+    private GreenfootImage[] animationFrames;
     private boolean ladoDireito;
     private boolean ladoEsquerdo;
-    private GreenfootImage[] animationFrames;
-    private int currentFrame;
-    private int frameDirection;
     private boolean keyWasDown;
+    private int frameDirection;
+    private int currentFrame;
 
+    /*
+     * Construtor da classe Lenhador
+     */
     public Lenhador() {
         // Inicializa as variáveis de direção
         ladoDireito = true;
@@ -33,6 +43,10 @@ public class Lenhador extends Actor {
         frameDirection = 1;
     }
 
+    /**
+     * Act - do whatever the Lapide wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
         // Verifica se a tecla "left" está pressionada
         if (Greenfoot.isKeyDown("left")) {
@@ -74,6 +88,9 @@ public class Lenhador extends Actor {
         }
     }
 
+    /*
+     * Função da animação do lenhador
+     */
     private void animate() {
         // Define o quadro atual como 0
         currentFrame = 0;
@@ -94,7 +111,8 @@ public class Lenhador extends Actor {
                 frameDirection = 1;
             }
 
-            // Pausa a execução por 1 milissegundos
+            // Pausa a execução por 1 milissegundo
+            // TODO: #11 melhorar forma da animação para não precisar usar delay
             Greenfoot.delay(1);
 
             // Atualiza o quadro atual com base na direção do quadro
@@ -104,13 +122,4 @@ public class Lenhador extends Actor {
         // Redefine o quadro atual para 0 após a conclusão da animação
         currentFrame = 0;
     }
-
-    public void trocarParaLapide(){
-        // Carrega a imagem da lapide
-        GreenfootImage lapide = new GreenfootImage("lapide.png");
-        // Ajusta o tamanho da imagem da lapide
-        lapide.scale(160, 160);
-        // Define a imagem do lenhador como a imagem da lapide
-        setImage(lapide);
-    }        
 }

@@ -3,37 +3,39 @@ import java.util.ArrayList;
 import greenfoot.GreenfootSound;
 
 /**
- * Write a description of class MeuMundo here.
+ * Programa principal do jogo
  * 
- * @author (your name)
+ * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
-
 public class MeuMundo extends World {
+    // Atributos
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private Lenhador lenhador = new Lenhador();
+    private Timer timer = new Timer();
+
     private static int score;
-    Timer timer = new Timer();
-    private GreenfootSound somEsquerda;
-    private GreenfootSound somDireita;
+    private boolean gameOver;
+
+    // Sons
+    private GreenfootSound somMadeira;
     private GreenfootSound musicaDeFundo;
     private boolean musicaDeFundoIniciada = false;
 
     /**
-     * Constructor for objects of class MeuMundo.
-     * 
+     * Construtor para objetos da classe MeuMundo.
      */
     public MeuMundo() {
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Cria um novo mundo com 750x750 células com um tamanho de célula de 1x1px.
         super(750, 750, 1);
-        prepare();
-        somEsquerda = new GreenfootSound("madeira1.mp3"); // Substitua "som_esquerda.mp3" pelo nome do arquivo de som da
-                                                          // esquerda.
-        // somDireita = new GreenfootSound("madeira1.mp3"); // Substitua
-        // "som_direita.mp3" pelo nome do arquivo de som da direita.
-        musicaDeFundo = new GreenfootSound("sounds2/somdofundo.mp3");
-        musicaDeFundo.setVolume(25); // Define o volume da música de fundo (50 é metade do volume máximo).
+        prepare(); // Monta o mundo
 
+        // Define os sons
+        somMadeira = new GreenfootSound("madeira1.mp3");
+        musicaDeFundo = new GreenfootSound("somdofundo.mp3");
+        musicaDeFundo.setVolume(25); // Define o volume da música de fundo
+
+        gameOver = false; // Define o jogo como não finalizado
     }
 
     /**
@@ -68,11 +70,15 @@ public class MeuMundo extends World {
         listaTroncos.add(tronco4);
         listaTroncos.add(tronco5);
 
-        setPaintOrder(Timer.class, TroncoNormal.class);
+        setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
         addObject(timer, 375, 50);
-
     }
 
+    /**
+     * Act - do whatever the TroncoNormal wants to do. This method is called
+     * whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
         boolean gameOver = false;
 
@@ -84,66 +90,101 @@ public class MeuMundo extends World {
 
         // Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
-        String aux = checarLado();
+        String aux = checarLado(); // Verifica se o jogador apertou alguma tecla
+
         if (aux.equals("direita") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
+
+            // Verifica se o tronco que vai cair tem um galho para a direita
             if (listaTroncos.get(1).getLado().equals("direita")) {
-                gameOver = true;
+                gameOver = true; // quer dizer que o jogador perdeu, porque o tronco caiu em cima dele
             }
-            tronco0.mudaGatilho("esquerda");
+
+            tronco0.mudaGatilho("esquerda"); // O gatilho é o lado para onde o tronco vai cair(voar)
             listaTroncos.remove(0);
+
             for (int i = 0; i < listaTroncos.size(); i++) {
-                listaTroncos.get(i).cair160();
+                listaTroncos.get(i).cair160(); // Faz os troncos cairem 160 pixels
             }
-            criaTronco();
-            score++;
-            timer.aumentaTempo();
+
+            criaTronco(); // Cria um novo tronco no topo
+            timer.aumentaTempo(); // Aumenta o tempo do jogo
+            score++; // Aumenta a pontuação
         }
 
         // Lenhador está/vai para a esquerda e bate
         // E o tronco voa para a direita
         if (aux.equals("esquerda") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
+
+            // Verifica se o tronco que vai cair tem um galho para a esquerda
             if (listaTroncos.get(1).getLado().equals("esquerda")) {
-                gameOver = true;
+                gameOver = true; // quer dizer que o jogador perdeu, porque o tronco caiu em cima dele
             }
-            tronco0.mudaGatilho("direita");
+
+            tronco0.mudaGatilho("direita"); // O gatilho é o lado para onde o tronco vai cair(voar)
             listaTroncos.remove(0);
+
             for (int i = 0; i < listaTroncos.size(); i++) {
-                listaTroncos.get(i).cair160();
+                listaTroncos.get(i).cair160(); // Faz os troncos cairem 160 pixels
             }
-            criaTronco();
-            score++;
-            timer.aumentaTempo();
+
+            criaTronco(); // Cria um novo tronco no topo
+            timer.aumentaTempo(); // Aumenta o tempo do jogo
+            score++; // Aumenta a pontuação
         }
 
-        if (gameOver) {
+        morreu(gameOver); // Verifica se o jogador perdeu
+    }
+
+    /*
+     * Verifica se o jogador perdeu
+     */
+    public void morreu(boolean gameOver) {
+        if (gameOver || timer.getTempo() <= 0) {
+            // Cria um texto vazio na frente dos pontos
+            // Isso porque o Greenfoot não tem um método para apagar o texto
             showText("", 375, 200);
+
             // Aparece o Lose no meio da tela
             Lose lose = new Lose();
             setPaintOrder(Lose.class, TroncoNormal.class);
             addObject(lose, 375, 375);
 
-            // Aparece a pontuação
+            // Aparece a pontuação na imagem do Lose
             showText("Seus pontos: " + (score - 1), 375, 450);
 
             // Troca o lenhador pela lapide
-            lenhador.trocarParaLapide();
+            Lapide lapide = new Lapide();
+            addObject(lapide, lenhador.getX(), lenhador.getY());
+            removeObject(lenhador);
 
+            // Para o Jogo
             Greenfoot.stop();
+
+            // Remove todos os troncos
+            removeObjects(getObjects(TroncoNormal.class));
+            removeObjects(getObjects(BaseTronco.class));
+
         } else {
+            // Mostra a pontuação no topo da tela
             showText("Pontos: " + score, 375, 200);
         }
     }
 
+    /*
+     * Verifica se o jogador apertou alguma tecla
+     */
     public String checarLado() {
-        String tecla = Greenfoot.getKey();
+        String tecla = Greenfoot.getKey(); // Verifica se o jogador apertou alguma tecla
         if (tecla != null) {
+            // TODO: #12 Melhorar os sons, está com muito delay quando descomenta e ativa
+            // eles quando batemos na madeira
             if (tecla.equals("left")) {
-                somEsquerda.play();
+                // somMadeira.play();
                 return "esquerda";
             } else if (tecla.equals("right")) {
-                somEsquerda.play();
+                // somMadeira.play();
                 return "direita";
             } else {
                 return "nulo";
@@ -153,11 +194,14 @@ public class MeuMundo extends World {
         return "0";
     }
 
+    /*
+     * Verifica se o jogador apertou a tecla esquerda
+     */
     public boolean checarEsquerda() {
         String tecla = Greenfoot.getKey();
         if (tecla != null) {
             if (tecla.equals("left")) {
-                somEsquerda.play();
+                somMadeira.play();
                 return true;
             }
         }
@@ -165,11 +209,14 @@ public class MeuMundo extends World {
         return false;
     }
 
+    /*
+     * Verifica se o jogador apertou a tecla direita
+     */
     public boolean checarDireita() {
         String tecla = Greenfoot.getKey();
         if (tecla != null) {
             if (tecla.equals("right")) {
-                somEsquerda.play();
+                somMadeira.play();
                 return true;
             }
         }
@@ -177,18 +224,21 @@ public class MeuMundo extends World {
         return false;
     }
 
+    /*
+     * Cria um novo tronco no topo
+     */
     public void criaTronco() {
-        int random = Greenfoot.getRandomNumber(11);
+        int random = Greenfoot.getRandomNumber(11); // Gera um número aleatório entre 0 e 10
         {
-            if (random < 2) {
+            if (random < 2) { // 20% de chance de cair um tronco com galho para a esquerda
                 TroncoNormal tronco = new TroncoNormal("esquerda");
                 addObject(tronco, 317, -40);
                 listaTroncos.add(tronco);
-            } else if (random > 8) {
+            } else if (random > 8) { // 20% de chance de cair um tronco com galho para a direita
                 TroncoNormal tronco = new TroncoNormal("direita");
                 addObject(tronco, 442, -40);
                 listaTroncos.add(tronco);
-            } else {
+            } else { // 60% de chance de cair um tronco normal
                 TroncoNormal tronco = new TroncoNormal("normal");
                 addObject(tronco, 380, -40);
                 listaTroncos.add(tronco);
@@ -196,4 +246,10 @@ public class MeuMundo extends World {
         }
     }
 
+    /*
+     * Retorna se o jogo acabou
+     */
+    public boolean getGameOver() {
+        return gameOver;
+    }
 }
