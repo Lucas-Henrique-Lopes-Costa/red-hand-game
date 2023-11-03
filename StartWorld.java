@@ -25,10 +25,5 @@ public class StartWorld extends World {
      */
     public void act() {
         showText("Pressione ENTER para iniciar", 375, 675);
-
-        // Caso o usuário pressione ENTER, ESPAÇO ou clique com o mouse
-        if (Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space") || Greenfoot.mouseClicked(null)) {
-            Greenfoot.setWorld(new MeuMundo()); // Inicia o jogo de verdade
-        }
     }
 }

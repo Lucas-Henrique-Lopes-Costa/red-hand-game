@@ -166,6 +166,9 @@ public class MeuMundo extends World {
             removeObjects(getObjects(TroncoNormal.class));
             removeObjects(getObjects(BaseTronco.class));
 
+            // TODO: #14 aparecer botão para reiniciar o jogo
+            // Start start = new Start(200, 100);
+            // addObject(start, 375, 650);
         } else {
             // Mostra a pontuação no topo da tela
             showText("Pontos: " + score, 375, 200);
@@ -229,20 +232,19 @@ public class MeuMundo extends World {
      */
     public void criaTronco() {
         int random = Greenfoot.getRandomNumber(11); // Gera um número aleatório entre 0 e 10
-        {
-            if (random < 2) { // 20% de chance de cair um tronco com galho para a esquerda
-                TroncoNormal tronco = new TroncoNormal("esquerda");
-                addObject(tronco, 317, -40);
-                listaTroncos.add(tronco);
-            } else if (random > 8) { // 20% de chance de cair um tronco com galho para a direita
-                TroncoNormal tronco = new TroncoNormal("direita");
-                addObject(tronco, 442, -40);
-                listaTroncos.add(tronco);
-            } else { // 60% de chance de cair um tronco normal
-                TroncoNormal tronco = new TroncoNormal("normal");
-                addObject(tronco, 380, -40);
-                listaTroncos.add(tronco);
-            }
+
+        if (random < 2) { // 20% de chance de cair um tronco com galho para a esquerda
+            TroncoNormal tronco = new TroncoNormal("esquerda");
+            addObject(tronco, 317, -40);
+            listaTroncos.add(tronco);
+        } else if (random > 8) { // 20% de chance de cair um tronco com galho para a direita
+            TroncoNormal tronco = new TroncoNormal("direita");
+            addObject(tronco, 442, -40);
+            listaTroncos.add(tronco);
+        } else { // 60% de chance de cair um tronco normal
+            TroncoNormal tronco = new TroncoNormal("normal");
+            addObject(tronco, 380, -40);
+            listaTroncos.add(tronco);
         }
     }
 
