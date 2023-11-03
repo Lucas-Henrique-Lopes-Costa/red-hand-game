@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Timer
+comment0.text=\r\n\ Classe\ que\ cuida\ da\ barra\ que\ domonstra\ quanto\ de\ experiencia\ o\ player\ acumulou\ apara\ aumentar\ de\ nivel\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Timer()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ atualizaImagem()
+comment4.params=
+comment4.target=void\ aumentaTempo()
+numComments=5
