@@ -1,14 +1,17 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BaseTronco here.
+ * A lapide é a imagem que subistitui o jogador quando ele morre
  * 
- * @Lucas, Pedro, Guilherme e Alex
+ * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
 public class Lapide extends Actor {
+    /*
+     * Construtor da classe Lapide
+     */
     public Lapide() {
-        getImage().scale(160, 160);
+        getImage().scale(160, 160); // Seta o tamanho da imagem
     }
 
     /**
