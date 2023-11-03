@@ -94,7 +94,7 @@ public class Lenhador extends Actor {
                 frameDirection = 1;
             }
 
-            // Pausa a execução por 1 milissegundos
+            // Pausa a execução por 1 milissegundo
             Greenfoot.delay(1);
 
             // Atualiza o quadro atual com base na direção do quadro
@@ -104,13 +104,5 @@ public class Lenhador extends Actor {
         // Redefine o quadro atual para 0 após a conclusão da animação
         currentFrame = 0;
     }
-
-    public void trocarParaLapide(){
-        // Carrega a imagem da lapide
-        GreenfootImage lapide = new GreenfootImage("lapide.png");
-        // Ajusta o tamanho da imagem da lapide
-        lapide.scale(160, 160);
-        // Define a imagem do lenhador como a imagem da lapide
-        setImage(lapide);
-    }        
+   
 }

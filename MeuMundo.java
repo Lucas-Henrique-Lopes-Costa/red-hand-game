@@ -12,7 +12,8 @@ public class MeuMundo extends World {
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private Lenhador lenhador = new Lenhador();
     private static int score;
-    Timer timer = new Timer();
+    private Timer timer = new Timer();
+    private boolean gameOver;
 
     /**
      * Constructor for objects of class MeuMundo.
@@ -22,6 +23,7 @@ public class MeuMundo extends World {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(750, 750, 1);
         prepare();
+        gameOver=false;
     }
 
     /**
@@ -62,21 +64,26 @@ public class MeuMundo extends World {
     }
 
     public void act() {
-        boolean gameOver = false;
+        
 
         // Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
         String aux = checarLado();
+        
         if (aux.equals("direita") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
+            
             if (listaTroncos.get(1).getLado().equals("direita")) {
                 gameOver = true;
             }
+            
             tronco0.mudaGatilho("esquerda");
             listaTroncos.remove(0);
+            
             for (int i = 0; i < listaTroncos.size(); i++) {
                 listaTroncos.get(i).cair160();
             }
+            
             criaTronco();
             score++;
             timer.aumentaTempo();
@@ -86,20 +93,31 @@ public class MeuMundo extends World {
         // E o tronco voa para a direita
         if (aux.equals("esquerda") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
+            
             if (listaTroncos.get(1).getLado().equals("esquerda")) {
                 gameOver = true;
             }
+            
             tronco0.mudaGatilho("direita");
             listaTroncos.remove(0);
+            
             for (int i = 0; i < listaTroncos.size(); i++) {
                 listaTroncos.get(i).cair160();
             }
+            
             criaTronco();
             score++;
             timer.aumentaTempo();
         }
 
-        if (gameOver) {
+        morreu();
+    }
+    
+    public void morreu()
+    {
+        if (gameOver || timer.getTempo() <=0) 
+        {
+            //Cria um texto vazio na frente dos pontos
             showText("", 375, 200);
             // Aparece o Lose no meio da tela
             Lose lose = new Lose();
@@ -110,9 +128,12 @@ public class MeuMundo extends World {
             showText("Seus pontos: " + (score - 1), 375, 450);
 
             // Troca o lenhador pela lapide
-            lenhador.trocarParaLapide();
-
+            Lapide lapide = new Lapide();
+            addObject(lapide, lenhador.getX(), lenhador.getY());
+            removeObject(lenhador);
+            //Para o Jogo
             Greenfoot.stop();
+            
         } else {
             showText("Pontos: " + score, 375, 200);
         }
@@ -173,5 +194,9 @@ public class MeuMundo extends World {
             }
         }
     }
-
+    
+    public boolean getGameOver()
+    {
+        return gameOver;
+    }
 }

@@ -23,7 +23,7 @@ public class Timer extends Actor
     }
     
     public void act() {    
-        tempo --;
+        tempo -=2;
         atualizaImagem();
     }
     
@@ -45,5 +45,10 @@ public class Timer extends Actor
     {
         tempo+=15;
         atualizaImagem();
+    }
+    
+    public int getTempo()
+    {
+        return tempo;
     }
 }
