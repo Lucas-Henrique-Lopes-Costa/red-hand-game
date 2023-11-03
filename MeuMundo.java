@@ -12,6 +12,7 @@ public class MeuMundo extends World {
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private Lenhador lenhador = new Lenhador();
     private static int score;
+    Timer timer = new Timer();
 
     /**
      * Constructor for objects of class MeuMundo.
@@ -37,11 +38,11 @@ public class MeuMundo extends World {
         TroncoNormal tronco1 = new TroncoNormal("normal");
         addObject(tronco1, 377, 614);
 
-        TroncoNormal tronco2 = new TroncoNormal("esquerda");
-        addObject(tronco2, 314, 454);
+        TroncoNormal tronco2 = new TroncoNormal("normal");
+        addObject(tronco2, 377, 454);
 
-        TroncoNormal tronco3 = new TroncoNormal("normal");
-        addObject(tronco3, 377, 294);
+        TroncoNormal tronco3 = new TroncoNormal("esquerda");
+        addObject(tronco3, 314, 294);
 
         TroncoNormal tronco4 = new TroncoNormal("direita");
         addObject(tronco4, 439, 134);
@@ -54,20 +55,21 @@ public class MeuMundo extends World {
         listaTroncos.add(tronco3);
         listaTroncos.add(tronco4);
         listaTroncos.add(tronco5);
+        
+        setPaintOrder(Timer.class,TroncoNormal.class);
+        addObject (timer, 375, 50);
+        
+        
     }
 
     public void act() {
-
-        showText("Pontos: " + score, 50, 25);
+        showText("Pontos: " + score, 375, 200);
+        
         // Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
         String aux = checarLado();
         if (aux.equals("direita") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
-            tronco0.move(-300);
-            for (int i = 0; i < 100; i++) {
-                tronco0.turn(1);
-            }
             if (listaTroncos.get(1).getLado().equals("direita")) {
                 // Aparece o Lose no meio da tela
                 Lose lose = new Lose();
@@ -77,28 +79,20 @@ public class MeuMundo extends World {
 
                 Greenfoot.stop();
             }
-            removeObject(tronco0);
+            tronco0.mudaGatilho("esquerda");
             listaTroncos.remove(0);
             for (int i = 0; i < listaTroncos.size(); i++) {
-                for (int j = 1; j < 160; j++) {
-                    listaTroncos.get(i).setLocation(
-                            listaTroncos.get(i).getX(),
-                            listaTroncos.get(i).getY() + 1);
-                }
-
+                listaTroncos.get(i).cair160();
             }
             criaTronco();
             score++;
+            timer.aumentaTempo();
         }
 
         // Lenhador está/vai para a esquerda e bate
         // E o tronco voa para a direita
         if (aux.equals("esquerda") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
-            tronco0.move(300);
-            for (int i = 0; i < 100; i++) {
-                tronco0.turn(1);
-            }
             if (listaTroncos.get(1).getLado().equals("esquerda")) {
                 // Aparece o Lose no meio da tela
                 Lose lose = new Lose();
@@ -108,19 +102,14 @@ public class MeuMundo extends World {
 
                 Greenfoot.stop();
             }
-            removeObject(tronco0);
+            tronco0.mudaGatilho("direita");
             listaTroncos.remove(0);
             for (int i = 0; i < listaTroncos.size(); i++) {
-                for (int j = 1; j < 160; j++) {
-                    listaTroncos.get(i).setLocation(
-                            listaTroncos.get(i).getX(),
-                            listaTroncos.get(i).getY() + 1);
-                }
-
+                listaTroncos.get(i).cair160();
             }
             criaTronco();
             score++;
-
+            timer.aumentaTempo();
         }
     }
 

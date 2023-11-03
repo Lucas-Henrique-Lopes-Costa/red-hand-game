@@ -94,8 +94,8 @@ public class Lenhador extends Actor {
                 frameDirection = 1;
             }
 
-            // Pausa a execução por 4 milissegundos
-            Greenfoot.delay(4);
+            // Pausa a execução por 1 milissegundos
+            Greenfoot.delay(1);
 
             // Atualiza o quadro atual com base na direção do quadro
             currentFrame += frameDirection;
