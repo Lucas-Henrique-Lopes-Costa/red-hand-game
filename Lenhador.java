@@ -104,5 +104,5 @@ public class Lenhador extends Actor {
         // Redefine o quadro atual para 0 após a conclusão da animação
         currentFrame = 0;
     }
-   
+
 }

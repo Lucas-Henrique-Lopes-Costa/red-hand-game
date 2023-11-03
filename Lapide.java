@@ -1,15 +1,13 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Lapide here.
  * 
- * @author (your name) 
+ * @author (your name)
  * @version (a version number or a date)
  */
-public class Lapide extends Actor
-{
-    public Lapide()
-    {
+public class Lapide extends Actor {
+    public Lapide() {
         getImage().scale(160, 160);
     }
 
@@ -17,8 +15,7 @@ public class Lapide extends Actor
      * Act - do whatever the Lapide wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
+    public void act() {
         // Add your action code here.
     }
 }
