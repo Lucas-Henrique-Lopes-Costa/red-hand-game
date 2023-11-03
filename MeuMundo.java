@@ -55,33 +55,22 @@ public class MeuMundo extends World {
         listaTroncos.add(tronco3);
         listaTroncos.add(tronco4);
         listaTroncos.add(tronco5);
-        
-        setPaintOrder(Timer.class,TroncoNormal.class);
-        addObject (timer, 375, 50);
-        
-        
+
+        setPaintOrder(Timer.class, TroncoNormal.class);
+        addObject(timer, 375, 50);
+
     }
 
     public void act() {
-        showText("Pontos: " + score, 375, 200);
-        
+        boolean gameOver = false;
+
         // Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
         String aux = checarLado();
         if (aux.equals("direita") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
             if (listaTroncos.get(1).getLado().equals("direita")) {
-                // Aparece o Lose no meio da tela
-                Lose lose = new Lose();
-                addObject(lose, 375, 375);
-
-                // Aparece a pontuação
-                showText("Seus pontos: " + score, 375, 450);
-
-                // Troca o lenhador pela lapide
-                lenhador.trocarParaLapide();
-
-                Greenfoot.stop();
+                gameOver = true;
             }
             tronco0.mudaGatilho("esquerda");
             listaTroncos.remove(0);
@@ -98,17 +87,7 @@ public class MeuMundo extends World {
         if (aux.equals("esquerda") && !listaTroncos.isEmpty()) {
             TroncoNormal tronco0 = listaTroncos.get(0);
             if (listaTroncos.get(1).getLado().equals("esquerda")) {
-                // Aparece o Lose no meio da tela
-                Lose lose = new Lose();
-                addObject(lose, 375, 375);
-
-                // Aparece a pontuação
-                showText("Seus pontos: " + score, 375, 450);
-
-                // Troca o lenhador pela lapide
-                lenhador.trocarParaLapide();
-
-                Greenfoot.stop();
+                gameOver = true;
             }
             tronco0.mudaGatilho("direita");
             listaTroncos.remove(0);
@@ -118,6 +97,23 @@ public class MeuMundo extends World {
             criaTronco();
             score++;
             timer.aumentaTempo();
+        }
+
+        if (gameOver) {
+            // Aparece o Lose no meio da tela
+            Lose lose = new Lose();
+            setPaintOrder(Lose.class, TroncoNormal.class);
+            addObject(lose, 375, 375);
+
+            // Aparece a pontuação
+            showText("Seus pontos: " + score, 375, 450);
+
+            // Troca o lenhador pela lapide
+            lenhador.trocarParaLapide();
+
+            Greenfoot.stop();
+        } else {
+            showText("Pontos: " + score, 375, 200);
         }
     }
 
