@@ -1,5 +1,6 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import greenfoot.GreenfootSound;
 
 /**
  * Write a description of class MeuMundo here.
@@ -12,7 +13,10 @@ public class MeuMundo extends World
     private int contador;
     private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private Lenhador lenhador = new Lenhador();
-
+    private GreenfootSound somEsquerda;
+    private GreenfootSound somDireita;
+    private GreenfootSound musicaDeFundo;
+    private boolean musicaDeFundoIniciada = false;
     /**
      * Constructor for objects of class MeuMundo.
      * 
@@ -21,8 +25,15 @@ public class MeuMundo extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(750, 750, 1);
         prepare();
+        somEsquerda = new GreenfootSound("madeira1.mp3"); // Substitua "som_esquerda.mp3" pelo nome do arquivo de som da esquerda.
+        //somDireita = new GreenfootSound("madeira1.mp3"); // Substitua "som_direita.mp3" pelo nome do arquivo de som da direita.
+        musicaDeFundo = new GreenfootSound("sounds2/somdofundo.mp3");
+        musicaDeFundo.setVolume(25); // Define o volume da música de fundo (50 é metade do volume máximo).
+        
+        
     }
 
+    
     /**
      * Prepara o mundo para o início do programa.
      * Ou seja: criar os objetos iniciais e adicioná-los ao mundo.
@@ -55,16 +66,24 @@ public class MeuMundo extends World
         listaTroncos.add(tronco4);
         listaTroncos.add(tronco5);
     }
-    
+
     public void act()
-    {
+    {   //inciar a musica de fundo
+          if (!musicaDeFundoIniciada) {
+            musicaDeFundo.playLoop();
+            musicaDeFundoIniciada = true;
+        }
         //Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
         String aux = checarLado();
+        
         if(aux.equals("direita") && !listaTroncos.isEmpty())
-        {
+        {   
+            
             TroncoNormal tronco0 = listaTroncos.get(0);
+                
             tronco0.move(-300);
+            
             for(int i =0; i<100; i++)
             {
                 tronco0.turn(1);
@@ -78,22 +97,24 @@ public class MeuMundo extends World
             for (int i = 0; i < listaTroncos.size(); i++) {
                 for (int j = 1; j < 160; j++) {
                     listaTroncos.get(i).setLocation(
-                            listaTroncos.get(i).getX(),
-                            listaTroncos.get(i).getY() + 1);
+                        listaTroncos.get(i).getX(),
+                        listaTroncos.get(i).getY() + 1);
                 }
 
             }
             criaTronco();
             addContador();
         }
-        
-        
+
         //Lenhador está/vai para a esquerda e bate
         // E o tronco voa para a direita
         if(aux.equals("esquerda") && !listaTroncos.isEmpty())
         {
+
             TroncoNormal tronco0 = listaTroncos.get(0);
+            
             tronco0.move(300);
+            
             for(int i =0; i<100; i++)
             {
                 tronco0.turn(1);
@@ -107,28 +128,30 @@ public class MeuMundo extends World
             for (int i = 0; i < listaTroncos.size(); i++) {
                 for (int j = 1; j < 160; j++) {
                     listaTroncos.get(i).setLocation(
-                            listaTroncos.get(i).getX(),
-                            listaTroncos.get(i).getY() + 1);
+                        listaTroncos.get(i).getX(),
+                        listaTroncos.get(i).getY() + 1);
                 }
 
             }
             criaTronco();
             addContador();
-            
+
         }
     }
-    
+
     public String checarLado()
     {
         String tecla = Greenfoot.getKey();
         if(tecla!=null)
         {
             if(tecla.equals("left"))
-            {
+            {   somEsquerda.play();
                 return "esquerda";
             }
             else if (tecla.equals("right"))
-            {
+            
+            {   //somDireita.play(); // Reproduz o som da direita
+                somEsquerda.play();
                 return "direita";
             }
             else
@@ -139,12 +162,13 @@ public class MeuMundo extends World
         }
         return "0";
     }
-    
+
     public boolean checarEsquerda()
     {
         String tecla = Greenfoot.getKey();
         if (tecla != null) {
             if (tecla.equals("left")) {
+                somEsquerda.play();
                 return true;
             }
         }
@@ -156,13 +180,14 @@ public class MeuMundo extends World
         String tecla = Greenfoot.getKey();
         if (tecla != null) {
             if (tecla.equals("right")) {
+                somEsquerda.play();
                 return true;
             }
         }
 
         return false;
     }
-    
+
     public void criaTronco()
     {
         int random = Greenfoot.getRandomNumber(11);
@@ -187,12 +212,12 @@ public class MeuMundo extends World
             }
         }
     }
-    
+
     public void addContador()
     {
         contador++;
     }
-    
+
     public int getContador()
     {
         return contador;
