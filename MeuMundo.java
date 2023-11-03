@@ -78,6 +78,8 @@ public class MeuMundo extends World {
 
                 // Troca o lenhador pela lapide
                 lenhador.trocarParaLapide();
+
+                Greenfoot.stop();
             }
             removeObject(tronco0);
             listaTroncos.remove(0);
@@ -111,6 +113,8 @@ public class MeuMundo extends World {
 
                 // Troca o lenhador pela lapide
                 lenhador.trocarParaLapide();
+
+                Greenfoot.stop();
             }
             removeObject(tronco0);
             listaTroncos.remove(0);
