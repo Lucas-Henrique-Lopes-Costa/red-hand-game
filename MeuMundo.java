@@ -1,5 +1,6 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import greenfoot.GreenfootSound;
 
 /**
  * Write a description of class MeuMundo here.
@@ -13,6 +14,10 @@ public class MeuMundo extends World {
     private Lenhador lenhador = new Lenhador();
     private static int score;
     Timer timer = new Timer();
+    private GreenfootSound somEsquerda;
+    private GreenfootSound somDireita;
+    private GreenfootSound musicaDeFundo;
+    private boolean musicaDeFundoIniciada = false;
 
     /**
      * Constructor for objects of class MeuMundo.
@@ -22,6 +27,13 @@ public class MeuMundo extends World {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(750, 750, 1);
         prepare();
+        somEsquerda = new GreenfootSound("madeira1.mp3"); // Substitua "som_esquerda.mp3" pelo nome do arquivo de som da
+                                                          // esquerda.
+        // somDireita = new GreenfootSound("madeira1.mp3"); // Substitua
+        // "som_direita.mp3" pelo nome do arquivo de som da direita.
+        musicaDeFundo = new GreenfootSound("sounds2/somdofundo.mp3");
+        musicaDeFundo.setVolume(25); // Define o volume da música de fundo (50 é metade do volume máximo).
+
     }
 
     /**
@@ -63,6 +75,12 @@ public class MeuMundo extends World {
 
     public void act() {
         boolean gameOver = false;
+
+        // inciar a musica de fundo
+        if (!musicaDeFundoIniciada) {
+            musicaDeFundo.playLoop();
+            musicaDeFundoIniciada = true;
+        }
 
         // Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
@@ -122,8 +140,10 @@ public class MeuMundo extends World {
         String tecla = Greenfoot.getKey();
         if (tecla != null) {
             if (tecla.equals("left")) {
+                somEsquerda.play();
                 return "esquerda";
             } else if (tecla.equals("right")) {
+                somEsquerda.play();
                 return "direita";
             } else {
                 return "nulo";
@@ -137,6 +157,7 @@ public class MeuMundo extends World {
         String tecla = Greenfoot.getKey();
         if (tecla != null) {
             if (tecla.equals("left")) {
+                somEsquerda.play();
                 return true;
             }
         }
@@ -148,6 +169,7 @@ public class MeuMundo extends World {
         String tecla = Greenfoot.getKey();
         if (tecla != null) {
             if (tecla.equals("right")) {
+                somEsquerda.play();
                 return true;
             }
         }

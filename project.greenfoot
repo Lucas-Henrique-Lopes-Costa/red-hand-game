@@ -84,7 +84,12 @@ target6.width=120
 target6.x=0
 target6.y=0
 version=3.0.0
+<<<<<<< HEAD
+width=1023
+world.lastInstantiated=MeuMundo
+=======
 width=1550
 world.lastInstantiated=StartWorld
+>>>>>>> main
 xPosition=0
-yPosition=0
+yPosition=93
