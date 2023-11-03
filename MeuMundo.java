@@ -57,8 +57,9 @@ public class MeuMundo extends World {
     }
 
     public void act() {
+        // Mostre a pontuação
+        showText("Pontuação: " + score, 75, 25);
 
-        showText("Pontos: " + score, 50, 25);
         // Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
         String aux = checarLado();
@@ -73,8 +74,11 @@ public class MeuMundo extends World {
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
 
-                lenhador.trocarParaLapide();
+                // Aparece a pontuação
+                showText("Seus pontos: " + score, 375, 450);
 
+                // Troca o lenhador pela lapide
+                lenhador.trocarParaLapide();
                 Greenfoot.stop();
             }
             removeObject(tronco0);
@@ -104,8 +108,11 @@ public class MeuMundo extends World {
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
 
-                lenhador.trocarParaLapide();
+                // Aparece a pontuação
+                showText("Seus pontos: " + score, 375, 450);
 
+                // Troca o lenhador pela lapide
+                lenhador.trocarParaLapide();
                 Greenfoot.stop();
             }
             removeObject(tronco0);
