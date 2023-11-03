@@ -28,7 +28,7 @@ public class MeuMundo extends World {
      * Ou seja: criar os objetos iniciais e adicioná-los ao mundo.
      */
     private void prepare() {
-       score = 0;
+        score = 0;
         addObject(lenhador, 215, 663);
 
         BaseTronco baseTronco = new BaseTronco();
@@ -73,9 +73,11 @@ public class MeuMundo extends World {
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
 
-                lenhador.trocarParaLapide();
+                // Aparece a pontuação
+                showText("Seus pontos: " + score, 375, 450);
 
-                Greenfoot.stop();
+                // Troca o lenhador pela lapide
+                lenhador.trocarParaLapide();
             }
             removeObject(tronco0);
             listaTroncos.remove(0);
@@ -104,9 +106,11 @@ public class MeuMundo extends World {
                 Lose lose = new Lose();
                 addObject(lose, 375, 375);
 
-                lenhador.trocarParaLapide();
+                // Aparece a pontuação
+                showText("Seus pontos: " + score, 375, 450);
 
-                Greenfoot.stop();
+                // Troca o lenhador pela lapide
+                lenhador.trocarParaLapide();
             }
             removeObject(tronco0);
             listaTroncos.remove(0);
