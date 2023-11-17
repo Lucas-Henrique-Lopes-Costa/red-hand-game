@@ -41,4 +41,12 @@ public class Arvore
     {
         listaTroncos.clear();
     }
+    
+    public static void cair()
+    {
+        for(TroncoNormal tronco : listaTroncos)
+        {
+            tronco.cair160();
+        }
+    }
 }

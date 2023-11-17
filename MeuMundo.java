@@ -102,10 +102,9 @@ public class MeuMundo extends World {
 
             tronco0.mudaGatilho("esquerda"); // O gatilho é o lado para onde o tronco vai cair(voar)
             Arvore.removeTronco(0);
-
-            for (int i = 0; i < Arvore.tamanho(); i++) {
-                Arvore.getTronco(i).cair160(); // Faz os troncos cairem 160 pixels
-            }
+            
+            //Move todos os troncos da árvore para baixo
+            Arvore.cair();
 
             criaTronco(); // Cria um novo tronco no topo
             timer.aumentaTempo(); // Aumenta o tempo do jogo
@@ -125,9 +124,8 @@ public class MeuMundo extends World {
             tronco0.mudaGatilho("direita"); // O gatilho é o lado para onde o tronco vai cair(voar)
             Arvore.removeTronco(0);
 
-            for (int i = 0; i < Arvore.tamanho(); i++) {
-                Arvore.getTronco(i).cair160(); // Faz os troncos cairem 160 pixels
-            }
+            //Move todos os troncos da árvore para baixo
+            Arvore.cair();
 
             criaTronco(); // Cria um novo tronco no topo
             timer.aumentaTempo(); // Aumenta o tempo do jogo
