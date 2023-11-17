@@ -10,7 +10,7 @@ import greenfoot.GreenfootSound;
  */
 public class MeuMundo extends World {
     // Atributos
-    private ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
+    
     private Lenhador lenhador = new Lenhador();
     private Timer timer = new Timer();
 
@@ -64,11 +64,11 @@ public class MeuMundo extends World {
         TroncoNormal tronco5 = new TroncoNormal("normal");
         addObject(tronco5, 377, -26);
 
-        listaTroncos.add(tronco1);
-        listaTroncos.add(tronco2);
-        listaTroncos.add(tronco3);
-        listaTroncos.add(tronco4);
-        listaTroncos.add(tronco5);
+        Arvore.addTronco(tronco1);
+        Arvore.addTronco(tronco2);
+        Arvore.addTronco(tronco3);
+        Arvore.addTronco(tronco4);
+        Arvore.addTronco(tronco5);
 
         setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
         addObject(timer, 375, 50);
@@ -92,19 +92,19 @@ public class MeuMundo extends World {
         // E o tronco voa para a esquerda
         String aux = checarLado(); // Verifica se o jogador apertou alguma tecla
 
-        if (aux.equals("direita") && !listaTroncos.isEmpty()) {
-            TroncoNormal tronco0 = listaTroncos.get(0);
+        if (aux.equals("direita")) {
+            TroncoNormal tronco0 = Arvore.getTronco(0);
 
             // Verifica se o tronco que vai cair tem um galho para a direita
-            if (listaTroncos.get(1).getLado().equals("direita")) {
+            if (Arvore.getTronco(1).getLado().equals("direita")) {
                 gameOver = true; // quer dizer que o jogador perdeu, porque o tronco caiu em cima dele
             }
 
             tronco0.mudaGatilho("esquerda"); // O gatilho é o lado para onde o tronco vai cair(voar)
-            listaTroncos.remove(0);
+            Arvore.removeTronco(0);
 
-            for (int i = 0; i < listaTroncos.size(); i++) {
-                listaTroncos.get(i).cair160(); // Faz os troncos cairem 160 pixels
+            for (int i = 0; i < Arvore.tamanho(); i++) {
+                Arvore.getTronco(i).cair160(); // Faz os troncos cairem 160 pixels
             }
 
             criaTronco(); // Cria um novo tronco no topo
@@ -114,19 +114,19 @@ public class MeuMundo extends World {
 
         // Lenhador está/vai para a esquerda e bate
         // E o tronco voa para a direita
-        if (aux.equals("esquerda") && !listaTroncos.isEmpty()) {
-            TroncoNormal tronco0 = listaTroncos.get(0);
+        if (aux.equals("esquerda")) {
+            TroncoNormal tronco0 = Arvore.getTronco(0);
 
             // Verifica se o tronco que vai cair tem um galho para a esquerda
-            if (listaTroncos.get(1).getLado().equals("esquerda")) {
+            if (Arvore.getTronco(1).getLado().equals("esquerda")) {
                 gameOver = true; // quer dizer que o jogador perdeu, porque o tronco caiu em cima dele
             }
 
             tronco0.mudaGatilho("direita"); // O gatilho é o lado para onde o tronco vai cair(voar)
-            listaTroncos.remove(0);
+            Arvore.removeTronco(0);
 
-            for (int i = 0; i < listaTroncos.size(); i++) {
-                listaTroncos.get(i).cair160(); // Faz os troncos cairem 160 pixels
+            for (int i = 0; i < Arvore.tamanho(); i++) {
+                Arvore.getTronco(i).cair160(); // Faz os troncos cairem 160 pixels
             }
 
             criaTronco(); // Cria um novo tronco no topo
@@ -163,6 +163,7 @@ public class MeuMundo extends World {
             Greenfoot.stop();
 
             // Remove todos os troncos
+            Arvore.limpa();
             removeObjects(getObjects(TroncoNormal.class));
             removeObjects(getObjects(BaseTronco.class));
 
@@ -236,15 +237,15 @@ public class MeuMundo extends World {
         if (random < 2) { // 20% de chance de cair um tronco com galho para a esquerda
             TroncoNormal tronco = new TroncoNormal("esquerda");
             addObject(tronco, 317, -40);
-            listaTroncos.add(tronco);
+            Arvore.addTronco(tronco);
         } else if (random > 8) { // 20% de chance de cair um tronco com galho para a direita
             TroncoNormal tronco = new TroncoNormal("direita");
             addObject(tronco, 442, -40);
-            listaTroncos.add(tronco);
+            Arvore.addTronco(tronco);
         } else { // 60% de chance de cair um tronco normal
             TroncoNormal tronco = new TroncoNormal("normal");
             addObject(tronco, 380, -40);
-            listaTroncos.add(tronco);
+            Arvore.addTronco(tronco);
         }
     }
 
