@@ -79,7 +79,8 @@ public class MeuMundo extends World {
      * whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() {
+    public void act() 
+    {
         boolean gameOver = false;
 
         // inciar a musica de fundo
@@ -91,46 +92,53 @@ public class MeuMundo extends World {
         // Lenhador está/vai para a direita e bate
         // E o tronco voa para a esquerda
         String aux = checarLado(); // Verifica se o jogador apertou alguma tecla
-
-        if (aux.equals("direita")) {
-            TroncoNormal tronco0 = Arvore.getTronco(0);
-
-            // Verifica se o tronco que vai cair tem um galho para a direita
-            if (Arvore.getTronco(1).getLado().equals("direita")) {
-                gameOver = true; // quer dizer que o jogador perdeu, porque o tronco caiu em cima dele
+        if(aux!=null)
+        {
+            if (aux.equals("direita")) 
+            {
+                TroncoNormal tronco0 = Arvore.getTronco(0);
+    
+                // Verifica se o tronco que vai cair tem um galho para a direita
+                if (Arvore.getTronco(1).getLado().equals("direita")) {
+                    gameOver = true; 
+                }
+                
+                tronco0.mover();
+                Arvore.removeTronco(0);
+                
+                //Move todos os troncos da árvore para baixo
+                Arvore.cair();
+    
+                criaTronco(); // Cria um novo tronco no topo
+                timer.aumentaTempo(); // Aumenta o tempo do jogo
+                score++; // Aumenta a pontuação
             }
 
-            tronco0.mudaGatilho("esquerda"); // O gatilho é o lado para onde o tronco vai cair(voar)
-            Arvore.removeTronco(0);
+            // Lenhador está/vai para a esquerda e bate
+            // E o tronco voa para a direita
+            if (aux.equals("esquerda")) 
+            {
+                TroncoNormal tronco0 = Arvore.getTronco(0);
+
+                // Verifica se o tronco que vai cair tem um galho para a esquerda
+                if (Arvore.getTronco(1).getLado().equals("esquerda")) 
+                {
+                    gameOver = true;
+                }
             
-            //Move todos os troncos da árvore para baixo
-            Arvore.cair();
-
-            criaTronco(); // Cria um novo tronco no topo
-            timer.aumentaTempo(); // Aumenta o tempo do jogo
-            score++; // Aumenta a pontuação
-        }
-
-        // Lenhador está/vai para a esquerda e bate
-        // E o tronco voa para a direita
-        if (aux.equals("esquerda")) {
-            TroncoNormal tronco0 = Arvore.getTronco(0);
-
-            // Verifica se o tronco que vai cair tem um galho para a esquerda
-            if (Arvore.getTronco(1).getLado().equals("esquerda")) {
-                gameOver = true; // quer dizer que o jogador perdeu, porque o tronco caiu em cima dele
+                tronco0.moverDireita();
+                tronco0.mover(); 
+                Arvore.removeTronco(0);
+    
+                //Move todos os troncos da árvore para baixo
+                Arvore.cair();
+    
+                criaTronco(); // Cria um novo tronco no topo
+                timer.aumentaTempo(); // Aumenta o tempo do jogo
+                score++; // Aumenta a pontuação
             }
-
-            tronco0.mudaGatilho("direita"); // O gatilho é o lado para onde o tronco vai cair(voar)
-            Arvore.removeTronco(0);
-
-            //Move todos os troncos da árvore para baixo
-            Arvore.cair();
-
-            criaTronco(); // Cria um novo tronco no topo
-            timer.aumentaTempo(); // Aumenta o tempo do jogo
-            score++; // Aumenta a pontuação
         }
+        
 
         morreu(gameOver); // Verifica se o jogador perdeu
     }
@@ -139,7 +147,8 @@ public class MeuMundo extends World {
      * Verifica se o jogador perdeu
      */
     public void morreu(boolean gameOver) {
-        if (gameOver || timer.getTempo() <= 0) {
+        if (gameOver || timer.getTempo() <= 0) 
+        {
             // Cria um texto vazio na frente dos pontos
             // Isso porque o Greenfoot não tem um método para apagar o texto
             showText("", 375, 200);
@@ -168,7 +177,9 @@ public class MeuMundo extends World {
             // TODO: #14 aparecer botão para reiniciar o jogo
             // Start start = new Start(200, 100);
             // addObject(start, 375, 650);
-        } else {
+        } 
+        else 
+        {
             // Mostra a pontuação no topo da tela
             showText("Pontos: " + score, 375, 200);
         }
@@ -189,41 +200,11 @@ public class MeuMundo extends World {
                 // somMadeira.play();
                 return "direita";
             } else {
-                return "nulo";
+                return null;
             }
 
         }
-        return "0";
-    }
-
-    /*
-     * Verifica se o jogador apertou a tecla esquerda
-     */
-    public boolean checarEsquerda() {
-        String tecla = Greenfoot.getKey();
-        if (tecla != null) {
-            if (tecla.equals("left")) {
-                somMadeira.play();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /*
-     * Verifica se o jogador apertou a tecla direita
-     */
-    public boolean checarDireita() {
-        String tecla = Greenfoot.getKey();
-        if (tecla != null) {
-            if (tecla.equals("right")) {
-                somMadeira.play();
-                return true;
-            }
-        }
-
-        return false;
+        return null;
     }
 
     /*

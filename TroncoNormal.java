@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class TroncoNormal extends Actor {
     // Atributos da classe
     private String lado;
-    private String gatilho;
+    private boolean mover;
+    private boolean moverDireita;
 
     /*
      * Construtor da classe TroncoNormal
@@ -20,19 +21,18 @@ public class TroncoNormal extends Actor {
             setImage("troncoNormal.png");
             getImage().scale(160, 160);
             lado = tipo;
-            gatilho = "";
+            mover=false;
         } else if (tipo.equals("esquerda")) { // Caso o tipo seja esquerda
             setImage("troncoGalho.png");
             getImage().scale(283, 160);
             lado = tipo;
-            gatilho = "";
-
+            mover=false;
         } else if (tipo.equals("direita")) { // Caso o tipo seja direita
             setImage("troncoGalho.png");
             getImage().mirrorHorizontally();
             getImage().scale(283, 160);
             lado = tipo;
-            gatilho = "";
+            mover=false;
         }
     }
 
@@ -41,38 +41,51 @@ public class TroncoNormal extends Actor {
      * whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() {
-        if (gatilho.equals("direita")) { // Caso o gatilho seja direita
-            setLocation(getX() + 15, getY()); // Move o tronco para a direita voando
-            turn(20); // Gira o tronco
-        } else if (gatilho.equals("esquerda")) {
-            setLocation(getX() - 15, getY()); // Move o tronco para a esquerda voando
-            turn(-20); // Gira o tronco
+    public void act() 
+    {
+        if(mover)
+        {
+            if (moverDireita) 
+            {   // Move o tronco para a direita voando e girando
+                setLocation(getX() + 15, getY()); 
+                turn(20); 
+            } else  
+            {   // Move o tronco para a esquerda voando e girando
+                setLocation(getX() - 15, getY()); 
+                turn(-20); 
+            }
+    
+            if (getX() < 100 || getX() > 650) 
+            { // Caso o tronco saia da tela
+                getWorld().removeObject(this);
+            }
         }
-
-        if (getX() < 100 || getX() > 650) { // Caso o tronco saia da tela
-            getWorld().removeObject(this);
-        }
+        
     }
 
-    /*
-     * Retorna o lado do tronco
+    /**
+     * Retorna o lado do galho do tronco
      */
     public String getLado() {
         return lado;
     }
 
-    /*
-     * Retorna o gatilho do tronco
+    /**
+     * Move o tronco 160 pixeis para baixo
      */
     public void cair160() {
         setLocation(getX(), getY() + 160); // Move o tronco 160 pixels para baixo
     }
 
-    /*
-     * Muda o gatilho do tronco para o lado passado como parâmetro
+    /**
+     * Muda o booleano para o  tronco mover para a direita
      */
-    public void mudaGatilho(String qualLado) {
-        gatilho = qualLado;
+    public void moverDireita() {
+        moverDireita=true;
+    }
+    
+    public void mover()
+    {
+        mover=true;
     }
 }
