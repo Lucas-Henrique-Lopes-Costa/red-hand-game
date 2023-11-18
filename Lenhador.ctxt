@@ -1,9 +1,13 @@
 #BlueJ class context
 comment0.target=Lenhador
+comment0.text=\r\n\ Esse\ \u00E9\ o\ ator\ que\ representa\ o\ lenhador\r\n\ Ele\ \u00E9\ respons\u00E1vel\ por\ fazer\ a\ anima\u00E7\u00E3o\ do\ lenhador\ e\ movimenta\u00E7\u00E3o\r\n\ \r\n\ @author\ Lucas,\ Pedro,\ Guilherme\ e\ Alex\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Lenhador()
+comment1.text=\r\n\ Construtor\ da\ classe\ Lenhador\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Lapide\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
 comment3.target=void\ animate()
+comment3.text=\r\n\ Fun\u00E7\u00E3o\ da\ anima\u00E7\u00E3o\ do\ lenhador\r\n
 numComments=4
