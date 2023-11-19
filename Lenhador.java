@@ -35,9 +35,6 @@ public class Lenhador extends Actor {
         // Define a localização inicial do lenhador
         setLocation(215, 663);
 
-        // Ajusta o tamanho da imagem do lenhador
-        getImage().scale(160, 160);
-
         // Inicializa o quadro atual e a direção do quadro para a animação
         currentFrame = 0;
         frameDirection = 1;
@@ -54,7 +51,6 @@ public class Lenhador extends Actor {
             for (int i = 0; i < animationFrames.length; i++) {
                 animationFrames[i] = new GreenfootImage("lenhador" + i + ".png");
                 setLocation(215, 663);
-                animationFrames[i].scale(160, 160);
             }
             // Verifica se a tecla foi pressionada pela primeira vez
             if (!keyWasDown) {
@@ -71,7 +67,6 @@ public class Lenhador extends Actor {
             for (int i = 0; i < animationFrames.length; i++) {
                 animationFrames[i] = new GreenfootImage("lenhadorInvertido" + i + ".png");
                 setLocation(530, 663);
-                animationFrames[i].scale(160, 160);
             }
             // Verifica se a tecla foi pressionada pela primeira vez
             if (!keyWasDown) {

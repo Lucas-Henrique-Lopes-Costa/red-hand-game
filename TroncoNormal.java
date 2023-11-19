@@ -19,18 +19,15 @@ public class TroncoNormal extends Actor {
     public TroncoNormal(String tipo) {
         if (tipo.equals("normal")) { // Caso o tipo seja normal
             setImage("troncoNormal.png");
-            getImage().scale(160, 160);
             lado = tipo;
             mover=false;
         } else if (tipo.equals("esquerda")) { // Caso o tipo seja esquerda
             setImage("troncoGalho.png");
-            getImage().scale(283, 160);
             lado = tipo;
             mover=false;
         } else if (tipo.equals("direita")) { // Caso o tipo seja direita
             setImage("troncoGalho.png");
             getImage().mirrorHorizontally();
-            getImage().scale(283, 160);
             lado = tipo;
             mover=false;
         }
