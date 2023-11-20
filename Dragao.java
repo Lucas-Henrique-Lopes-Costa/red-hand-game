@@ -9,10 +9,12 @@ import java.util.*;
  */
 public class Dragao extends Actor
 {
-    int temporizador;
+    private int temporizador;
+    private static int vida;
     
     public Dragao()
     {
+        vida = 1000;
         temporizador=0;
     }
     
@@ -28,18 +30,18 @@ public class Dragao extends Actor
             temporizador=0;
             randomizaAtaque();
         }
-        
     }
     
     private void randomizaAtaque()
     {
+        
         int random = Greenfoot.getRandomNumber(12);
         
-        if(random<90)
+        if(random<4)
         {
             ataqueBolasDeFogo();
         }
-        else if(random<8)
+        else if(random<80)
         {
             ataquePata();
         }
@@ -52,6 +54,7 @@ public class Dragao extends Actor
     private void ataqueBolasDeFogo()
     {
         World mundo = getWorld();
+        
         BolaDeFogo bola = new BolaDeFogo();
         BolaDeFogo bola2 = new BolaDeFogo();
         BolaDeFogo bola3 = new BolaDeFogo();
@@ -87,11 +90,30 @@ public class Dragao extends Actor
     
     private void ataquePata()
     {
+        World mundo = getWorld();
+        int random = Greenfoot.getRandomNumber(2);
         
+        Fogo fogo1 = new Fogo();
+        Fogo fogo2 = new Fogo();
+        if(random==0)
+        {
+            mundo.addObject(fogo1, mundo.getWidth()*2/10, mundo.getHeight()*9/10);
+            mundo.addObject(fogo2, mundo.getWidth()*4/10, mundo.getHeight()*9/10);
+        }
+        else
+        {
+            mundo.addObject(fogo1, mundo.getWidth()*6/10, mundo.getHeight()*9/10);
+            mundo.addObject(fogo2, mundo.getWidth()*8/10, mundo.getHeight()*9/10);
+        }
     }
     
     private void ataqueLancaChamas()
     {
         
+    }
+    
+    public void perderVida()
+    {
+        vida-=10;
     }
 }
