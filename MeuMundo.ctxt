@@ -17,9 +17,15 @@ comment5.params=
 comment5.target=void\ criaTronco()
 comment5.text=\r\n\ Cria\ um\ novo\ tronco\ no\ topo\r\n
 comment6.params=
+<<<<<<< HEAD
 comment6.target=java.lang.String\ checarLado()
 comment6.text=\r\n\ Verifica\ se\ o\ jogador\ apertou\ alguma\ tecla\r\n
 comment7.params=
 comment7.target=boolean\ getGameOver()
 comment7.text=\r\n\ Retorna\ se\ o\ jogo\ acabou\r\n
 numComments=8
+=======
+comment6.target=boolean\ getGameOver()
+comment6.text=\r\n\ Retorna\ se\ o\ jogo\ acabou\r\n
+numComments=7
+>>>>>>> main

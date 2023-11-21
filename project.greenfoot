@@ -21,6 +21,7 @@ dependency10.type=UsesDependency
 dependency11.from=MeuMundo
 dependency11.to=Lapide
 dependency11.type=UsesDependency
+<<<<<<< HEAD
 dependency12.from=MeuMundo
 dependency12.to=Arvore
 dependency12.type=UsesDependency
@@ -41,6 +42,13 @@ dependency17.to=TroncoNormal
 dependency17.type=UsesDependency
 dependency2.from=MundoDragao
 dependency2.to=Dragao
+=======
+dependency12.from=Arvore
+dependency12.to=MeuMundo
+dependency12.type=UsesDependency
+dependency2.from=MeuMundo
+dependency2.to=Lenhador
+>>>>>>> main
 dependency2.type=UsesDependency
 dependency3.from=MundoDragao
 dependency3.to=Guerreiro
@@ -52,6 +60,7 @@ dependency5.from=MeuMundo
 dependency5.to=Lenhador
 dependency5.type=UsesDependency
 dependency6.from=MeuMundo
+<<<<<<< HEAD
 dependency6.to=Timer
 dependency6.type=UsesDependency
 dependency7.from=MeuMundo
@@ -59,6 +68,15 @@ dependency7.to=BaseTronco
 dependency7.type=UsesDependency
 dependency8.from=MeuMundo
 dependency8.to=TroncoNormal
+=======
+dependency6.to=Arvore
+dependency6.type=UsesDependency
+dependency7.from=MeuMundo
+dependency7.to=Lose
+dependency7.type=UsesDependency
+dependency8.from=MeuMundo
+dependency8.to=Lapide
+>>>>>>> main
 dependency8.type=UsesDependency
 dependency9.from=MeuMundo
 dependency9.to=MundoDragao
@@ -68,8 +86,13 @@ editor.fx.0.width=814
 editor.fx.0.x=360
 editor.fx.0.y=42
 height=878
+<<<<<<< HEAD
 package.numDependencies=17
 package.numTargets=16
+=======
+package.numDependencies=12
+package.numTargets=10
+>>>>>>> main
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -169,21 +192,33 @@ target5.width=120
 target5.x=0
 target5.y=0
 target6.height=70
+<<<<<<< HEAD
 target6.name=StartWorld
+=======
+target6.name=Start
+>>>>>>> main
 target6.showInterface=false
 target6.type=ClassTarget
 target6.width=120
 target6.x=0
 target6.y=0
 target7.height=70
+<<<<<<< HEAD
 target7.name=Fogo
+=======
+target7.name=TroncoNormal
+>>>>>>> main
 target7.showInterface=false
 target7.type=ClassTarget
 target7.width=120
 target7.x=0
 target7.y=0
 target8.height=70
+<<<<<<< HEAD
 target8.name=BaseTronco
+=======
+target8.name=Arvore
+>>>>>>> main
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=120
