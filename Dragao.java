@@ -46,7 +46,7 @@ public class Dragao extends Actor
             mundo.addObject(pata2, mundo.getWidth()*9/10, mundo.getHeight()*8/10);
         }
         
-        
+        //Lógica padrão do Dragão, ataca uma vez a cada 3 sec
         temporizador++;
         if(temporizador==180)
         {
@@ -54,6 +54,8 @@ public class Dragao extends Actor
             randomizaAtaque();
         }
         
+        //Condicional para ver se o dragão está conjurando um ataque de pata
+        //Se sim, executa o lógica necessária para o ataque funcionar
         if(ataquePata)
         {
             World mundo = getWorld();
@@ -65,6 +67,8 @@ public class Dragao extends Actor
         }
     }
     
+    //Função chave para o funcionamento do dragão.
+    //É nela que os ataques são aleatorizados.
     private void randomizaAtaque()
     {
         
@@ -85,6 +89,7 @@ public class Dragao extends Actor
         
     }
     
+    //toda a lógica do ataque das bolas de fogo está nessa função
     private void ataqueBolasDeFogo()
     {
         World mundo = getWorld();
