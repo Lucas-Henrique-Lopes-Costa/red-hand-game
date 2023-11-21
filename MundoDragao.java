@@ -23,9 +23,6 @@ public class MundoDragao extends World
         Guerreiro guerreiro = new Guerreiro();
         addObject(guerreiro, getWidth()*4/10, getHeight()*8/10);
         
-        PataDragao pata1 = new PataDragao();
-        addObject(pata1, getWidth()*1/10, getHeight()*8/10);
-        PataDragao pata2 = new PataDragao();
-        addObject(pata2, getWidth()*9/10, getHeight()*8/10);
+        
     }
 }

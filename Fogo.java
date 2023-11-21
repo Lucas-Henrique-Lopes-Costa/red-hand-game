@@ -23,7 +23,7 @@ public class Fogo extends Actor
     {
         tempoVivo++;
         
-        if(tempoVivo==150)
+        if(tempoVivo==100)
         {
             getWorld().removeObject(this);
         }

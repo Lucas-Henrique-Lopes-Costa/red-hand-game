@@ -16,7 +16,20 @@ public class PataDragao extends Actor
     {
         if(getY()!=getWorld().getHeight()*8/10)
         {
-            setLocation(getX(), getY() +10);
+            setLocation(getX(), getY() +5);
         }
+    }
+    
+    public void subir()
+    {
+        setLocation(getX(), getY()-getWorld().getHeight()*4/10);
+    }
+    
+    public boolean estaParada()
+    {
+        if(getY() == getWorld().getHeight()*8/10)
+        return true;
+        else
+        return false;
     }
 }

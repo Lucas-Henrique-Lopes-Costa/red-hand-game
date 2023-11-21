@@ -11,11 +11,23 @@ public class Dragao extends Actor
 {
     private int temporizador;
     private static int vida;
+    private boolean jaNasceu;
+    private boolean ataquePata;
+    private PataDragao pata1;
+    private PataDragao pata2;
+    private PataDragao pataNoAr;
     
     public Dragao()
     {
+        ataquePata=false;
+        jaNasceu=false;
+        
+        
         vida = 1000;
         temporizador=0;
+        
+        pata1 = new PataDragao();
+        pata2 = new PataDragao();
     }
     
     /**
@@ -24,11 +36,32 @@ public class Dragao extends Actor
      */
     public void act()
     {
+        //Posiciona as duas patas do dragao no mundo
+        if(!jaNasceu)
+        {
+            jaNasceu=true;
+            
+            World mundo = getWorld();
+            mundo.addObject(pata1, mundo.getWidth()*1/10, mundo.getHeight()*8/10);
+            mundo.addObject(pata2, mundo.getWidth()*9/10, mundo.getHeight()*8/10);
+        }
+        
+        
         temporizador++;
         if(temporizador==180)
         {
             temporizador=0;
             randomizaAtaque();
+        }
+        
+        if(ataquePata)
+        {
+            World mundo = getWorld();
+            if(pataNoAr.estaParada())
+            {
+                explosoes();
+                ataquePata=false;
+            }
         }
     }
     
@@ -43,12 +76,13 @@ public class Dragao extends Actor
         }
         else if(random<80)
         {
-            ataquePata();
+            subirPata();
         }
         else
         {
             ataqueLancaChamas();
         }
+        
     }
     
     private void ataqueBolasDeFogo()
@@ -88,19 +122,35 @@ public class Dragao extends Actor
         
     }
     
-    private void ataquePata()
+    private void subirPata()
+    {
+        int numero = Greenfoot.getRandomNumber(2);
+        
+        if(numero==0)
+        {
+            pata1.subir();
+            pataNoAr=pata1;
+        }
+        else
+        {
+            pata2.subir();
+            pataNoAr=pata2;
+        }
+        
+        ataquePata=true;
+    }
+    
+    private void explosoes()
     {
         World mundo = getWorld();
-        int random = Greenfoot.getRandomNumber(2);
-        
         Fogo fogo1 = new Fogo();
         Fogo fogo2 = new Fogo();
-        if(random==0)
+        if(pataNoAr == pata1)
         {
             mundo.addObject(fogo1, mundo.getWidth()*2/10, mundo.getHeight()*9/10);
             mundo.addObject(fogo2, mundo.getWidth()*4/10, mundo.getHeight()*9/10);
         }
-        else
+        else if (pataNoAr == pata2)
         {
             mundo.addObject(fogo1, mundo.getWidth()*6/10, mundo.getHeight()*9/10);
             mundo.addObject(fogo2, mundo.getWidth()*8/10, mundo.getHeight()*9/10);
@@ -112,7 +162,7 @@ public class Dragao extends Actor
         
     }
     
-    public void perderVida()
+    public static void perderVida()
     {
         vida-=10;
     }

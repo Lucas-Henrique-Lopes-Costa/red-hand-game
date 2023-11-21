@@ -82,12 +82,12 @@ public class MeuMundo extends World {
     public void act() 
     {
         //Teste do mundo do dragao
-        /*
+        
         if(score==1)
         {
             Greenfoot.setWorld(new MundoDragao());
         }
-        */
+        
         
         boolean gameOver = false;
 
