@@ -82,12 +82,13 @@ public class MeuMundo extends World {
     public void act() 
     {
         //Teste do mundo do dragao
-        /*
+        
         if(score==1)
         {
             Greenfoot.setWorld(new MundoDragao());
         }
-        */
+        
+        
         boolean gameOver = false;
 
         // inciar a musica de fundo
@@ -191,6 +192,28 @@ public class MeuMundo extends World {
             showText("Pontos: " + score, 375, 200);
         }
     }
+    
+    /*
+     * Cria um novo tronco no topo
+     */
+    public void criaTronco() {
+        int random = Greenfoot.getRandomNumber(11); // Gera um número aleatório entre 0 e 10
+
+        if (random < 2) { // 20% de chance de cair um tronco com galho para a esquerda
+            TroncoNormal tronco = new TroncoNormal("esquerda");
+            addObject(tronco, 317, -40);
+            Arvore.addTronco(tronco);
+        } else if (random > 8) { // 20% de chance de cair um tronco com galho para a direita
+            TroncoNormal tronco = new TroncoNormal("direita");
+            addObject(tronco, 442, -40);
+            Arvore.addTronco(tronco);
+        } else { // 60% de chance de cair um tronco normal
+            TroncoNormal tronco = new TroncoNormal("normal");
+            addObject(tronco, 380, -40);
+            Arvore.addTronco(tronco);
+        }
+    }
+
 
     /*
      * Verifica se o jogador apertou alguma tecla
@@ -214,27 +237,7 @@ public class MeuMundo extends World {
         return null;
     }
 
-    /*
-     * Cria um novo tronco no topo
-     */
-    public void criaTronco() {
-        int random = Greenfoot.getRandomNumber(11); // Gera um número aleatório entre 0 e 10
-
-        if (random < 2) { // 20% de chance de cair um tronco com galho para a esquerda
-            TroncoNormal tronco = new TroncoNormal("esquerda");
-            addObject(tronco, 317, -40);
-            Arvore.addTronco(tronco);
-        } else if (random > 8) { // 20% de chance de cair um tronco com galho para a direita
-            TroncoNormal tronco = new TroncoNormal("direita");
-            addObject(tronco, 442, -40);
-            Arvore.addTronco(tronco);
-        } else { // 60% de chance de cair um tronco normal
-            TroncoNormal tronco = new TroncoNormal("normal");
-            addObject(tronco, 380, -40);
-            Arvore.addTronco(tronco);
-        }
-    }
-
+    
     /*
      * Retorna se o jogo acabou
      */

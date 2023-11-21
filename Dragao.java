@@ -9,11 +9,25 @@ import java.util.*;
  */
 public class Dragao extends Actor
 {
-    int temporizador;
+    private int temporizador;
+    private static int vida;
+    private boolean jaNasceu;
+    private boolean ataquePata;
+    private PataDragao pata1;
+    private PataDragao pata2;
+    private PataDragao pataNoAr;
     
     public Dragao()
     {
+        ataquePata=false;
+        jaNasceu=false;
+        
+        
+        vida = 1000;
         temporizador=0;
+        
+        pata1 = new PataDragao();
+        pata2 = new PataDragao();
     }
     
     /**
@@ -22,6 +36,17 @@ public class Dragao extends Actor
      */
     public void act()
     {
+        //Posiciona as duas patas do dragao no mundo
+        if(!jaNasceu)
+        {
+            jaNasceu=true;
+            
+            World mundo = getWorld();
+            mundo.addObject(pata1, mundo.getWidth()*1/10, mundo.getHeight()*8/10);
+            mundo.addObject(pata2, mundo.getWidth()*9/10, mundo.getHeight()*8/10);
+        }
+        
+        //Lógica padrão do Dragão, ataca uma vez a cada 3 sec
         temporizador++;
         if(temporizador==180)
         {
@@ -29,29 +54,46 @@ public class Dragao extends Actor
             randomizaAtaque();
         }
         
+        //Condicional para ver se o dragão está conjurando um ataque de pata
+        //Se sim, executa o lógica necessária para o ataque funcionar
+        if(ataquePata)
+        {
+            World mundo = getWorld();
+            if(pataNoAr.estaParada())
+            {
+                explosoes();
+                ataquePata=false;
+            }
+        }
     }
     
+    //Função chave para o funcionamento do dragão.
+    //É nela que os ataques são aleatorizados.
     private void randomizaAtaque()
     {
+        
         int random = Greenfoot.getRandomNumber(12);
         
-        if(random<90)
+        if(random<4)
         {
             ataqueBolasDeFogo();
         }
-        else if(random<8)
+        else if(random<80)
         {
-            ataquePata();
+            subirPata();
         }
         else
         {
             ataqueLancaChamas();
         }
+        
     }
     
+    //toda a lógica do ataque das bolas de fogo está nessa função
     private void ataqueBolasDeFogo()
     {
         World mundo = getWorld();
+        
         BolaDeFogo bola = new BolaDeFogo();
         BolaDeFogo bola2 = new BolaDeFogo();
         BolaDeFogo bola3 = new BolaDeFogo();
@@ -85,13 +127,48 @@ public class Dragao extends Actor
         
     }
     
-    private void ataquePata()
+    private void subirPata()
     {
+        int numero = Greenfoot.getRandomNumber(2);
         
+        if(numero==0)
+        {
+            pata1.subir();
+            pataNoAr=pata1;
+        }
+        else
+        {
+            pata2.subir();
+            pataNoAr=pata2;
+        }
+        
+        ataquePata=true;
+    }
+    
+    private void explosoes()
+    {
+        World mundo = getWorld();
+        Fogo fogo1 = new Fogo();
+        Fogo fogo2 = new Fogo();
+        if(pataNoAr == pata1)
+        {
+            mundo.addObject(fogo1, mundo.getWidth()*2/10, mundo.getHeight()*9/10);
+            mundo.addObject(fogo2, mundo.getWidth()*4/10, mundo.getHeight()*9/10);
+        }
+        else if (pataNoAr == pata2)
+        {
+            mundo.addObject(fogo1, mundo.getWidth()*6/10, mundo.getHeight()*9/10);
+            mundo.addObject(fogo2, mundo.getWidth()*8/10, mundo.getHeight()*9/10);
+        }
     }
     
     private void ataqueLancaChamas()
     {
         
+    }
+    
+    public static void perderVida()
+    {
+        vida-=10;
     }
 }

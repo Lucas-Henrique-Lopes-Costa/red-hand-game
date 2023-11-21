@@ -32,7 +32,7 @@ public class Timer extends Actor {
      */
     public void act() {
         // Diminui o tempo do contador
-        tempo -= 2;
+        tempo -=1;
         atualizaImagem(); // Vai atualizando a imagem do contador
     }
 
