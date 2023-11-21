@@ -14,7 +14,7 @@ public class BolaDeFogo extends Actor
      */
     public void act()
     {
-        setLocation(getX(), getY() +9);
+        setLocation(getX(), getY() +7);
         
         if(isAtEdge())
         {
