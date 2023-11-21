@@ -43,6 +43,8 @@ public class MeuMundo extends World {
      * Ou seja: criar os objetos iniciais e adicioná-los ao mundo.
      */
     private void prepare() {
+        Arvore.limpa();
+        
         score = 0;
         addObject(lenhador, 215, 663);
 
@@ -82,12 +84,12 @@ public class MeuMundo extends World {
     public void act() 
     {
         //Teste do mundo do dragao
-        
+        /*
         if(score==1)
         {
             Greenfoot.setWorld(new MundoDragao());
         }
-        
+        */
         
         boolean gameOver = false;
 
