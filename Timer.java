@@ -10,8 +10,6 @@ public class Timer extends Actor {
     // Atributos do contador
     private int tempo;
     private int larguraOriginal;
-
-    private TroncoNormal tronco; // Atributo para acessar o método aumentaTempo() da classe TroncoNormal
     private GreenfootImage timer; // Imagem do contador
 
     /*
@@ -55,17 +53,18 @@ public class Timer extends Actor {
     /*
      * Aumenta o tempo do contador
      */
-    public void aumentaTempo() {
+    public void aumentaTempo() 
+    {
         // Aumenta o tempo do contador em 15
-        // É acionado quando o jogador pega um tronco
-        tempo += 15;
+        tempo += 25;
         atualizaImagem();
     }
 
     /*
      * Retorna o tempo do contador
      */
-    public int getTempo() {
+    public int getTempo() 
+    {
         return tempo;
     }
 }

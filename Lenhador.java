@@ -9,112 +9,164 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Lenhador extends Actor {
     // Atributos da classe
-    private GreenfootImage[] animationFrames;
-    private boolean ladoDireito;
-    private boolean ladoEsquerdo;
-    private boolean keyWasDown;
-    private int frameDirection;
-    private int currentFrame;
-
-    /*
+    private int contAnimacao;
+    private boolean atacando;
+    private Arvore arvore;
+    private MeuMundo mundo;
+    
+    /**
      * Construtor da classe Lenhador
      */
-    public Lenhador() {
-        // Inicializa as variáveis de direção
-        ladoDireito = true;
-        ladoEsquerdo = true;
-        keyWasDown = false;
-
-        // Inicializa os quadros da animação do lenhador
-        animationFrames = new GreenfootImage[3];
-        for (int i = 0; i < animationFrames.length; i++) {
-            // Carrega as imagens dos quadros da animação
-            animationFrames[i] = new GreenfootImage("lenhador" + i + ".png");
-        }
-
-        // Define a localização inicial do lenhador
-        setLocation(215, 663);
-
-        // Inicializa o quadro atual e a direção do quadro para a animação
-        currentFrame = 0;
-        frameDirection = 1;
+    public Lenhador(Arvore arvore,MeuMundo mundo) 
+    {
+        this.arvore=arvore;
+        this.mundo=mundo;
+        atacando=false;
+        contAnimacao=0;
     }
 
     /**
-     * Act - do whatever the Lapide wants to do. This method is called whenever
+     * Act - do whatever the Lenhador wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() {
-        // Verifica se a tecla "left" está pressionada
-        if (Greenfoot.isKeyDown("left")) {
-            // Carrega as imagens de animação para o lenhador virado para a esquerda
-            for (int i = 0; i < animationFrames.length; i++) {
-                animationFrames[i] = new GreenfootImage("lenhador" + i + ".png");
-                setLocation(215, 663);
+    public void act() 
+    {
+        
+        if(atacando)
+        {
+            if(getX() ==215)
+            {
+                animar("");
             }
-            // Verifica se a tecla foi pressionada pela primeira vez
-            if (!keyWasDown) {
-                keyWasDown = true;
-                ladoDireito = false;
-                ladoEsquerdo = true;
-                // Inicia a animação
-                animate();
+            else
+            {
+                animar("Invertido");
             }
         }
-        // Verifica se a tecla "right" está pressionada
-        else if (Greenfoot.isKeyDown("right")) {
-            // Carrega as imagens de animação para o lenhador virado para a direita
-            for (int i = 0; i < animationFrames.length; i++) {
-                animationFrames[i] = new GreenfootImage("lenhadorInvertido" + i + ".png");
-                setLocation(530, 663);
+        else
+        {
+            String tecla = Greenfoot.getKey();
+            if(tecla!=null)
+            {
+                if(tecla.equals("left"))
+                {
+                    atacando=true;
+                    posicionarEsquerda();
+                }
+                else if(tecla.equals("right"))
+                {
+                    atacando=true;
+                    posicionarDireita();
+
+                }   
             }
-            // Verifica se a tecla foi pressionada pela primeira vez
-            if (!keyWasDown) {
-                keyWasDown = true;
-                ladoDireito = true;
-                ladoEsquerdo = false;
-                // Inicia a animação
-                animate();
-            }
-        }
-        // Se nenhuma das teclas está pressionada, reseta a variável keyWasDown
-        else {
-            keyWasDown = false;
         }
     }
+    
+    private void acontecimentosEsquerda()
+    {
+        TroncoNormal tronco0 = arvore.getTronco(0);
 
-    /*
-     * Função da animação do lenhador
-     */
-    private void animate() {
-        // Define o quadro atual como 0
-        currentFrame = 0;
-
-        // Loop que executa 5 vezes
-        for (int i = 0; i <= 4; i++) {
-            // Define a imagem do quadro atual
-            setImage(animationFrames[currentFrame]);
-
-            // Se o quadro atual for o último da animação, a direção do quadro é definida
-            // como -1
-            if (currentFrame == animationFrames.length - 1) {
-                frameDirection = -1;
-            }
-            // Se o quadro atual for o primeiro da animação, a direção do quadro é definida
-            // como 1
-            else if (currentFrame == 0) {
-                frameDirection = 1;
-            }
-
-            // Pausa a execução por 1 milissegundo
-            // TODO: #11 melhorar forma da animação para não precisar usar delay
-            Greenfoot.delay(0);
-
-            // Atualiza o quadro atual com base na direção do quadro
-            currentFrame += frameDirection;
+        // Verifica se o tronco que vai cair tem um galho para a direita
+        if (arvore.getTronco(1).getLado().equals("esquerda")) 
+        {
+            MeuMundo.gameOver(true); 
         }
+        
+        //Adiciona 1 na pontuação
+        mundo.aumentaPontos();
+        mundo.aumentaTempo();
+        
+        tronco0.mover();
+        tronco0.moverDireita();
+        arvore.removeTronco(0);
+        
+        //Move todos os troncos da árvore para baixo
+        arvore.cair();
+        
+        // Cria um novo tronco no topo
+        arvore.criaTronco(); 
+    }
+    
+    private void acontecimentosDireita()
+    {
+        TroncoNormal tronco0 = arvore.getTronco(0);
 
-        // Redefine o quadro atual para 0 após a conclusão da animação
-        currentFrame = 0;
+        // Verifica se o tronco que vai cair tem um galho para a direita
+        if (arvore.getTronco(1).getLado().equals("direita")) 
+        {
+            MeuMundo.gameOver(true); 
+        }
+        
+        //Adiciona 1 na pontuação
+        mundo.aumentaPontos();
+        mundo.aumentaTempo();
+        
+        tronco0.mover();
+        arvore.removeTronco(0);
+        
+        //Move todos os troncos da árvore para baixo
+        arvore.cair();
+        
+        // Cria um novo tronco no topo
+        arvore.criaTronco(); 
+    }
+    
+    private void posicionarEsquerda()
+    {
+        setLocation(215, getY());
+    }
+    
+    private void posicionarDireita()
+    {
+        setLocation(530, getY());
+    }
+    
+    private void animar(String complemento)
+    {
+        if(contAnimacao<3)
+        {
+            contAnimacao++;
+            setImage("lenhador" + complemento + "0.png");
+            getImage().scale(160,160);
+        }
+        else if(contAnimacao<6)
+        {
+            contAnimacao++;
+            setImage("lenhador" + complemento + "1.png");
+            getImage().scale(160,160);
+        }
+        else if(contAnimacao<9)
+        {
+            contAnimacao++;
+            setImage("lenhador" + complemento + "2.png");
+            getImage().scale(160,160);
+        }
+        else if(contAnimacao<12)
+        {
+            contAnimacao++;
+            setImage("lenhador" + complemento + "1.png");
+            getImage().scale(160,160);
+        }
+        else if(contAnimacao<15)
+        {
+            contAnimacao++;
+            setImage("lenhador" + complemento + "0.png");
+            getImage().scale(160,160);
+        }
+        else
+        {
+            if(complemento=="")
+            {
+                acontecimentosEsquerda();
+            }
+            
+            else
+            {
+                acontecimentosDireita();
+            }
+            atacando=false;
+            contAnimacao=0;
+        }
     }
 }

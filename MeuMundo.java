@@ -10,12 +10,12 @@ import greenfoot.GreenfootSound;
  */
 public class MeuMundo extends World {
     // Atributos
-    
-    private Lenhador lenhador = new Lenhador();
+    private Arvore arvore;
+    private Lenhador lenhador;
     private Timer timer = new Timer();
 
     private static int score;
-    private boolean gameOver;
+    private static boolean gameOver;
 
     // Sons
     private GreenfootSound somMadeira;
@@ -42,8 +42,12 @@ public class MeuMundo extends World {
      * Prepara o mundo para o início do programa.
      * Ou seja: criar os objetos iniciais e adicioná-los ao mundo.
      */
-    private void prepare() {
-        Arvore.limpa();
+    private void prepare() 
+    {
+        arvore = new Arvore(this);
+        arvore.limpa();
+        
+        lenhador = new Lenhador(arvore, this);
         
         score = 0;
         addObject(lenhador, 215, 663);
@@ -66,11 +70,11 @@ public class MeuMundo extends World {
         TroncoNormal tronco5 = new TroncoNormal("normal");
         addObject(tronco5, 377, -26);
 
-        Arvore.addTronco(tronco1);
-        Arvore.addTronco(tronco2);
-        Arvore.addTronco(tronco3);
-        Arvore.addTronco(tronco4);
-        Arvore.addTronco(tronco5);
+        arvore.addTronco(tronco1);
+        arvore.addTronco(tronco2);
+        arvore.addTronco(tronco3);
+        arvore.addTronco(tronco4);
+        arvore.addTronco(tronco5);
 
         setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
         addObject(timer, 375, 50);
@@ -88,72 +92,25 @@ public class MeuMundo extends World {
         if(score==1)
         {
             Greenfoot.setWorld(new MundoDragao());
-        }
-        */
-        
-        boolean gameOver = false;
+        }*/
 
         // inciar a musica de fundo
-        if (!musicaDeFundoIniciada) {
+        if (!musicaDeFundoIniciada) 
+        {
             musicaDeFundo.playLoop();
             musicaDeFundoIniciada = true;
         }
-
-        // Lenhador está/vai para a direita e bate
-        // E o tronco voa para a esquerda
-        String aux = checarLado(); // Verifica se o jogador apertou alguma tecla
-        if(aux!=null)
-        {
-            if (aux.equals("direita")) 
-            {
-                TroncoNormal tronco0 = Arvore.getTronco(0);
-    
-                // Verifica se o tronco que vai cair tem um galho para a direita
-                if (Arvore.getTronco(1).getLado().equals("direita")) {
-                    gameOver = true; 
-                }
-                
-                tronco0.mover();
-                Arvore.removeTronco(0);
-                
-                //Move todos os troncos da árvore para baixo
-                Arvore.cair();
-    
-                criaTronco(); // Cria um novo tronco no topo
-                timer.aumentaTempo(); // Aumenta o tempo do jogo
-                score++; // Aumenta a pontuação
-            }
-
-            // Lenhador está/vai para a esquerda e bate
-            // E o tronco voa para a direita
-            if (aux.equals("esquerda")) 
-            {
-                TroncoNormal tronco0 = Arvore.getTronco(0);
-
-                // Verifica se o tronco que vai cair tem um galho para a esquerda
-                if (Arvore.getTronco(1).getLado().equals("esquerda")) 
-                {
-                    gameOver = true;
-                }
-            
-                tronco0.moverDireita();
-                tronco0.mover(); 
-                Arvore.removeTronco(0);
-    
-                //Move todos os troncos da árvore para baixo
-                Arvore.cair();
-    
-                criaTronco(); // Cria um novo tronco no topo
-                timer.aumentaTempo(); // Aumenta o tempo do jogo
-                score++; // Aumenta a pontuação
-            }
-        }
         
-
-        morreu(gameOver); // Verifica se o jogador perdeu
+        // Verifica se o jogador perdeu
+        morreu(gameOver); 
     }
-
-    /*
+    
+    public static void gameOver(boolean valor)
+    {
+        gameOver=valor;
+    }
+    
+    /**
      * Verifica se o jogador perdeu
      */
     public void morreu(boolean gameOver) {
@@ -180,7 +137,7 @@ public class MeuMundo extends World {
             Greenfoot.stop();
 
             // Remove todos os troncos
-            Arvore.limpa();
+            arvore.limpa();
             removeObjects(getObjects(TroncoNormal.class));
             removeObjects(getObjects(BaseTronco.class));
 
@@ -195,55 +152,20 @@ public class MeuMundo extends World {
         }
     }
     
-    /*
-     * Cria um novo tronco no topo
-     */
-    public void criaTronco() {
-        int random = Greenfoot.getRandomNumber(11); // Gera um número aleatório entre 0 e 10
-
-        if (random < 2) { // 20% de chance de cair um tronco com galho para a esquerda
-            TroncoNormal tronco = new TroncoNormal("esquerda");
-            addObject(tronco, 317, -40);
-            Arvore.addTronco(tronco);
-        } else if (random > 8) { // 20% de chance de cair um tronco com galho para a direita
-            TroncoNormal tronco = new TroncoNormal("direita");
-            addObject(tronco, 442, -40);
-            Arvore.addTronco(tronco);
-        } else { // 60% de chance de cair um tronco normal
-            TroncoNormal tronco = new TroncoNormal("normal");
-            addObject(tronco, 380, -40);
-            Arvore.addTronco(tronco);
-        }
-    }
-
-
-    /*
-     * Verifica se o jogador apertou alguma tecla
-     */
-    public String checarLado() {
-        String tecla = Greenfoot.getKey(); // Verifica se o jogador apertou alguma tecla
-        if (tecla != null) {
-            // TODO: #12 Melhorar os sons, está com muito delay quando descomenta e ativa
-            // eles quando batemos na madeira
-            if (tecla.equals("left")) {
-                // somMadeira.play();
-                return "esquerda";
-            } else if (tecla.equals("right")) {
-                // somMadeira.play();
-                return "direita";
-            } else {
-                return null;
-            }
-
-        }
-        return null;
-    }
-
-    
-    /*
+    /**
      * Retorna se o jogo acabou
      */
     public boolean getGameOver() {
         return gameOver;
+    }
+    
+    public void aumentaPontos()
+    {
+        score++;
+    }
+    
+    public void aumentaTempo()
+    {
+        timer.aumentaTempo();
     }
 }
