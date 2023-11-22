@@ -13,6 +13,8 @@ public class Dragao extends Actor
     private static int vida;
     private boolean jaNasceu;
     private boolean ataquePata;
+    private boolean ataqueChamas;
+    private int temporizadorChamas;
     private PataDragao pata1;
     private PataDragao pata2;
     private PataDragao pataNoAr;
@@ -21,10 +23,11 @@ public class Dragao extends Actor
     {
         ataquePata=false;
         jaNasceu=false;
-        
+        ataqueChamas=false;
         
         vida = 1000;
         temporizador=0;
+        temporizadorChamas=0;
         
         pata1 = new PataDragao();
         pata2 = new PataDragao();
@@ -58,11 +61,30 @@ public class Dragao extends Actor
         //Se sim, executa o lógica necessária para o ataque funcionar
         if(ataquePata)
         {
-            World mundo = getWorld();
             if(pataNoAr.estaParada())
             {
                 explosoes();
                 ataquePata=false;
+            }
+        }
+        else if(ataqueChamas)
+        {
+            temporizadorChamas++;
+            if(temporizadorChamas<=1)
+            {
+                World mundo = getWorld();
+                
+                Chamas chamas1 = new Chamas("");
+                Chamas chamas2 = new Chamas("esquerda");
+                Chamas chamas3 = new Chamas("direita");
+                mundo.addObject(chamas1, mundo.getWidth()/2, mundo.getHeight()/2);
+                mundo.addObject(chamas2, mundo.getWidth()/2, mundo.getHeight()/2);
+                mundo.addObject(chamas3, mundo.getWidth()/2, mundo.getHeight()/2);
+            }
+            else
+            {
+                temporizadorChamas=0;
+                ataqueChamas=false;
             }
         }
     }
@@ -78,13 +100,13 @@ public class Dragao extends Actor
         {
             ataqueBolasDeFogo();
         }
-        else if(random<80)
+        else if(random<8)
         {
             subirPata();
         }
         else
         {
-            ataqueLancaChamas();
+            ataqueChamas=true;
         }
         
     }
@@ -164,6 +186,8 @@ public class Dragao extends Actor
     
     private void ataqueLancaChamas()
     {
+        World mundo = getWorld();
+        
         
     }
     

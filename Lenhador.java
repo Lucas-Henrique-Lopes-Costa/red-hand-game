@@ -70,7 +70,7 @@ public class Lenhador extends Actor {
         // Verifica se o tronco que vai cair tem um galho para a direita
         if (arvore.getTronco(1).getLado().equals("esquerda")) 
         {
-            MeuMundo.gameOver(true); 
+            mundo.gameOver(true); 
         }
         
         //Adiciona 1 na pontuação
@@ -95,7 +95,7 @@ public class Lenhador extends Actor {
         // Verifica se o tronco que vai cair tem um galho para a direita
         if (arvore.getTronco(1).getLado().equals("direita")) 
         {
-            MeuMundo.gameOver(true); 
+            mundo.gameOver(true); 
         }
         
         //Adiciona 1 na pontuação
