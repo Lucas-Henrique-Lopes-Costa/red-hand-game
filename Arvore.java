@@ -29,8 +29,13 @@ public class Arvore
     {
         return listaTroncos.get(id);
     }
+<<<<<<< Updated upstream
     
     public void removeTronco(int id)
+=======
+
+    public static void removeTronco(int id)
+>>>>>>> Stashed changes
     {
         listaTroncos.remove(id);
     }

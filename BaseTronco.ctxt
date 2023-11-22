@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=BaseTronco
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BaseTronco\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Esse\ \u00E9\ o\ tronco\ que\ fica\ na\ base,\ ele\ n\u00E3o\ se\ move\ e\ serve\ apenas\ para\r\n\ referencia\r\n\ \r\n\ @author\ Lucas,\ Pedro,\ Guilherme\ e\ Alex\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=BaseTronco()
+comment1.text=\r\n\ Construtor\ da\ classe\ BaseTronco\r\n
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ BaseTronco\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
