@@ -34,16 +34,10 @@ public class LoseWorld extends World
             // Troca o lenhador pela lapide
             Lapide lapide = new Lapide();
             addObject(lapide, xLapide, yLapide);
-
-            // Remove todos os troncos
-            //Arvore.limpa();            
+            
             //Reinicia o jogo
             showText("Pressione ENTER para reiniciar o jogo", 375, 700);
             
-            
-            // TODO: #14 aparecer botão para reiniciar o jogo
-            // Start start = new Start(200, 100);
-            // addObject(start, 375, 650);
     }
     
     public void act()
