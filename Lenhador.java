@@ -67,44 +67,13 @@ public class Lenhador extends Actor {
     {
         TroncoNormal tronco0 = arvore.getTronco(0);
 
-<<<<<<< Updated upstream
+
         // Verifica se o tronco que vai cair tem um galho para a direita
         if (arvore.getTronco(1).getLado().equals("esquerda")) 
         {
             MeuMundo.gameOver(true); 
-=======
-
-    /*
-     * Função da animação do lenhador
-     */
-    private void animate() {
-        // Define o quadro atual como 0
-        currentFrame = 0;
-
-        // Loop que executa 5 vezes
-        for (int i = 0; i <= 4; i++) {
-            // Define a imagem do quadro atual
-            setImage(animationFrames[currentFrame]);
-
-            // Se o quadro atual for o último da animação, a direção do quadro é definida
-            // como -1
-            if (currentFrame == animationFrames.length - 1) {
-                frameDirection = -1;
-            }
-            // Se o quadro atual for o primeiro da animação, a direção do quadro é definida
-            // como 1
-            else if (currentFrame == 0) {
-                frameDirection = 1;
-            }
-
-            // Pausa a execução por 1 milissegundo
-            // TODO: #11 melhorar forma da animação para não precisar usar delay
-            Greenfoot.delay(1);
-
-            // Atualiza o quadro atual com base na direção do quadro
-            currentFrame += frameDirection;
->>>>>>> Stashed changes
         }
+
         
         //Adiciona 1 na pontuação
         mundo.aumentaPontos();
@@ -119,7 +88,7 @@ public class Lenhador extends Actor {
         
         // Cria um novo tronco no topo
         arvore.criaTronco(); 
-    }
+        }
     
     private void acontecimentosDireita()
     {

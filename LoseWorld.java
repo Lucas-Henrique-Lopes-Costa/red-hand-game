@@ -36,7 +36,7 @@ public class LoseWorld extends World
             addObject(lapide, xLapide, yLapide);
 
             // Remove todos os troncos
-            Arvore.limpa();            
+            //Arvore.limpa();            
             //Reinicia o jogo
             showText("Pressione ENTER para reiniciar o jogo", 375, 700);
             
