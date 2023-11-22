@@ -31,6 +31,7 @@ public class Arvore
     }
     
     public void removeTronco(int id)
+
     {
         listaTroncos.remove(id);
     }
@@ -52,7 +53,6 @@ public class Arvore
             tronco.cair160();
         }
     }
-    
     
     public void criaTronco()
     {

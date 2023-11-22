@@ -14,9 +14,10 @@ public class StartWorld extends World {
         super(750, 750, 1);
 
         Start start = new Start();
-        addObject(start, 375, 375);
+        addObject(start, 375, 430);
 
         Greenfoot.start(); // Inicia o jogo
+        prepare();
     }
 
     /**
@@ -25,5 +26,14 @@ public class StartWorld extends World {
      */
     public void act() {
         showText("Pressione ENTER para iniciar", 375, 675);
+        showText("Pressione J para abrir o tutorial", 375, 700);
+    }
+    
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
     }
 }

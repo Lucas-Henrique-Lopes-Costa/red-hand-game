@@ -29,12 +29,14 @@ public class MeuMundo extends World {
         // Cria um novo mundo com 750x750 células com um tamanho de célula de 1x1px.
         super(750, 750, 1);
         prepare(); // Monta o mundo
-
+        
         // Define os sons
         somMadeira = new GreenfootSound("madeira1.mp3");
         musicaDeFundo = new GreenfootSound("somdofundo.mp3");
         musicaDeFundo.setVolume(25); // Define o volume da música de fundo
-
+        
+        iniciaMusica(musicaDeFundoIniciada); //inicia a musica
+        
         gameOver = false; // Define o jogo como não finalizado
     }
 
@@ -50,6 +52,7 @@ public class MeuMundo extends World {
         lenhador = new Lenhador(arvore, this);
         
         score = 0;
+        timer = new Timer();
         addObject(lenhador, 215, 663);
 
         BaseTronco baseTronco = new BaseTronco();
@@ -79,6 +82,16 @@ public class MeuMundo extends World {
         setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
         addObject(timer, 375, 50);
     }
+    
+    /**
+     * inciar a musica de fundo
+     */
+    public void iniciaMusica (boolean musicaDeFundoIniciada) {
+        if(!musicaDeFundoIniciada){
+            musicaDeFundo.playLoop();
+            musicaDeFundoIniciada = true;
+        }
+    }
 
     /**
      * Act - do whatever the TroncoNormal wants to do. This method is called
@@ -87,6 +100,7 @@ public class MeuMundo extends World {
      */
     public void act() 
     {
+     
         //Teste do mundo do dragao
         
         if(score==1)
@@ -100,9 +114,15 @@ public class MeuMundo extends World {
             musicaDeFundo.playLoop();
             musicaDeFundoIniciada = true;
         }
+
+        if (gameOver || timer.getTempo() <= 0)
+        {
+            morreu(); // Verifica se o jogador perdeu
+        }
         
-        // Verifica se o jogador perdeu
-        morreu(gameOver); 
+        // Mostra a pontuação no topo da tela
+        showText("Pontos: " + score, 375, 200);
+
     }
     
     public static void gameOver(boolean valor)
@@ -113,43 +133,11 @@ public class MeuMundo extends World {
     /**
      * Verifica se o jogador perdeu
      */
-    public void morreu(boolean gameOver) {
-        if (gameOver || timer.getTempo() <= 0) 
-        {
-            // Cria um texto vazio na frente dos pontos
-            // Isso porque o Greenfoot não tem um método para apagar o texto
-            showText("", 375, 200);
+    public void morreu() 
+    {
+        musicaDeFundo.stop();
+        Greenfoot.setWorld(new LoseWorld(lenhador.getX(), lenhador.getY(), score));
 
-            // Aparece o Lose no meio da tela
-            Lose lose = new Lose();
-            setPaintOrder(Lose.class, TroncoNormal.class);
-            addObject(lose, 375, 375);
-
-            // Aparece a pontuação na imagem do Lose
-            showText("Seus pontos: " + (score - 1), 375, 450);
-
-            // Troca o lenhador pela lapide
-            Lapide lapide = new Lapide();
-            addObject(lapide, lenhador.getX(), lenhador.getY());
-            removeObject(lenhador);
-
-            // Para o Jogo
-            Greenfoot.stop();
-
-            // Remove todos os troncos
-            arvore.limpa();
-            removeObjects(getObjects(TroncoNormal.class));
-            removeObjects(getObjects(BaseTronco.class));
-
-            // TODO: #14 aparecer botão para reiniciar o jogo
-            // Start start = new Start(200, 100);
-            // addObject(start, 375, 650);
-        } 
-        else 
-        {
-            // Mostra a pontuação no topo da tela
-            showText("Pontos: " + score, 375, 200);
-        }
     }
     
     /**

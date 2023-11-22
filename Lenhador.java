@@ -67,11 +67,13 @@ public class Lenhador extends Actor {
     {
         TroncoNormal tronco0 = arvore.getTronco(0);
 
+
         // Verifica se o tronco que vai cair tem um galho para a direita
         if (arvore.getTronco(1).getLado().equals("esquerda")) 
         {
             mundo.gameOver(true); 
         }
+
         
         //Adiciona 1 na pontuação
         mundo.aumentaPontos();
@@ -86,7 +88,7 @@ public class Lenhador extends Actor {
         
         // Cria um novo tronco no topo
         arvore.criaTronco(); 
-    }
+        }
     
     private void acontecimentosDireita()
     {
