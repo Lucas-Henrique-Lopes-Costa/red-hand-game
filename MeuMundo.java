@@ -115,7 +115,7 @@ public class MeuMundo extends World {
             musicaDeFundoIniciada = true;
         }
 
-        if (gameOver || timer.getTempo() <= 0)
+        if (gameOver || timer.getTamanhoAtual() <= 0)
         {
             morreu(); // Verifica se o jogador perdeu
         }
@@ -152,8 +152,9 @@ public class MeuMundo extends World {
         score++;
     }
     
+    //Incrementa a barra do tempo
     public void aumentaTempo()
     {
-        timer.aumentaTempo();
+        timer.redimensiona(25);
     }
 }

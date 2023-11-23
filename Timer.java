@@ -6,22 +6,14 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
-public class Timer extends Actor {
-    // Atributos do contador
-    private int tempo;
-    private int larguraOriginal;
-    private GreenfootImage timer; // Imagem do contador
-
+public class Timer extends Barras {
+    
     /*
      * Construtor da classe Timer
      */
-    public Timer() {
-        // Inicializa os atributos
-        tempo = 710;
-        larguraOriginal = 710;
-        timer = new GreenfootImage(larguraOriginal, 10);
-
-        atualizaImagem(); // Gera a imagem do contador
+    public Timer() 
+    {
+        super(710);
     }
 
     /**
@@ -29,42 +21,7 @@ public class Timer extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        // Diminui o tempo do contador
-        tempo -=1;
-        atualizaImagem(); // Vai atualizando a imagem do contador
-    }
-
-    /*
-     * Atualiza a imagem do contador
-     */
-    private void atualizaImagem() {
-        timer.clear(); // Limpa a imagem do contador
-        if (tempo > 0) { // Caso o tempo seja maior que 0
-            if (tempo > 710) {
-                tempo = 710;
-            }
-            int novaLargura = tempo; // Define a nova largura do contador
-            timer.setColor(Color.RED);
-            timer.fillRect(0, 0, novaLargura, 10);
-        }
-        setImage(timer); // Define a imagem do contador
-    }
-
-    /*
-     * Aumenta o tempo do contador
-     */
-    public void aumentaTempo() 
-    {
-        // Aumenta o tempo do contador em 15
-        tempo += 25;
-        atualizaImagem();
-    }
-
-    /*
-     * Retorna o tempo do contador
-     */
-    public int getTempo() 
-    {
-        return tempo;
+        redimensiona(-1);
+        atualizarImagem();
     }
 }
