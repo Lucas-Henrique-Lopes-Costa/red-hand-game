@@ -28,14 +28,15 @@ public class Start extends Actor {
     public void act() {
         // Caso o usuário pressione ENTER, ESPAÇO ou clique com o mouse
         checkKeyPress();
-        if (Greenfoot.isKeyDown("j")) {
-            Greenfoot.setWorld(new TutorialWorld()); // Inicia o tutorial
-        }
+        
     }
     
     public void checkKeyPress() {
         if (Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space") || Greenfoot.mouseClicked(null)) {
             Greenfoot.setWorld(new MeuMundo()); // Inicia o jogo de verdade
+        }
+        else if (Greenfoot.isKeyDown("j")) {
+            Greenfoot.setWorld(new TutorialWorld()); // Inicia o tutorial
         }
     }
 }
