@@ -57,7 +57,6 @@ public class Lenhador extends Actor {
                 {
                     atacando=true;
                     posicionarDireita();
-
                 }   
             }
         }
@@ -74,6 +73,7 @@ public class Lenhador extends Actor {
         //Adiciona tempo e um ponto
         mundo.aumentaPontos();
         mundo.aumentaTempo();
+        mundo.chanceEspada();
     }
     
     private void acontecimentosDireita()
@@ -87,6 +87,7 @@ public class Lenhador extends Actor {
         //Adiciona tempo e um ponto
         mundo.aumentaPontos();
         mundo.aumentaTempo();
+        mundo.chanceEspada();
     }
     
     private void posicionarEsquerda()
@@ -105,31 +106,26 @@ public class Lenhador extends Actor {
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "0.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<6)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "1.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<9)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "2.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<12)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "1.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<15)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "0.png");
-            getImage().scale(160,160);
         }
         else
         {
@@ -137,7 +133,6 @@ public class Lenhador extends Actor {
             {
                 acontecimentosEsquerda();
             }
-            
             else
             {
                 acontecimentosDireita();
