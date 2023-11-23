@@ -11,11 +11,11 @@ public class Arvore
 {
     // instance variables - replace the example below with your own
     private  ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
-    private World mundo;
+    private MeuMundo mundo;
     /**
      * Constructor for objects of class Arvore
      */
-    public Arvore(World mundo)
+    public Arvore(MeuMundo mundo)
     {
         this.mundo=mundo;
     }
@@ -43,18 +43,18 @@ public class Arvore
         listaTroncos.add(tronco);
     }
     
-    public TroncoNormal getTronco(int id)
+    private TroncoNormal getTronco(int id)
     {
         return listaTroncos.get(id);
     }
     
-    public void removeTronco(int id)
+    private void removeTronco(int id)
 
     {
         listaTroncos.remove(id);
     }
     
-    public int tamanho()
+    private int tamanho()
     {
         return listaTroncos.size();
     }
@@ -64,7 +64,7 @@ public class Arvore
         listaTroncos.clear();
     }
     
-    public void cair()
+    private void cair()
     {
         for(TroncoNormal tronco : listaTroncos)
         {
@@ -72,7 +72,7 @@ public class Arvore
         }
     }
     
-    public void criaTronco()
+    private void criaTronco()
     {
         int random = Greenfoot.getRandomNumber(11); // Gera um número aleatório entre 0 e 10
         
@@ -93,6 +93,14 @@ public class Arvore
             TroncoNormal tronco = new TroncoNormal("normal");
             listaTroncos.add(tronco);
             mundo.addObject(tronco,377,-40);
+        }
+    }
+    
+    public void direcaoGalho(String lado)
+    {
+        if (getTronco(1).getLado().equals(lado)) 
+        {
+            mundo.gameOver(true); 
         }
     }
 }

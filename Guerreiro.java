@@ -33,11 +33,11 @@ public class Guerreiro extends Actor
             if(getX() == mundo.getWidth()*4/10
                 || getX() == mundo.getWidth()*8/10)
             {
-                animacoesAtaqueEsquerda();
+                animar("");
             }
             else
             {
-                animacoesAtaqueDireita();
+                animar("Invertido");
             }
         }
         else
@@ -102,78 +102,39 @@ public class Guerreiro extends Actor
         }
     }
     
-    private void animacoesAtaqueEsquerda()
+    private void animar(String complemento)
     {
         if(contAtaque<5)
         {
             contAtaque++;
-            setImage("lenhador0.png");
+            setImage("lenhador" + complemento + "0.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<10)
         {
             contAtaque++;
-            setImage("lenhador1.png");
+            setImage("lenhador" + complemento + "1.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<15)
         {
             contAtaque++;
-            setImage("lenhador2.png");
+            setImage("lenhador" + complemento + "2.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<20)
         {
             contAtaque++;
-            setImage("lenhador1.png");
+            setImage("lenhador" + complemento + "1.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<25)
         {
             contAtaque++;
-            setImage("lenhador0.png");
+            setImage("lenhador" + complemento + "0.png");
             getImage().scale(130, 130);
         }
-        else if(contAtaque==25)
-        {
-            contAtaque=0;
-            atacando=false;
-        }
-    }
-    
-    private void animacoesAtaqueDireita()
-    {
-        if(contAtaque<5)
-        {
-            contAtaque++;
-            setImage("lenhadorInvertido0.png");
-            getImage().scale(130, 130);
-        }
-        else if(contAtaque<10)
-        {
-            contAtaque++;
-            setImage("lenhadorInvertido1.png");
-            getImage().scale(130, 130);
-        }
-        else if(contAtaque<15)
-        {
-            contAtaque++;
-            setImage("lenhadorInvertido2.png");
-            getImage().scale(130, 130);
-        }
-        else if(contAtaque<20)
-        {
-            contAtaque++;
-            setImage("lenhadorInvertido1.png");
-            getImage().scale(130, 130);
-        }
-        else if(contAtaque<25)
-        {
-            contAtaque++;
-            setImage("lenhadorInvertido0.png");
-            getImage().scale(130, 130);
-        }
-        else if(contAtaque==25)
+        else
         {
             contAtaque=0;
             atacando=false;
