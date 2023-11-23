@@ -20,7 +20,7 @@ public class MundoDragao extends World
         Dragao dragao = new Dragao();
         addObject(dragao, getWidth()/2, 375);
         
-        Guerreiro guerreiro = new Guerreiro();
+        Guerreiro guerreiro = new Guerreiro(dragao);
         addObject(guerreiro, getWidth()*4/10, getHeight()*8/10);
         
         

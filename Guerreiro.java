@@ -10,12 +10,15 @@ public class Guerreiro extends Actor
 {
     private boolean atacando;
     private int contAtaque;
+    private Dragao dragao;
     
-    public Guerreiro ()
+    public Guerreiro (Dragao dragao)
     {
         atacando=false;
         contAtaque=0;
         getImage().scale(130, 130);
+        
+        this.dragao=dragao;
     }
     
     /**
@@ -63,7 +66,7 @@ public class Guerreiro extends Actor
     
     private void atacar()
     {
-        Dragao.perderVida();
+        dragao.perderVida();
         atacando=true;
     }
     

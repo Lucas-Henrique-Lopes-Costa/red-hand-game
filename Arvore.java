@@ -20,6 +20,24 @@ public class Arvore
         this.mundo=mundo;
     }
     
+    public void bater(boolean moverDireita)
+    {
+        TroncoNormal tronco0 = getTronco(0);
+        
+        tronco0.mover();
+        if(moverDireita)
+        {
+            tronco0.moverDireita();
+        }
+        removeTronco(0);
+         
+        //Move todos os troncos da árvore para baixo
+        cair();
+        
+        // Cria um novo tronco no topo
+        criaTronco(); 
+    }
+    
     public void addTronco(TroncoNormal tronco)
     {
         listaTroncos.add(tronco);

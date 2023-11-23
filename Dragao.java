@@ -10,7 +10,7 @@ import java.util.*;
 public class Dragao extends Actor
 {
     private int temporizador;
-    private static int vida;
+    private int vida;
     private boolean jaNasceu;
     private boolean ataquePata;
     private boolean ataqueChamas;
@@ -187,11 +187,9 @@ public class Dragao extends Actor
     private void ataqueLancaChamas()
     {
         World mundo = getWorld();
-        
-        
     }
     
-    public static void perderVida()
+    public void perderVida()
     {
         vida-=10;
     }

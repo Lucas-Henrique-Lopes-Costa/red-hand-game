@@ -65,53 +65,32 @@ public class Lenhador extends Actor {
     
     private void acontecimentosEsquerda()
     {
-        TroncoNormal tronco0 = arvore.getTronco(0);
-
-
         // Verifica se o tronco que vai cair tem um galho para a direita
         if (arvore.getTronco(1).getLado().equals("esquerda")) 
         {
             mundo.gameOver(true); 
         }
-
+        
+        arvore.bater(true);
         
         //Adiciona 1 na pontuação
         mundo.aumentaPontos();
         mundo.aumentaTempo();
-        
-        tronco0.mover();
-        tronco0.moverDireita();
-        arvore.removeTronco(0);
-        
-        //Move todos os troncos da árvore para baixo
-        arvore.cair();
-        
-        // Cria um novo tronco no topo
-        arvore.criaTronco(); 
-        }
+    }
     
     private void acontecimentosDireita()
     {
-        TroncoNormal tronco0 = arvore.getTronco(0);
-
         // Verifica se o tronco que vai cair tem um galho para a direita
         if (arvore.getTronco(1).getLado().equals("direita")) 
         {
             mundo.gameOver(true); 
         }
         
+        arvore.bater(false);
+        
         //Adiciona 1 na pontuação
         mundo.aumentaPontos();
         mundo.aumentaTempo();
-        
-        tronco0.mover();
-        arvore.removeTronco(0);
-        
-        //Move todos os troncos da árvore para baixo
-        arvore.cair();
-        
-        // Cria um novo tronco no topo
-        arvore.criaTronco(); 
     }
     
     private void posicionarEsquerda()
