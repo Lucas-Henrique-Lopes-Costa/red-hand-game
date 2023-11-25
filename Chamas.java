@@ -42,7 +42,7 @@ public class Chamas extends Actor
         }
         move(2);
         
-        if(getY()==mundo.getHeight()*9/10)
+        if(getY()==mundo.getHeight()*9/10  || isAtEdge())
         {
             mundo.removeObject(this);
         }

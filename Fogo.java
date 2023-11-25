@@ -9,10 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Fogo extends Actor
 {
     private int tempoVivo;
-    
+    private int indiceImagem;
     public Fogo()
     {
         tempoVivo=0;
+        indiceImagem=0;
     }
     
     /**
@@ -21,11 +22,35 @@ public class Fogo extends Actor
      */
     public void act()
     {
+        animar();
         tempoVivo++;
         
         if(tempoVivo==100)
         {
             getWorld().removeObject(this);
+        }
+    }
+    
+    private void animar()
+    {
+        if(indiceImagem<7)
+        {
+            setImage("fogo1.png");
+            indiceImagem++;
+        }
+        else if(indiceImagem<14)
+        {
+            setImage("fogo2.png");
+            indiceImagem++;
+        }
+        else if (indiceImagem<21)
+        {
+            setImage("fogo3.png");
+            indiceImagem++;
+        }
+        else
+        {
+            indiceImagem=0;
         }
     }
 }

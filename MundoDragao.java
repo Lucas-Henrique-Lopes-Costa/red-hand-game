@@ -18,11 +18,12 @@ public class MundoDragao extends World
         super(1200, 750, 1);
         
         Dragao dragao = new Dragao();
-        addObject(dragao, getWidth()/2, 375);
+        addObject(dragao, getWidth()/2, 350);
         
         Guerreiro guerreiro = new Guerreiro(dragao);
-        addObject(guerreiro, getWidth()*4/10, getHeight()*8/10);
+        addObject(guerreiro, getWidth()*4/10, getHeight()*7/10-15);
         
-        
+        Muro muro = new Muro();
+        addObject(muro,getWidth()/2, getHeight()*8/10);
     }
 }
