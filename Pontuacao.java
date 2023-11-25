@@ -24,15 +24,25 @@ public class Pontuacao extends World
     public void act()
     {        
         
-        if (tamanho > 6)
+        if (tamanho > 5)
         {
-            tamanho = 6;
+            tamanho = 5;
         }
         
         for (int i = 0; i < tamanho; i++)
         {
+            // verifica o tamanho do nome, se passar de 20 caracteres, corta e coloca "..."
+            if (HistoricoPontuacao.consultarNomeJogadorPorId(i).length() > 20)
+            {
+                showText(HistoricoPontuacao.consultarNomeJogadorPorId(i).substring(0, 19) + "...", 310, 300 + (i * 55));
+            }
+            else
+            {
+                showText(HistoricoPontuacao.consultarNomeJogadorPorId(i), 310, 300 + (i * 55));
+            }
+            
             // mostra cada pontuação em uma linha
-            showText((i + 1) + "º " + HistoricoPontuacao.consultarNomeJogadorPorId(i) + " - " + HistoricoPontuacao.consultarPontuacaoJogadorPorId(i), 375, 100 + (i * 100));
+            showText(Integer.toString(HistoricoPontuacao.consultarPontuacaoJogadorPorId(i)), 539, 300 + (i * 55));
         }
 
         if (Greenfoot.isKeyDown("enter"))

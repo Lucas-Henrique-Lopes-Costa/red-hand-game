@@ -18,6 +18,7 @@ public class Jogador
         pontuacao = 0;
     }
 
+
     public String getNome()
     {
         return nome;
