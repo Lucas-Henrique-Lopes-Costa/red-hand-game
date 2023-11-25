@@ -23,6 +23,8 @@ public class MeuMundo extends World {
     private GreenfootSound musicaDeFundo;
     private boolean musicaDeFundoIniciada = false;
 
+    Jogador jogador = new Jogador();
+
     /**
      * Construtor para objetos da classe MeuMundo.
      */
@@ -84,6 +86,13 @@ public class MeuMundo extends World {
 
         setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
         addObject(timer, 375, 50);
+
+        // pergunta o nome do usuário
+        String nome = Greenfoot.ask("Digite seu nome: ");
+        if(nome.length() <= 1 || nome == null)
+        nome = "Anônimo";
+
+        jogador.setNome(nome);
     }
     
     /**
@@ -131,9 +140,10 @@ public class MeuMundo extends World {
      */
     public void morreu() 
     {
+        jogador.setPontuacao(score);
         musicaDeFundo.stop();
         Greenfoot.setWorld(new LoseWorld(lenhador.getX(), lenhador.getY(), score));
-
+        HistoricoPontuacao.adicionarJogador(jogador);
     }
     
     /**

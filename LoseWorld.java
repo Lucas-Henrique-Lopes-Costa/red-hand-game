@@ -41,13 +41,19 @@ public class LoseWorld extends World
             
             //Reinicia o jogo
             showText("Pressione ENTER para reiniciar o jogo", 375, 700);
+
+            // Ver pontuação
+            showText("Pressione ESPAÇO para ver a lista de pontuação", 375, 725);
             
     }
     
     public void act()
     {
-        if (Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space") || Greenfoot.mouseClicked(null)) {
+        if (Greenfoot.isKeyDown("enter")) {
             Greenfoot.setWorld(new MeuMundo()); // Inicia o jogo de verdade
+        }
+        if (Greenfoot.isKeyDown("space")) {
+            Greenfoot.setWorld(new Pontuacao()); // Visualiza a pontuação
         }
     }
 }

@@ -22,4 +22,13 @@ public class TutorialWorld extends World
             Greenfoot.setWorld(new StartWorld()); // Inicia o jogo de verdade
         }
     }
+
+    public void act()
+    {
+        if (Greenfoot.isKeyDown("enter"))
+        {
+            StartWorld menu = new StartWorld();
+            Greenfoot.setWorld(menu);
+        }
+    }
 }

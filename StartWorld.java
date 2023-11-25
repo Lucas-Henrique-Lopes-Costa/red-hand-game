@@ -7,6 +7,8 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class StartWorld extends World {
+    private HistoricoPontuacao historicoPontuacao;
+
     /*
      * Construtor da classe StartWorld
      */
@@ -18,6 +20,8 @@ public class StartWorld extends World {
 
         Greenfoot.start(); // Inicia o jogo
         prepare();
+
+        historicoPontuacao = new HistoricoPontuacao();
     }
 
     /**
