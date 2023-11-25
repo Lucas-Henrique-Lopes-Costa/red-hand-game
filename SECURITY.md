@@ -1,21 +1,12 @@
-# Security Policy
+# Política de Segurança
 
-## Supported Versions
+## Versões
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Versão do Greenfoot 3.8.0 (Versão de Java 17.0.4.1)
+Máquina virtual: OpenJDK 64-Bit Server VM 17.0.4.1+1 (Eclipse Adoptium)
+JavaFX version: 20.0.1+2
+Executando em: Windows 11 10.0 (amd64)
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Reportar uma vulnerabilidade
 
-## Reporting a Vulnerability
-
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Escreva um email para: lucashlc.contato@gmail.com
