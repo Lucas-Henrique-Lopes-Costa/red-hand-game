@@ -13,6 +13,7 @@ public class MeuMundo extends World {
     private Arvore arvore;
     private Lenhador lenhador;
     private Timer timer = new Timer();
+    private Espada espada;
 
     private static int score;
     private static boolean gameOver;
@@ -52,6 +53,8 @@ public class MeuMundo extends World {
         arvore.limpa();
         
         lenhador = new Lenhador(arvore, this);
+        
+        espada = new Espada(this);
         
         score = 0;
         timer = new Timer();
@@ -95,7 +98,8 @@ public class MeuMundo extends World {
     /**
      * inciar a musica de fundo
      */
-    public void iniciaMusica (boolean musicaDeFundoIniciada) {
+    public void iniciaMusica (boolean musicaDeFundoIniciada) 
+    {
         if(!musicaDeFundoIniciada){
             musicaDeFundo.playLoop();
             musicaDeFundoIniciada = true;
@@ -109,14 +113,6 @@ public class MeuMundo extends World {
      */
     public void act() 
     {
-     
-        //Teste do mundo do dragao
-        /*
-        if(score==1)
-        {
-            Greenfoot.setWorld(new MundoDragao());
-        }
-        */
         // inciar a musica de fundo
         if (!musicaDeFundoIniciada) 
         {
@@ -124,7 +120,7 @@ public class MeuMundo extends World {
             musicaDeFundoIniciada = true;
         }
 
-        if (gameOver || timer.getTempo() <= 0)
+        if (gameOver || timer.getTamanhoAtual() <= 0)
         {
             morreu(); // Verifica se o jogador perdeu
         }
@@ -162,8 +158,17 @@ public class MeuMundo extends World {
         score++;
     }
     
+    //Incrementa a barra do tempo
     public void aumentaTempo()
     {
-        timer.aumentaTempo();
+        timer.redimensiona(25);
+    }
+    
+    public void chanceEspada()
+    {
+        if(score>50)
+        {
+            espada.chanceAparecer();
+        }
     }
 }

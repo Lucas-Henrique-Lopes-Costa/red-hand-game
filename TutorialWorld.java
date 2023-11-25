@@ -17,9 +17,9 @@ public class TutorialWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(750, 750, 1); 
-        showText("Pressione ENTER para iniciar", 375, 725);
+        showText("Pressione ENTER para voltar", 375, 725);
         if (Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space") || Greenfoot.mouseClicked(null)) {
-            Greenfoot.setWorld(new MeuMundo()); // Inicia o jogo de verdade
+            Greenfoot.setWorld(new StartWorld()); // Inicia o jogo de verdade
         }
     }
 

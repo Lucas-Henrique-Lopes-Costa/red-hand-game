@@ -29,7 +29,11 @@ public class LoseWorld extends World
             addObject(lose, 375, 375);
 
             // Aparece a pontuação na imagem do Lose
-            showText("Seus pontos: " + (score - 1), 375, 450);
+            if(score>0)
+            {
+                score--;
+            }
+            showText("Seus pontos: " + score, 375, 450);
 
             // Troca o lenhador pela lapide
             Lapide lapide = new Lapide();

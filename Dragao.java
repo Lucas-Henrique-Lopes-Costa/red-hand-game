@@ -10,7 +10,6 @@ import java.util.*;
 public class Dragao extends Actor
 {
     private int temporizador;
-    private static int vida;
     private boolean jaNasceu;
     private boolean ataquePata;
     private boolean ataqueChamas;
@@ -18,6 +17,7 @@ public class Dragao extends Actor
     private PataDragao pata1;
     private PataDragao pata2;
     private PataDragao pataNoAr;
+    private VidaDragao vida;
     
     public Dragao()
     {
@@ -25,12 +25,12 @@ public class Dragao extends Actor
         jaNasceu=false;
         ataqueChamas=false;
         
-        vida = 1000;
         temporizador=0;
         temporizadorChamas=0;
         
         pata1 = new PataDragao();
         pata2 = new PataDragao();
+        vida = new VidaDragao();
     }
     
     /**
@@ -47,6 +47,7 @@ public class Dragao extends Actor
             World mundo = getWorld();
             mundo.addObject(pata1, mundo.getWidth()*1/10, mundo.getHeight()*8/10);
             mundo.addObject(pata2, mundo.getWidth()*9/10, mundo.getHeight()*8/10);
+            mundo.addObject(vida, mundo.getWidth()/2, mundo.getHeight()*1/10);
         }
         
         //Lógica padrão do Dragão, ataca uma vez a cada 3 sec
@@ -187,12 +188,10 @@ public class Dragao extends Actor
     private void ataqueLancaChamas()
     {
         World mundo = getWorld();
-        
-        
     }
     
-    public static void perderVida()
+    public void perderVida()
     {
-        vida-=10;
+        vida.redimensiona(-10);
     }
 }

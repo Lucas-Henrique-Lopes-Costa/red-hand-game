@@ -57,7 +57,6 @@ public class Lenhador extends Actor {
                 {
                     atacando=true;
                     posicionarDireita();
-
                 }   
             }
         }
@@ -65,53 +64,30 @@ public class Lenhador extends Actor {
     
     private void acontecimentosEsquerda()
     {
-        TroncoNormal tronco0 = arvore.getTronco(0);
-
-
-        // Verifica se o tronco que vai cair tem um galho para a direita
-        if (arvore.getTronco(1).getLado().equals("esquerda")) 
-        {
-            mundo.gameOver(true); 
-        }
-
+        //Verifica a morte do lenhador
+        arvore.direcaoGalho("esquerda");
         
-        //Adiciona 1 na pontuação
+        //Aciona as ações necessárias para o funcionamento da arvore
+        arvore.bater(true);
+        
+        //Adiciona tempo e um ponto
         mundo.aumentaPontos();
         mundo.aumentaTempo();
-        
-        tronco0.mover();
-        tronco0.moverDireita();
-        arvore.removeTronco(0);
-        
-        //Move todos os troncos da árvore para baixo
-        arvore.cair();
-        
-        // Cria um novo tronco no topo
-        arvore.criaTronco(); 
-        }
+        mundo.chanceEspada();
+    }
     
     private void acontecimentosDireita()
     {
-        TroncoNormal tronco0 = arvore.getTronco(0);
-
-        // Verifica se o tronco que vai cair tem um galho para a direita
-        if (arvore.getTronco(1).getLado().equals("direita")) 
-        {
-            mundo.gameOver(true); 
-        }
+        //Verifica a morte do lenhador
+        arvore.direcaoGalho("direita");
         
-        //Adiciona 1 na pontuação
+        //Aciona as ações necessárias para o funcionamento da arvore
+        arvore.bater(false);
+        
+        //Adiciona tempo e um ponto
         mundo.aumentaPontos();
         mundo.aumentaTempo();
-        
-        tronco0.mover();
-        arvore.removeTronco(0);
-        
-        //Move todos os troncos da árvore para baixo
-        arvore.cair();
-        
-        // Cria um novo tronco no topo
-        arvore.criaTronco(); 
+        mundo.chanceEspada();
     }
     
     private void posicionarEsquerda()
@@ -130,31 +106,26 @@ public class Lenhador extends Actor {
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "0.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<6)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "1.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<9)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "2.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<12)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "1.png");
-            getImage().scale(160,160);
         }
         else if(contAnimacao<15)
         {
             contAnimacao++;
             setImage("lenhador" + complemento + "0.png");
-            getImage().scale(160,160);
         }
         else
         {
@@ -162,7 +133,6 @@ public class Lenhador extends Actor {
             {
                 acontecimentosEsquerda();
             }
-            
             else
             {
                 acontecimentosDireita();

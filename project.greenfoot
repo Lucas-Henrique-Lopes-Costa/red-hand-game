@@ -1,19 +1,26 @@
 #Greenfoot project file
 class.BaseTronco.image=baseTronco.png
 class.BolaDeFogo.image=bomb.png
+class.Chamas.image=bomb.png
 class.Dragao.image=seal.png
+class.Espada.image=espada.png
 class.Fogo.image=skull.png
 class.Guerreiro.image=lenhador0.png
 class.Lapide.image=lapide.png
 class.Lenhador.image=lenhador0.png
 class.Lose.image=gameOver.png
+<<<<<<< HEAD
 class.LoseWorld.image=fundo.png
 class.MeuMundo.image=fundo.png
+=======
+class.LoseWorld.image=FundoEditado.png
+class.MeuMundo.image=FundoEditado.png
+>>>>>>> main
 class.MundoDragao.image=MundoDragao.png
 class.PataDragao.image=car02.png
 class.Pontuacao.image=fundo.png
 class.Start.image=start.png
-class.StartWorld.image=fundo.png
+class.StartWorld.image=FundoEditado.png
 class.TroncoNormal.image=troncoNormal.png
 class.TutorialWorld.image=Arcade\ Gamer.png
 dependency1.from=Pontuacao
@@ -34,11 +41,19 @@ dependency13.type=UsesDependency
 dependency14.from=MeuMundo
 dependency14.to=Jogador
 dependency14.type=UsesDependency
+<<<<<<< HEAD
 dependency15.from=MeuMundo
 dependency15.to=BaseTronco
 dependency15.type=UsesDependency
 dependency16.from=MeuMundo
 dependency16.to=TroncoNormal
+=======
+dependency15.from=Start
+dependency15.to=MeuMundo
+dependency15.type=UsesDependency
+dependency16.from=Start
+dependency16.to=TutorialWorld
+>>>>>>> main
 dependency16.type=UsesDependency
 dependency17.from=MeuMundo
 dependency17.to=LoseWorld
@@ -46,14 +61,24 @@ dependency17.type=UsesDependency
 dependency18.from=MeuMundo
 dependency18.to=HistoricoPontuacao
 dependency18.type=UsesDependency
+<<<<<<< HEAD
 dependency19.from=Guerreiro
 dependency19.to=Dragao
+=======
+dependency19.from=Dragao
+dependency19.to=PataDragao
+>>>>>>> main
 dependency19.type=UsesDependency
 dependency2.from=Pontuacao
 dependency2.to=StartWorld
 dependency2.type=UsesDependency
+<<<<<<< HEAD
 dependency20.from=Start
 dependency20.to=TutorialWorld
+=======
+dependency20.from=Dragao
+dependency20.to=VidaDragao
+>>>>>>> main
 dependency20.type=UsesDependency
 dependency21.from=Start
 dependency21.to=MeuMundo
@@ -67,6 +92,7 @@ dependency23.type=UsesDependency
 dependency24.from=Lenhador
 dependency24.to=TroncoNormal
 dependency24.type=UsesDependency
+<<<<<<< HEAD
 dependency25.from=Dragao
 dependency25.to=PataDragao
 dependency25.type=UsesDependency
@@ -82,6 +108,11 @@ dependency28.type=UsesDependency
 dependency29.from=HistoricoPontuacao
 dependency29.to=Jogador
 dependency29.type=UsesDependency
+=======
+dependency25.from=Arvore
+dependency25.to=MeuMundo
+dependency25.type=UsesDependency
+>>>>>>> main
 dependency3.from=LoseWorld
 dependency3.to=Lose
 dependency3.type=UsesDependency
@@ -91,8 +122,13 @@ dependency30.type=UsesDependency
 dependency4.from=LoseWorld
 dependency4.to=Lapide
 dependency4.type=UsesDependency
+<<<<<<< HEAD
 dependency5.from=LoseWorld
 dependency5.to=MeuMundo
+=======
+dependency5.from=TutorialWorld
+dependency5.to=StartWorld
+>>>>>>> main
 dependency5.type=UsesDependency
 dependency6.from=StartWorld
 dependency6.to=Start
@@ -106,12 +142,16 @@ dependency8.type=UsesDependency
 dependency9.from=MundoDragao
 dependency9.to=Dragao
 dependency9.type=UsesDependency
-editor.fx.0.height=737
-editor.fx.0.width=814
-editor.fx.0.x=360
-editor.fx.0.y=42
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
 height=878
+<<<<<<< HEAD
 package.numDependencies=30
+=======
+package.numDependencies=25
+>>>>>>> main
 package.numTargets=22
 project.charset=UTF-8
 publish.hasSource=false
@@ -191,14 +231,22 @@ target17.width=120
 target17.x=0
 target17.y=0
 target18.height=70
+<<<<<<< HEAD
 target18.name=Chamas
+=======
+target18.name=Espada
+>>>>>>> main
 target18.showInterface=false
 target18.type=ClassTarget
 target18.width=120
 target18.x=0
 target18.y=0
 target19.height=70
+<<<<<<< HEAD
 target19.name=Jogador
+=======
+target19.name=Barras
+>>>>>>> main
 target19.showInterface=false
 target19.type=ClassTarget
 target19.width=120
@@ -212,21 +260,33 @@ target2.width=130
 target2.x=0
 target2.y=0
 target20.height=70
+<<<<<<< HEAD
 target20.name=MundoDragao
+=======
+target20.name=MeuMundo
+>>>>>>> main
 target20.showInterface=false
 target20.type=ClassTarget
 target20.width=120
 target20.x=0
 target20.y=0
 target21.height=70
+<<<<<<< HEAD
 target21.name=MeuMundo
+=======
+target21.name=Dragao
+>>>>>>> main
 target21.showInterface=false
 target21.type=ClassTarget
 target21.width=120
 target21.x=0
 target21.y=0
 target22.height=70
+<<<<<<< HEAD
 target22.name=Dragao
+=======
+target22.name=VidaDragao
+>>>>>>> main
 target22.showInterface=false
 target22.type=ClassTarget
 target22.width=120
