@@ -28,8 +28,8 @@ public class Dragao extends Actor
         temporizador=0;
         temporizadorChamas=0;
         
-        pata1 = new PataDragao();
-        pata2 = new PataDragao();
+        pata1 = new PataDragao("PATA DA ESQUERDA.png");
+        pata2 = new PataDragao("PATA DA DIREITA.png");
         vida = new VidaDragao();
     }
     
@@ -45,8 +45,8 @@ public class Dragao extends Actor
             jaNasceu=true;
             
             World mundo = getWorld();
-            mundo.addObject(pata1, mundo.getWidth()*1/10, mundo.getHeight()*8/10);
-            mundo.addObject(pata2, mundo.getWidth()*9/10, mundo.getHeight()*8/10);
+            mundo.addObject(pata1, mundo.getWidth()*1/10, mundo.getHeight()*4/5);
+            mundo.addObject(pata2, mundo.getWidth()*9/10, mundo.getHeight()*4/5);
             mundo.addObject(vida, mundo.getWidth()/2, mundo.getHeight()*1/10);
         }
         
@@ -78,9 +78,9 @@ public class Dragao extends Actor
                 Chamas chamas1 = new Chamas("");
                 Chamas chamas2 = new Chamas("esquerda");
                 Chamas chamas3 = new Chamas("direita");
-                mundo.addObject(chamas1, mundo.getWidth()/2, mundo.getHeight()/2);
-                mundo.addObject(chamas2, mundo.getWidth()/2, mundo.getHeight()/2);
-                mundo.addObject(chamas3, mundo.getWidth()/2, mundo.getHeight()/2);
+                mundo.addObject(chamas1, mundo.getWidth()/2, mundo.getHeight()/3);
+                mundo.addObject(chamas2, mundo.getWidth()/2, mundo.getHeight()/3);
+                mundo.addObject(chamas3, mundo.getWidth()/2, mundo.getHeight()/3);
             }
             else
             {
@@ -175,13 +175,13 @@ public class Dragao extends Actor
         Fogo fogo2 = new Fogo();
         if(pataNoAr == pata1)
         {
-            mundo.addObject(fogo1, mundo.getWidth()*2/10, mundo.getHeight()*9/10);
-            mundo.addObject(fogo2, mundo.getWidth()*4/10, mundo.getHeight()*9/10);
+            mundo.addObject(fogo1, mundo.getWidth()*2/10, mundo.getHeight()*7/10-15);
+            mundo.addObject(fogo2, mundo.getWidth()*4/10, mundo.getHeight()*7/10-15);
         }
         else if (pataNoAr == pata2)
         {
-            mundo.addObject(fogo1, mundo.getWidth()*6/10, mundo.getHeight()*9/10);
-            mundo.addObject(fogo2, mundo.getWidth()*8/10, mundo.getHeight()*9/10);
+            mundo.addObject(fogo1, mundo.getWidth()*6/10, mundo.getHeight()*7/10-15);
+            mundo.addObject(fogo2, mundo.getWidth()*8/10, mundo.getHeight()*7/10-15);
         }
     }
     
