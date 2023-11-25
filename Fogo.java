@@ -25,7 +25,12 @@ public class Fogo extends Actor
         animar();
         tempoVivo++;
         
-        if(tempoVivo==100)
+        if(getIntersectingObjects(Guerreiro.class).size()==1)
+        {
+            getWorld().removeObject(this);
+            Greenfoot.setWorld(new LoseWorld());
+        }
+        else if(tempoVivo==100)
         {
             getWorld().removeObject(this);
         }

@@ -19,10 +19,17 @@ public class BolaDeFogo extends Actor
         animar();
         setLocation(getX(), getY() +5);
         
-        if(isAtEdge())
+        if(getIntersectingObjects(Guerreiro.class).size()==1)
+        {
+            getWorld().removeObject(this);
+            Greenfoot.setWorld(new LoseWorld());
+        }
+        else if(isAtEdge())
         {
             getWorld().removeObject(this);
         }
+        
+        
     }
     
     private void animar()

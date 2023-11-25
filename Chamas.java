@@ -42,9 +42,18 @@ public class Chamas extends Actor
         }
         move(2);
         
-        if(getY()==mundo.getHeight()*9/10  || isAtEdge())
+        if(getY()>mundo.getHeight()*4/5)
         {
             mundo.removeObject(this);
         }
+        else if(getIntersectingObjects(Guerreiro.class).size()==1)
+        {
+            getWorld().removeObject(this);
+            Greenfoot.setWorld(new LoseWorld());
+        }/*
+        else if(getY()==mundo.getHeight()*9/10  || isAtEdge())
+        {
+            mundo.removeObject(this);
+        }*/
     }
 }

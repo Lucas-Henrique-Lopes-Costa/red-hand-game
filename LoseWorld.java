@@ -21,6 +21,34 @@ public class LoseWorld extends World
         Prepare(xLapide, yLapide, score);
     }
     
+    public LoseWorld()
+    {
+        super(750, 750, 1);
+        Prepare(0);
+    }
+    
+    private void Prepare(int score) 
+    {
+
+            // Aparece o Lose no meio da tela
+            Lose lose = new Lose();
+            addObject(lose, 375, 375);
+
+            // Aparece a pontuação na imagem do Lose
+            if(score>0)
+            {
+                score--;
+            }
+            showText("Seus pontos: " + score, 375, 450);
+
+            //Reinicia o jogo
+            showText("Pressione ENTER para reiniciar o jogo", 375, 700);
+
+            // Ver pontuação
+            showText("Pressione ESPAÇO para ver a lista de pontuação", 375, 725);
+            
+    }
+    
     private void Prepare(int xLapide, int yLapide, int score) 
     {
 
