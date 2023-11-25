@@ -1,11 +1,15 @@
 #BlueJ class context
 comment0.target=Jogador
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Jogador\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=nome\ pontuacao
-comment1.target=Jogador(java.lang.String,\ int)
+comment1.params=
+comment1.target=Jogador()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Jogador\r\n
 comment2.params=
 comment2.target=java.lang.String\ getNome()
 comment3.params=
 comment3.target=int\ getPontuacao()
-numComments=4
+comment4.params=nome
+comment4.target=void\ setNome(java.lang.String)
+comment5.params=pontuacao
+comment5.target=void\ setPontuacao(int)
+numComments=6
