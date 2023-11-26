@@ -14,12 +14,11 @@ public class MeuMundo extends World {
     private Lenhador lenhador;
     private Timer timer = new Timer();
     private Espada espada;
+    
+    private boolean espadaApareceu;
 
-    private static int score;
+    private int score;
     private static boolean gameOver;
-
-    // Sons
-    private GreenfootSound somMadeira;
 
     private Jogador jogador = new Jogador();
 
@@ -48,6 +47,8 @@ public class MeuMundo extends World {
         espada = new Espada(this);
         
         posicionaTroncos();
+        
+        espadaApareceu=false;
         
         score = 0;
         timer = new Timer();
@@ -153,7 +154,7 @@ public class MeuMundo extends World {
     
     public void chanceEspada()
     {
-        if(score>50)
+        if(score>50 && !espadaApareceu)
         {
             espada.chanceAparecer();
         }
@@ -162,5 +163,10 @@ public class MeuMundo extends World {
     public void pararMusica()
     {
         musica.parar();
+    }
+    
+    public void espadaApareceu()
+    {
+        espadaApareceu=true;
     }
 }
