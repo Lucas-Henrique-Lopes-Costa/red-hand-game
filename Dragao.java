@@ -64,6 +64,7 @@ public class Dragao extends Actor
         {
             if(pataNoAr.estaParada())
             {
+                Greenfoot.playSound("pata.mp3");
                 explosoes();
                 ataquePata=false;
             }

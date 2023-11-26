@@ -35,7 +35,7 @@ public class PataDragao extends Actor
     {
         if(getY() == getWorld().getHeight()*8/10)
         return true;
-        else
+        
         return false;
     }
 }
