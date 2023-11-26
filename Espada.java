@@ -35,7 +35,7 @@ public class Espada extends Actor
     
     public void chanceAparecer()
     {
-        if(Greenfoot.getRandomNumber(50) == 0)
+        if(Greenfoot.getRandomNumber(20) == 0)
         {
             if(Greenfoot.getRandomNumber(1) == 0)
             {
@@ -48,7 +48,7 @@ public class Espada extends Actor
                 mundo.addObject(this,530,0);
             }
         }
-        else if(mundo.obterPontos() >= 105)
+        else if(mundo.obterPontos() >= 50)
         {
             mundo.espadaApareceu();
             mundo.addObject(this,215,0);

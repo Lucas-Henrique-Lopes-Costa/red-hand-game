@@ -154,7 +154,7 @@ public class MeuMundo extends World {
     
     public void chanceEspada()
     {
-        if(score>50 && !espadaApareceu)
+        if(score>20 && !espadaApareceu)
         {
             espada.chanceAparecer();
         }
