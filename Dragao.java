@@ -108,6 +108,7 @@ public class Dragao extends Actor
         }
         else
         {
+            Greenfoot.playSound("bolaDeFogo.mp3");
             ataqueChamas=true;
         }
         
