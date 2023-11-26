@@ -39,7 +39,7 @@ public class Espada extends Actor
     
     public void chanceAparecer()
     {
-        if(Greenfoot.getRandomNumber(1) == 0)
+        if(Greenfoot.getRandomNumber(50) == 0)
         {
             if(Greenfoot.getRandomNumber(1) == 0)
             {

@@ -132,7 +132,7 @@ public class MeuMundo extends World {
     }
     
     public void paraMusica() {
-        musicaDeFundo.stop();
+        musica.parar();
     }
     
     public void aumentaPontos()
