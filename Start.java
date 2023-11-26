@@ -6,7 +6,9 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
-public class Start extends Actor {
+public class Start extends Actor 
+{
+    StartWorld startWorld;
     /*
      * Construtor da classe Start
      */
@@ -26,17 +28,16 @@ public class Start extends Actor {
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-        // Caso o usuário pressione ENTER, ESPAÇO ou clique com o mouse
+        // Caso o usuário pressione ENTER ou clique com o mouse
         checkKeyPress();
-        
     }
     
     public void checkKeyPress() {
-        if (Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space") || Greenfoot.mouseClicked(null)) {
-            Greenfoot.setWorld(new MeuMundo()); // Inicia o jogo de verdade
-        }
-        else if (Greenfoot.isKeyDown("j")) {
-            Greenfoot.setWorld(new TutorialWorld()); // Inicia o tutorial
-        }
+            if (Greenfoot.isKeyDown("enter") || Greenfoot.mouseClicked(null)) {
+                Greenfoot.setWorld(new HistoriaStart()); // Inicia o jogo de verdade
+            }
+            else if (Greenfoot.isKeyDown("j")) {
+                Greenfoot.setWorld(new TutorialWorld()); // Inicia o tutorial
+            }
     }
 }

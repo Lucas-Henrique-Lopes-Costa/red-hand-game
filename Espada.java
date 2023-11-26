@@ -20,6 +20,7 @@ public class Espada extends Actor
      */
     public void act()
     {
+        boolean proximaFase = false;
         if(getY()<700)
         {
             setLocation(getX(), getY()+1);
@@ -27,15 +28,20 @@ public class Espada extends Actor
         
         if(getIntersectingObjects(Lenhador.class).size()==1)
         {
-            Greenfoot.setWorld(new MundoDragao());
+            mundo.paraMusica();
+            Greenfoot.setWorld(new HistoriaEspada());
+                if(proximaFase)
+                {
+                Greenfoot.setWorld(new HistoriaEspada());
+            }
         }
     }
     
     public void chanceAparecer()
     {
-        if(Greenfoot.getRandomNumber(50) == 0)
+        if(Greenfoot.getRandomNumber(1) == 0)
         {
-            if(Greenfoot.getRandomNumber(1)==0)
+            if(Greenfoot.getRandomNumber(1) == 0)
             {
                 mundo.addObject(this,215,0);
             }
@@ -43,6 +49,10 @@ public class Espada extends Actor
             {
                 mundo.addObject(this,530,0);
             }
+        }
+        else if(mundo.obterPontos() >= 105)
+        {
+            mundo.addObject(this,215,0);
         }
     }
     

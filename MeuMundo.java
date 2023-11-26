@@ -143,7 +143,10 @@ public class MeuMundo extends World {
         jogador.setPontuacao(score);
         musicaDeFundo.stop();
         Greenfoot.setWorld(new LoseWorld(lenhador.getX(), lenhador.getY(), score));
+<<<<<<< Updated upstream
         HistoricoPontuacao.adicionarJogador(jogador);
+=======
+>>>>>>> Stashed changes
     }
     
     /**
@@ -153,9 +156,18 @@ public class MeuMundo extends World {
         return gameOver;
     }
     
+    public void paraMusica() {
+        musicaDeFundo.stop();
+    }
+    
     public void aumentaPontos()
     {
         score++;
+    }
+    
+    public int obterPontos()
+    {
+        return score;
     }
     
     //Incrementa a barra do tempo
@@ -166,7 +178,7 @@ public class MeuMundo extends World {
     
     public void chanceEspada()
     {
-        if(score>50)
+        if(score == 2)
         {
             espada.chanceAparecer();
         }
