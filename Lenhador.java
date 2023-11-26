@@ -63,10 +63,7 @@ public class Lenhador extends Actor {
     }
     
     private void acontecimentosEsquerda()
-    {
-        //Som da batida no tronco
-        Greenfoot.playSound("tronco.mp3");
-        
+    {   
         //Verifica a morte do lenhador
         arvore.direcaoGalho("esquerda");
         
@@ -81,9 +78,6 @@ public class Lenhador extends Actor {
     
     private void acontecimentosDireita()
     {
-        //Som da batida no tronco
-        Greenfoot.playSound("tronco.mp3");
-        
         //Verifica a morte do lenhador
         arvore.direcaoGalho("direita");
         

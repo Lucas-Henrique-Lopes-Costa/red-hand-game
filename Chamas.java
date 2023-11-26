@@ -9,14 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Chamas extends Actor
 {
     private String direcao;
+    private MundoDragao mundo;
     
     /**
      * Construtor da Classe chamas. Recebe um inteiro como ângulo para
      * se direcionar.
      */
-    public Chamas(String direcao)
+    public Chamas(String direcao, MundoDragao mundo)
     {
         this.direcao=direcao;
+        this.mundo=mundo;
     }
     
     /**
@@ -25,9 +27,6 @@ public class Chamas extends Actor
      */
     public void act()
     {
-        
-        World mundo = getWorld();
-       
         if(direcao.equals("direita"))
         {
             turnTowards(mundo.getWidth()*6/10, mundo.getHeight());
@@ -49,11 +48,7 @@ public class Chamas extends Actor
         else if(getIntersectingObjects(Guerreiro.class).size()==1)
         {
             getWorld().removeObject(this);
-            Greenfoot.setWorld(new LoseWorld());
-        }/*
-        else if(getY()==mundo.getHeight()*9/10  || isAtEdge())
-        {
-            mundo.removeObject(this);
-        }*/
+            mundo.perder();
+        }
     }
 }

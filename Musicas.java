@@ -8,19 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Musicas
 {
-    private String nomeMusica;
     private GreenfootSound musicaDeFundo;
     
-    public Musicas(String musica)
+    public Musicas(String musica, int volume)
     {
-        tocar(musica);
+        tocar(musica,volume);
     }
     
-    private void tocar(String musica)
+    private void tocar(String musica, int volume)
     {
         musicaDeFundo = new GreenfootSound(musica);
         musicaDeFundo.playLoop();
-        musicaDeFundo.setVolume(25);
+        musicaDeFundo.setVolume(volume);
     }
     
     public void parar()

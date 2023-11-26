@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Chamas
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Chamas\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=direcao
-comment1.target=Chamas(java.lang.String)
+comment1.params=direcao\ mundo
+comment1.target=Chamas(java.lang.String,\ MundoDragao)
 comment1.text=\r\n\ Construtor\ da\ Classe\ chamas.\ Recebe\ um\ inteiro\ como\ \u00E2ngulo\ para\r\n\ se\ direcionar.\r\n
 comment2.params=
 comment2.target=void\ act()

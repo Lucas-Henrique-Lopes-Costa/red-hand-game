@@ -64,7 +64,7 @@ public class MeuMundo extends World {
 
         jogador.setNome(nome);
         
-        musica = new Musicas("musicaArvore.mp3");
+        musica = new Musicas("musicaArvore.mp3",30);
     }
     
     private void posicionaTroncos()

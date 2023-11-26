@@ -24,6 +24,7 @@ public class Arvore
     {
         TroncoNormal tronco0 = getTronco(0);
         
+        tronco0.som();
         tronco0.mover();
         if(moverDireita)
         {
