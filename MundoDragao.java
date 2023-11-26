@@ -27,16 +27,7 @@ public class MundoDragao extends World
         
         Muro muro = new Muro();
         addObject(muro,getWidth()/2, getHeight()*8/10);
-
-        addObject(guerreiro, getWidth()*4/10, getHeight()*8/10);
         
-        musicaDeFundo = new GreenfootSound("megalovania.mp3");
-        musicaDeFundo.setVolume(35); // Define o volume da música de fundo
-        iniciaMusica();
-    }
-    
-    public void iniciaMusica () 
-    {
-            musicaDeFundo.playLoop();
+        Musicas musica = new Musicas("musicaDragao.mp3");
     }
 }

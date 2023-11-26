@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Musicas
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Musicas\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=musica
+comment1.target=Musicas(java.lang.String)
+comment2.params=musica
+comment2.target=void\ tocar(java.lang.String)
+comment3.params=
+comment3.target=void\ parar()
+numComments=4

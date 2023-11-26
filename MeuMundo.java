@@ -20,11 +20,10 @@ public class MeuMundo extends World {
 
     // Sons
     private GreenfootSound somMadeira;
-    private GreenfootSound musicaDeFundo;
-    private boolean musicaDeFundoIniciada = false;
 
-    Jogador jogador = new Jogador();
+    private Jogador jogador = new Jogador();
 
+    private Musicas musica;
     /**
      * Construtor para objetos da classe MeuMundo.
      */
@@ -32,13 +31,6 @@ public class MeuMundo extends World {
         // Cria um novo mundo com 750x750 células com um tamanho de célula de 1x1px.
         super(750, 750, 1);
         prepare(); // Monta o mundo
-        
-        // Define os sons
-        somMadeira = new GreenfootSound("madeira1.mp3");
-        musicaDeFundo = new GreenfootSound("somdofundo.mp3");
-        musicaDeFundo.setVolume(25); // Define o volume da música de fundo
-        
-        iniciaMusica(musicaDeFundoIniciada); //inicia a musica
         
         gameOver = false; // Define o jogo como não finalizado
     }
@@ -53,36 +45,13 @@ public class MeuMundo extends World {
         arvore.limpa();
         
         lenhador = new Lenhador(arvore, this);
-        
         espada = new Espada(this);
+        
+        posicionaTroncos();
         
         score = 0;
         timer = new Timer();
         addObject(lenhador, 215, 663);
-
-        BaseTronco baseTronco = new BaseTronco();
-        addObject(baseTronco, 378, 713);
-
-        TroncoNormal tronco1 = new TroncoNormal("normal");
-        addObject(tronco1, 377, 614);
-
-        TroncoNormal tronco2 = new TroncoNormal("normal");
-        addObject(tronco2, 377, 454);
-
-        TroncoNormal tronco3 = new TroncoNormal("esquerda");
-        addObject(tronco3, 314, 294);
-
-        TroncoNormal tronco4 = new TroncoNormal("direita");
-        addObject(tronco4, 439, 134);
-
-        TroncoNormal tronco5 = new TroncoNormal("normal");
-        addObject(tronco5, 377, -26);
-
-        arvore.addTronco(tronco1);
-        arvore.addTronco(tronco2);
-        arvore.addTronco(tronco3);
-        arvore.addTronco(tronco4);
-        arvore.addTronco(tronco5);
 
         setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
         addObject(timer, 375, 50);
@@ -93,17 +62,31 @@ public class MeuMundo extends World {
         nome = "Anônimo";
 
         jogador.setNome(nome);
+        
+        musica = new Musicas("musicaArvore.mp3");
     }
     
-    /**
-     * inciar a musica de fundo
-     */
-    public void iniciaMusica (boolean musicaDeFundoIniciada) 
+    private void posicionaTroncos()
     {
-        if(!musicaDeFundoIniciada){
-            musicaDeFundo.playLoop();
-            musicaDeFundoIniciada = true;
-        }
+        BaseTronco baseTronco = new BaseTronco();
+        addObject(baseTronco, 378, 713);
+
+        TroncoNormal tronco1 = new TroncoNormal("normal");
+        addObject(tronco1, 377, 614);
+        TroncoNormal tronco2 = new TroncoNormal("normal");
+        addObject(tronco2, 377, 454);
+        TroncoNormal tronco3 = new TroncoNormal("esquerda");
+        addObject(tronco3, 314, 294);
+        TroncoNormal tronco4 = new TroncoNormal("direita");
+        addObject(tronco4, 439, 134);
+        TroncoNormal tronco5 = new TroncoNormal("normal");
+        addObject(tronco5, 377, -26);
+
+        arvore.addTronco(tronco1);
+        arvore.addTronco(tronco2);
+        arvore.addTronco(tronco3);
+        arvore.addTronco(tronco4);
+        arvore.addTronco(tronco5);
     }
 
     /**
@@ -113,13 +96,6 @@ public class MeuMundo extends World {
      */
     public void act() 
     {
-        // inciar a musica de fundo
-        if (!musicaDeFundoIniciada) 
-        {
-            musicaDeFundo.playLoop();
-            musicaDeFundoIniciada = true;
-        }
-
         if (gameOver || timer.getTamanhoAtual() <= 0)
         {
             morreu(); // Verifica se o jogador perdeu
@@ -140,8 +116,8 @@ public class MeuMundo extends World {
      */
     public void morreu() 
     {
+        musica.parar();
         jogador.setPontuacao(score);
-        musicaDeFundo.stop();
         Greenfoot.setWorld(new LoseWorld(lenhador.getX(), lenhador.getY(), score));
 
         HistoricoPontuacao.adicionarJogador(jogador);
@@ -177,9 +153,14 @@ public class MeuMundo extends World {
     
     public void chanceEspada()
     {
-        if(score == 2)
+        if(score>50)
         {
             espada.chanceAparecer();
         }
+    }
+    
+    public void pararMusica()
+    {
+        musica.parar();
     }
 }
