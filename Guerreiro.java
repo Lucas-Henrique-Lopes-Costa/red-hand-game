@@ -92,12 +92,12 @@ public class Guerreiro extends Actor
         if(getX() == mundo.getWidth()*4/10
             || getX() == mundo.getWidth()*8/10)
         {
-            setImage("lenhador0.png");
+            setImage("guerreiro0.png");
             getImage().scale(130, 130);
         }
         else
         {
-            setImage("lenhadorInvertido0.png");
+            setImage("guerreiroInvertido0.png");
             getImage().scale(130, 130);
         }
     }
@@ -107,31 +107,31 @@ public class Guerreiro extends Actor
         if(contAtaque<5)
         {
             contAtaque++;
-            setImage("lenhador" + complemento + "0.png");
+            setImage("guerreiro" + complemento + "0.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<10)
         {
             contAtaque++;
-            setImage("lenhador" + complemento + "1.png");
+            setImage("guerreiro" + complemento + "1.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<15)
         {
             contAtaque++;
-            setImage("lenhador" + complemento + "2.png");
+            setImage("guerreiro" + complemento + "2.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<20)
         {
             contAtaque++;
-            setImage("lenhador" + complemento + "1.png");
+            setImage("guerreiro" + complemento + "1.png");
             getImage().scale(130, 130);
         }
         else if(contAtaque<25)
         {
             contAtaque++;
-            setImage("lenhador" + complemento + "0.png");
+            setImage("guerreiro" + complemento + "0.png");
             getImage().scale(130, 130);
         }
         else

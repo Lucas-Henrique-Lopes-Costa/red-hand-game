@@ -40,7 +40,7 @@ public class Chamas extends Actor
         {
             turnTowards(mundo.getWidth()/2, mundo.getHeight());
         }
-        move(2);
+        move(3);
         
         if(getY()>mundo.getHeight()*4/5)
         {
