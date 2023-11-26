@@ -14,12 +14,11 @@ public class MeuMundo extends World {
     private Lenhador lenhador;
     private Timer timer = new Timer();
     private Espada espada;
+    
+    private boolean espadaApareceu;
 
-    private static int score;
+    private int score;
     private static boolean gameOver;
-
-    // Sons
-    private GreenfootSound somMadeira;
 
     private Jogador jogador = new Jogador();
 
@@ -49,6 +48,8 @@ public class MeuMundo extends World {
         
         posicionaTroncos();
         
+        espadaApareceu=false;
+        
         score = 0;
         timer = new Timer();
         addObject(lenhador, 215, 663);
@@ -63,7 +64,7 @@ public class MeuMundo extends World {
 
         jogador.setNome(nome);
         
-        musica = new Musicas("musicaArvore.mp3");
+        musica = new Musicas("musicaArvore.mp3",30);
     }
     
     private void posicionaTroncos()
@@ -153,7 +154,7 @@ public class MeuMundo extends World {
     
     public void chanceEspada()
     {
-        if(score>50)
+        if(score>20 && !espadaApareceu)
         {
             espada.chanceAparecer();
         }
@@ -162,5 +163,10 @@ public class MeuMundo extends World {
     public void pararMusica()
     {
         musica.parar();
+    }
+    
+    public void espadaApareceu()
+    {
+        espadaApareceu=true;
     }
 }

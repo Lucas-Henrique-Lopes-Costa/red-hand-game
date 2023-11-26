@@ -68,11 +68,11 @@ public class LoseWorld extends World
             addObject(lapide, xLapide, yLapide);
             
             //Reinicia o jogo
-            showText("Pressione ENTER para reiniciar o jogo", 375, 700);
+            showText("Pressione ENTER para reiniciar o jogo", 375, 675);
 
 
             // Ver pontuação
-            showText("Pressione ESPAÇO para ver a lista de pontuação", 375, 725);
+            showText("Pressione ESPAÇO para ver a lista de pontuação", 375, 700);
 
             showText("Pressione J para retornar ao tutorial", 375, 725);
 

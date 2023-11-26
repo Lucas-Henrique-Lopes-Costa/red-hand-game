@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MundoDragao extends World
 {
-    private GreenfootSound musicaDeFundo;
+    private Musicas musica;
     
     /**
      * Constructor for objects of class MundoDragao.
@@ -18,7 +18,7 @@ public class MundoDragao extends World
     {    
         super(1200, 750, 1);
         
-        Dragao dragao = new Dragao();
+        Dragao dragao = new Dragao(this);
         addObject(dragao, getWidth()/2, 350);
         
         Guerreiro guerreiro = new Guerreiro(dragao);
@@ -28,6 +28,12 @@ public class MundoDragao extends World
         Muro muro = new Muro();
         addObject(muro,getWidth()/2, getHeight()*8/10);
         
-        Musicas musica = new Musicas("musicaDragao.mp3");
+        musica = new Musicas("musicaDragao.mp3",40);
+    }
+    
+    public void perder()
+    {
+        musica.parar();
+        Greenfoot.setWorld(new LoseWorld());
     }
 }

@@ -18,19 +18,38 @@ public class Dragao extends Actor
     private PataDragao pata2;
     private PataDragao pataNoAr;
     private VidaDragao vida;
+    private MundoDragao mundo;
     
-    public Dragao()
+    //Sons do dragão
+    private GreenfootSound somPata;
+    private GreenfootSound somChamas;
+    private GreenfootSound somBolaDeFogo;
+    public Dragao(MundoDragao mundo)
     {
         ataquePata=false;
         jaNasceu=false;
         ataqueChamas=false;
         
+        this.mundo=mundo;
         temporizador=0;
         temporizadorChamas=0;
         
         pata1 = new PataDragao("PATA DA ESQUERDA.png");
         pata2 = new PataDragao("PATA DA DIREITA.png");
         vida = new VidaDragao();
+        
+        Greenfoot.playSound("barulhoDragao.mp3");
+        sons();
+    }
+    
+    private void sons()
+    {
+        somPata = new GreenfootSound("pata.mp3");
+        somPata.setVolume(40);
+        somChamas = new GreenfootSound("chamas.mp3");
+        somChamas.setVolume(80);
+        somBolaDeFogo = new GreenfootSound("bolaDeFogo.mp3");
+        somBolaDeFogo.setVolume(80);
     }
     
     /**
@@ -44,7 +63,6 @@ public class Dragao extends Actor
         {
             jaNasceu=true;
             
-            World mundo = getWorld();
             mundo.addObject(pata1, mundo.getWidth()*1/10, mundo.getHeight()*4/5);
             mundo.addObject(pata2, mundo.getWidth()*9/10, mundo.getHeight()*4/5);
             mundo.addObject(vida, mundo.getWidth()/2, mundo.getHeight()*1/10);
@@ -64,6 +82,7 @@ public class Dragao extends Actor
         {
             if(pataNoAr.estaParada())
             {
+                somPata.play();
                 explosoes();
                 ataquePata=false;
             }
@@ -73,11 +92,9 @@ public class Dragao extends Actor
             temporizadorChamas++;
             if(temporizadorChamas<=1)
             {
-                World mundo = getWorld();
-                
-                Chamas chamas1 = new Chamas("");
-                Chamas chamas2 = new Chamas("esquerda");
-                Chamas chamas3 = new Chamas("direita");
+                Chamas chamas1 = new Chamas("",mundo);
+                Chamas chamas2 = new Chamas("esquerda",mundo);
+                Chamas chamas3 = new Chamas("direita",mundo);
                 mundo.addObject(chamas1, mundo.getWidth()/2, mundo.getHeight()/3);
                 mundo.addObject(chamas2, mundo.getWidth()/2, mundo.getHeight()/3);
                 mundo.addObject(chamas3, mundo.getWidth()/2, mundo.getHeight()/3);
@@ -107,6 +124,7 @@ public class Dragao extends Actor
         }
         else
         {
+            somChamas.play();
             ataqueChamas=true;
         }
         
@@ -115,11 +133,9 @@ public class Dragao extends Actor
     //toda a lógica do ataque das bolas de fogo está nessa função
     private void ataqueBolasDeFogo()
     {
-        World mundo = getWorld();
-        
-        BolaDeFogo bola = new BolaDeFogo();
-        BolaDeFogo bola2 = new BolaDeFogo();
-        BolaDeFogo bola3 = new BolaDeFogo();
+        BolaDeFogo bola = new BolaDeFogo(mundo);
+        BolaDeFogo bola2 = new BolaDeFogo(mundo);
+        BolaDeFogo bola3 = new BolaDeFogo(mundo);
         
         
         int random = Greenfoot.getRandomNumber(4);
@@ -147,7 +163,7 @@ public class Dragao extends Actor
             mundo.addObject(bola2, mundo.getWidth()*6/10, 20);
             mundo.addObject(bola3, mundo.getWidth()*8/10, 20);
         }
-        
+        somBolaDeFogo.play();
     }
     
     private void subirPata()
@@ -170,9 +186,8 @@ public class Dragao extends Actor
     
     private void explosoes()
     {
-        World mundo = getWorld();
-        Fogo fogo1 = new Fogo();
-        Fogo fogo2 = new Fogo();
+        Fogo fogo1 = new Fogo(mundo);
+        Fogo fogo2 = new Fogo(mundo);
         if(pataNoAr == pata1)
         {
             mundo.addObject(fogo1, mundo.getWidth()*2/10, mundo.getHeight()*7/10-15);

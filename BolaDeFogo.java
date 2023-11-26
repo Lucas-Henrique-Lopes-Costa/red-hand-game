@@ -9,6 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BolaDeFogo extends Actor
 {
     private int indiceImagem=0;
+    private MundoDragao mundo;
+    public BolaDeFogo(MundoDragao mundo)
+    {
+        this.mundo=mundo;
+    }
     
     /**
      * Act - do whatever the BolaDeFogo wants to do. This method is called whenever
@@ -22,7 +27,7 @@ public class BolaDeFogo extends Actor
         if(getIntersectingObjects(Guerreiro.class).size()==1)
         {
             getWorld().removeObject(this);
-            Greenfoot.setWorld(new LoseWorld());
+            mundo.perder();
         }
         else if(isAtEdge())
         {

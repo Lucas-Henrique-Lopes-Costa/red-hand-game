@@ -85,4 +85,10 @@ public class TroncoNormal extends Actor {
     {
         mover=true;
     }
+    
+    //Som da batida no tronco
+    public void som()
+    {
+        Greenfoot.playSound("tronco.mp3");
+    }
 }

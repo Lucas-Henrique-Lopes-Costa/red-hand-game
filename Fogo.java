@@ -10,10 +10,13 @@ public class Fogo extends Actor
 {
     private int tempoVivo;
     private int indiceImagem;
-    public Fogo()
+    private MundoDragao mundo;
+    
+    public Fogo(MundoDragao mundo)
     {
         tempoVivo=0;
         indiceImagem=0;
+        this.mundo=mundo;
     }
     
     /**
@@ -28,7 +31,7 @@ public class Fogo extends Actor
         if(getIntersectingObjects(Guerreiro.class).size()==1)
         {
             getWorld().removeObject(this);
-            Greenfoot.setWorld(new LoseWorld());
+            mundo.perder();
         }
         else if(tempoVivo==100)
         {
