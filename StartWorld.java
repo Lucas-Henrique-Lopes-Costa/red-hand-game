@@ -19,12 +19,11 @@ public class StartWorld extends World {
         addObject(start, 375, 430);
 
         Greenfoot.start(); // Inicia o jogo
-<<<<<<< Updated upstream
+
         prepare();
 
         historicoPontuacao = new HistoricoPontuacao();
-=======
->>>>>>> Stashed changes
+
     }
 
     /**
@@ -40,7 +39,7 @@ public class StartWorld extends World {
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    public void abreHistoria() 
+    public void prepare() 
     {
         
     }

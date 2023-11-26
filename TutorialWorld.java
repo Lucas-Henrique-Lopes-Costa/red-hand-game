@@ -25,7 +25,7 @@ public class TutorialWorld extends World
             Greenfoot.setWorld(new StartWorld()); // volta para a tela de start
         }
     }
-<<<<<<< Updated upstream
+
 
     public void act()
     {
@@ -33,16 +33,8 @@ public class TutorialWorld extends World
         {
             StartWorld menu = new StartWorld();
             Greenfoot.setWorld(menu);
+            checkKeyPress();
         }
-=======
-    
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    public void act()
-    {
-        checkKeyPress();
->>>>>>> Stashed changes
     }
+    
 }

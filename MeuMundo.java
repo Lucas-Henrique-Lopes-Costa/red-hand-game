@@ -143,10 +143,9 @@ public class MeuMundo extends World {
         jogador.setPontuacao(score);
         musicaDeFundo.stop();
         Greenfoot.setWorld(new LoseWorld(lenhador.getX(), lenhador.getY(), score));
-<<<<<<< Updated upstream
+
         HistoricoPontuacao.adicionarJogador(jogador);
-=======
->>>>>>> Stashed changes
+
     }
     
     /**

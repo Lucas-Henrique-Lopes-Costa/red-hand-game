@@ -69,13 +69,13 @@ public class LoseWorld extends World
             
             //Reinicia o jogo
             showText("Pressione ENTER para reiniciar o jogo", 375, 700);
-<<<<<<< Updated upstream
+
 
             // Ver pontuação
             showText("Pressione ESPAÇO para ver a lista de pontuação", 375, 725);
-=======
+
             showText("Pressione J para retornar ao tutorial", 375, 725);
->>>>>>> Stashed changes
+
             
     }
     
@@ -84,13 +84,12 @@ public class LoseWorld extends World
         if (Greenfoot.isKeyDown("enter")) {
             Greenfoot.setWorld(new MeuMundo()); // Inicia o jogo de verdade
         }
-<<<<<<< Updated upstream
         if (Greenfoot.isKeyDown("space")) {
             Greenfoot.setWorld(new Pontuacao()); // Visualiza a pontuação
-=======
-        else if (Greenfoot.isKeyDown("j")) {
+
+        }else if (Greenfoot.isKeyDown("j")) {
             Greenfoot.setWorld(new TutorialWorld()); // Inicia o tutorial
->>>>>>> Stashed changes
+
         }
     }
 }

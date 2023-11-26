@@ -22,12 +22,12 @@ public class MundoDragao extends World
         addObject(dragao, getWidth()/2, 350);
         
         Guerreiro guerreiro = new Guerreiro(dragao);
-<<<<<<< Updated upstream
+
         addObject(guerreiro, getWidth()*4/10, getHeight()*7/10-15);
         
         Muro muro = new Muro();
         addObject(muro,getWidth()/2, getHeight()*8/10);
-=======
+
         addObject(guerreiro, getWidth()*4/10, getHeight()*8/10);
         
         musicaDeFundo = new GreenfootSound("megalovania.mp3");
@@ -38,6 +38,5 @@ public class MundoDragao extends World
     public void iniciaMusica () 
     {
             musicaDeFundo.playLoop();
->>>>>>> Stashed changes
     }
 }
