@@ -27,6 +27,7 @@ public class Espada extends Actor
         
         if(getIntersectingObjects(Lenhador.class).size()==1)
         {
+            mundo.pararMusica();
             Greenfoot.setWorld(new MundoDragao());
         }
     }

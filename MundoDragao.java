@@ -25,5 +25,7 @@ public class MundoDragao extends World
         
         Muro muro = new Muro();
         addObject(muro,getWidth()/2, getHeight()*8/10);
+        
+        Musicas musica = new Musicas("musicaDragao.mp3");
     }
 }
