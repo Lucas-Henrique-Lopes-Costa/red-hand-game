@@ -57,4 +57,9 @@ public class HistoricoPontuacao {
             }
         }
     }
+    
+    public static Jogador getUltimoJogador()
+    {
+        return jogadores.get(jogadores.size()-1);
+    }
 }

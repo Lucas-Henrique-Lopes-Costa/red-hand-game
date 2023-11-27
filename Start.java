@@ -8,16 +8,16 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Start extends Actor 
 {
-    StartWorld startWorld;
-    /*
+    /**
      * Construtor da classe Start
      */
     public Start() {
         getImage().scale(200, 100); // Redimensiona a imagem
     }
     
-    /*
+    /**
      * Construtor da classe Start com tamanho
+     *
      */
     public Start(int x, int y) {
         getImage().scale(x, y); // Redimensiona a imagem

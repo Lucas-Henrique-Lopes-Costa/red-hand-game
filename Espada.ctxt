@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.target=Espada
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Espada\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=mundo
-comment1.target=Espada(MeuMundo)
+comment1.params=mundo\ jogador\ score
+comment1.target=Espada(MeuMundo,\ Jogador,\ int)
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Espada\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
-comment3.target=void\ chanceAparecer()
+comment3.target=boolean\ chanceAparecer()
 numComments=4

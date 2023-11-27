@@ -21,6 +21,7 @@ public class PassaHistoriaEspada2 extends Actor
             }
         }
     }
+    
     public void checkKeyPress() {
         if(possoClicar)
         {

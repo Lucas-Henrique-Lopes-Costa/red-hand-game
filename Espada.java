@@ -8,10 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Espada extends Actor
 {
-    MeuMundo mundo;
-    public Espada(MeuMundo mundo)
+    private MeuMundo mundo;
+    private int score;
+    private Jogador jogador;
+    
+    public Espada(MeuMundo mundo, Jogador jogador, int score)
     {
         this.mundo=mundo;
+        this.jogador=jogador;
+        this.score=score;
     }
     
     /**
@@ -29,30 +34,21 @@ public class Espada extends Actor
         {
             mundo.removeObject(this);
             mundo.paraMusica();
+            
+            jogador.setPontuacao(score);
+            HistoricoPontuacao.adicionarJogador(jogador);
+            
             Greenfoot.setWorld(new HistoriaEspada(mundo));
         }
     }
     
-    public void chanceAparecer()
+    public boolean chanceAparecer()
     {
-        if(Greenfoot.getRandomNumber(20) == 0)
+        if(Greenfoot.getRandomNumber(20) == 0 || mundo.obterPontos() == 50)
         {
-            if(Greenfoot.getRandomNumber(1) == 0)
-            {
-                mundo.espadaApareceu();
-                mundo.addObject(this,215,0);
-            }
-            else
-            {
-                mundo.espadaApareceu();
-                mundo.addObject(this,530,0);
-            }
+                return true;
         }
-        else if(mundo.obterPontos() >= 50)
-        {
-            mundo.espadaApareceu();
-            mundo.addObject(this,215,0);
-        }
+        return false;
     }
     
 }

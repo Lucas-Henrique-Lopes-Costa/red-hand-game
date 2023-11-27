@@ -12,4 +12,6 @@ comment5.params=id
 comment5.target=int\ consultarPontuacaoJogadorPorId(int)
 comment6.params=
 comment6.target=void\ ordenarJogadores()
-numComments=7
+comment7.params=
+comment7.target=Jogador\ getUltimoJogador()
+numComments=8
