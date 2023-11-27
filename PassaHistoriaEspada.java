@@ -9,10 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PassaHistoriaEspada extends Actor
 {
     private MeuMundo mundo;
+    private Jogador jogador;
     
-    public PassaHistoriaEspada(MeuMundo mundo)
+    public PassaHistoriaEspada(MeuMundo mundo, Jogador jogador)
     {
         this.mundo=mundo;
+        this.jogador=jogador;
     }
     
     public void act() {
@@ -29,6 +31,7 @@ public class PassaHistoriaEspada extends Actor
         else if (Greenfoot.isKeyDown("escape"))
         {
             Greenfoot.setWorld(mundo);
+            HistoricoPontuacao.removeJogador(jogador);
         }
     }
 }

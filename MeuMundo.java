@@ -1,6 +1,5 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-import greenfoot.GreenfootSound;
 
 /**
  * Programa principal do jogo
@@ -16,11 +15,12 @@ public class MeuMundo extends World {
     private Espada espada;
     
     private boolean espadaApareceu;
-
-    private int score;
+    
     private static boolean gameOver;
 
     private Jogador jogador = new Jogador();
+    private int score;
+    private int tempoDeVida;
 
     private Musicas musica;
     /**
@@ -51,6 +51,7 @@ public class MeuMundo extends World {
         espadaApareceu=false;
         
         score = 0;
+        tempoDeVida = 0;
         timer = new Timer();
 
         setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
@@ -103,7 +104,8 @@ public class MeuMundo extends World {
         
         // Mostra a pontuação no topo da tela
         showText("Pontos: " + score, 375, 200);
-
+        
+        tempoDeVida++;
     }
     
     public void gameOver(boolean valor)
@@ -120,10 +122,10 @@ public class MeuMundo extends World {
         
         Greenfoot.setWorld(new LoseWorld(lenhador.getX(), 
             lenhador.getY(), score, 750, 750, "fundoPadrao.png"));
-        
+            
         jogador.setPontuacao(score);
+        jogador.setTempo(tempoDeVida);
         HistoricoPontuacao.adicionarJogador(jogador);
-
     }
     
     /**
@@ -155,7 +157,7 @@ public class MeuMundo extends World {
     
     public void chanceEspada()
     {
-        espada = new Espada(this, jogador, score);
+        espada = new Espada(this, jogador);
         
         if(!espadaApareceu && score>20 && espada.chanceAparecer())
         {
@@ -175,5 +177,12 @@ public class MeuMundo extends World {
             addObject(espada, 215, 0);
         else
             addObject(espada, 530, 0);
+    }
+    
+    public void setStatusJogador()
+    {
+        jogador.setPontuacao(score);
+        jogador.setTempo(tempoDeVida);
+        HistoricoPontuacao.adicionarJogador(jogador);
     }
 }

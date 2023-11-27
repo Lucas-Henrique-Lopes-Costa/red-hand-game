@@ -31,7 +31,6 @@ public class Lenhador extends Actor {
      */
     public void act() 
     {
-        
         if(atacando)
         {
             if(getX() ==215)
@@ -60,6 +59,7 @@ public class Lenhador extends Actor {
                 }   
             }
         }
+
     }
     
     private void acontecimentosEsquerda()

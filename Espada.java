@@ -9,14 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Espada extends Actor
 {
     private MeuMundo mundo;
-    private int score;
     private Jogador jogador;
     
-    public Espada(MeuMundo mundo, Jogador jogador, int score)
+    public Espada(MeuMundo mundo, Jogador jogador)
     {
         this.mundo=mundo;
         this.jogador=jogador;
-        this.score=score;
     }
     
     /**
@@ -32,13 +30,10 @@ public class Espada extends Actor
         
         if(getIntersectingObjects(Lenhador.class).size()==1)
         {
+            mundo.setStatusJogador();
             mundo.removeObject(this);
             mundo.paraMusica();
-            
-            jogador.setPontuacao(score);
-            HistoricoPontuacao.adicionarJogador(jogador);
-            
-            Greenfoot.setWorld(new HistoriaEspada(mundo));
+            Greenfoot.setWorld(new HistoriaEspada(mundo, jogador));
         }
     }
     
