@@ -16,11 +16,12 @@ public class MeuMundo extends World {
     private Espada espada;
     
     private boolean espadaApareceu;
-
-    private int score;
+    
     private static boolean gameOver;
 
     private Jogador jogador = new Jogador();
+    private int score;
+    private int tempoDeVida;
 
     private Musicas musica;
     /**
@@ -104,7 +105,8 @@ public class MeuMundo extends World {
         
         // Mostra a pontuação no topo da tela
         showText("Pontos: " + score, 375, 200);
-
+        
+        tempoDeVida++;
     }
     
     public void gameOver(boolean valor)
@@ -123,8 +125,8 @@ public class MeuMundo extends World {
             lenhador.getY(), score, 750, 750, "fundoPadrao.png"));
         
         jogador.setPontuacao(score);
+        jogador.setTempo(tempoDeVida);
         HistoricoPontuacao.adicionarJogador(jogador);
-
     }
     
     /**

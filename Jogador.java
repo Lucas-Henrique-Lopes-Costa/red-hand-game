@@ -20,9 +20,9 @@ public class Jogador
         tempo = 0;
     }
 
-    public void aumentaTempo()
+    public void setTempo(int tempo)
     {
-        tempo++;
+        this.tempo = tempo;
     }
 
     public String getNome()

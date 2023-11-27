@@ -12,8 +12,9 @@ public class MundoDragao extends World
     private Guerreiro guerreiro;
     private Dragao dragao;
 
+    private Jogador jogador = HistoricoPontuacao.getUltimoJogador();
     private int score;
-    private Jogador jogador;
+    private int tempoDeVida;
     /**
      * Constructor for objects of class MundoDragao.
      * 
@@ -33,13 +34,14 @@ public class MundoDragao extends World
         
         musica = new Musicas("musicaDragao.mp3",40);
         
-        this.jogador=HistoricoPontuacao.getUltimoJogador();
-        this.score = jogador.getPontuacao();
+        score = 0;
+        score += jogador.getPontuacao();
     }
     
     public void act()
     {
         showText("Pontos: " + score, getWidth()/2, 200);
+        tempoDeVida++;
     }
     
     public void perder()
@@ -47,8 +49,9 @@ public class MundoDragao extends World
         musica.parar();
         Greenfoot.setWorld(new LoseWorld(guerreiro.getX(), 
             guerreiro.getY()+10, score, 1200, 750, "fundoDragao.jpeg"));
-            
+        
         jogador.setPontuacao(score);
+        jogador.setTempo(tempoDeVida);
         HistoricoPontuacao.adicionarJogador(jogador);
     }
     
