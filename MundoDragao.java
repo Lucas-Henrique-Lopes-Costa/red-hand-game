@@ -33,9 +33,8 @@ public class MundoDragao extends World
         
         musica = new Musicas("musicaDragao.mp3",40);
         
-        this.score = HistoricoPontuacao.consultarPontuacaoJogadorPorId
-            (HistoricoPontuacao.obterTamanho()-1);
         this.jogador=HistoricoPontuacao.getUltimoJogador();
+        this.score = jogador.getPontuacao();
     }
     
     public void act()

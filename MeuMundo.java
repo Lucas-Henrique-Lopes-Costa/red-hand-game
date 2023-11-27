@@ -62,6 +62,7 @@ public class MeuMundo extends World {
         nome = "Anônimo";
 
         jogador.setNome(nome);
+        HistoricoPontuacao.adicionarJogador(jogador);
         
         musica = new Musicas("musicaArvore.mp3",30);
     }

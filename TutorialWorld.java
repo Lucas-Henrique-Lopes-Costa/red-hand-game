@@ -17,12 +17,12 @@ public class TutorialWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(750, 750, 1); 
-        showText("Pressione ENTER para voltar", 375, 725);
+        showText("Pressione ENTER para começar a jogar", 375, 725);
     }
 
     public void checkKeyPress() {
         if (Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space") || Greenfoot.mouseClicked(null)) {
-            Greenfoot.setWorld(new StartWorld()); // volta para a tela de start
+            Greenfoot.setWorld(new MeuMundo()); // volta para a tela de start
         }
     }
 
@@ -31,7 +31,7 @@ public class TutorialWorld extends World
     {
         if (Greenfoot.isKeyDown("enter"))
         {
-            StartWorld menu = new StartWorld();
+            MeuMundo menu = new MeuMundo();
             Greenfoot.setWorld(menu);
             checkKeyPress();
         }

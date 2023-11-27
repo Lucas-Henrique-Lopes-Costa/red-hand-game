@@ -14,6 +14,9 @@ public class Lenhador extends Actor {
     private Arvore arvore;
     private MeuMundo mundo;
     
+    private int tempoDeVida;
+    private int indiceJogador = HistoricoPontuacao.obterTamanho() - 1;
+    
     /**
      * Construtor da classe Lenhador
      */
@@ -23,6 +26,7 @@ public class Lenhador extends Actor {
         this.mundo=mundo;
         atacando=false;
         contAnimacao=0;
+        tempoDeVida = 0;
     }
 
     /**
@@ -31,7 +35,6 @@ public class Lenhador extends Actor {
      */
     public void act() 
     {
-        
         if(atacando)
         {
             if(getX() ==215)
@@ -60,6 +63,8 @@ public class Lenhador extends Actor {
                 }   
             }
         }
+
+        // HistoricoPontuacao.aumentaTempoJogadorPorId(indiceJogador);
     }
     
     private void acontecimentosEsquerda()

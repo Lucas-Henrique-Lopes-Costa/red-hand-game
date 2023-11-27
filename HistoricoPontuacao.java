@@ -40,6 +40,16 @@ public class HistoricoPontuacao {
         return jogadores.get(id).getPontuacao();
     }
 
+    public static int consultarTempoJogadorPorId(int id) 
+    {
+        return jogadores.get(id).getTempo();
+    }
+
+    public static void aumentaTempoJogadorPorId(int id) 
+    {
+        jogadores.get(id).aumentaTempo();
+    }
+
     // função de ordernar unsado bubble sort
     private static void ordenarJogadores() 
     {

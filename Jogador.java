@@ -4,10 +4,11 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Jogador  
+public class Jogador
 {
     private String nome;
     private int pontuacao;
+    private int tempo;
 
     /**
      * Constructor for objects of class Jogador
@@ -16,6 +17,12 @@ public class Jogador
     {
         nome = "";
         pontuacao = 0;
+        tempo = 0;
+    }
+
+    public void aumentaTempo()
+    {
+        tempo++;
     }
 
     public String getNome()
@@ -36,5 +43,10 @@ public class Jogador
     public void setPontuacao(int pontuacao)
     {
         this.pontuacao = pontuacao;
+    }
+
+    public int getTempo()
+    {
+        return tempo;
     }
 }
