@@ -44,7 +44,7 @@ public class MeuMundo extends World {
         arvore.limpa();
         
         lenhador = new Lenhador(arvore, this);
-        espada = new Espada(this);
+        addObject(lenhador, 215, 663);
         
         posicionaTroncos();
         
@@ -52,14 +52,13 @@ public class MeuMundo extends World {
         
         score = 0;
         timer = new Timer();
-        addObject(lenhador, 215, 663);
 
         setPaintOrder(Timer.class, TroncoNormal.class); // Define a ordem de pintura dos objetos
         addObject(timer, 375, 50);
 
         // pergunta o nome do usuário
         String nome = Greenfoot.ask("Digite seu nome: ");
-        if(nome.length() <= 1 || nome == null)
+        if(nome.length() < 1 || nome == null)
         nome = "Anônimo";
 
         jogador.setNome(nome);
@@ -107,7 +106,7 @@ public class MeuMundo extends World {
 
     }
     
-    public static void gameOver(boolean valor)
+    public void gameOver(boolean valor)
     {
         gameOver=valor;
     }
@@ -118,9 +117,11 @@ public class MeuMundo extends World {
     public void morreu() 
     {
         musica.parar();
+        
+        Greenfoot.setWorld(new LoseWorld(lenhador.getX(), 
+            lenhador.getY(), score, 750, 750, "fundoPadrao.png"));
+        
         jogador.setPontuacao(score);
-        Greenfoot.setWorld(new LoseWorld(lenhador.getX(), lenhador.getY(), score));
-
         HistoricoPontuacao.adicionarJogador(jogador);
 
     }
@@ -154,9 +155,12 @@ public class MeuMundo extends World {
     
     public void chanceEspada()
     {
-        if(score>20 && !espadaApareceu)
+        espada = new Espada(this, jogador, score);
+        
+        if(!espadaApareceu && score>20 && espada.chanceAparecer())
         {
-            espada.chanceAparecer();
+            espadaApareceu=true;
+            criaEspada();
         }
     }
     
@@ -165,8 +169,11 @@ public class MeuMundo extends World {
         musica.parar();
     }
     
-    public void espadaApareceu()
+    private void criaEspada()
     {
-        espadaApareceu=true;
+        if(Greenfoot.getRandomNumber(1)==0)
+            addObject(espada, 215, 0);
+        else
+            addObject(espada, 530, 0);
     }
 }

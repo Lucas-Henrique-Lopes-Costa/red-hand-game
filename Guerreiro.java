@@ -11,13 +11,15 @@ public class Guerreiro extends Actor
     private boolean atacando;
     private int contAtaque;
     private Dragao dragao;
+    private MundoDragao mundo;
     
-    public Guerreiro (Dragao dragao)
+    public Guerreiro (Dragao dragao, MundoDragao mundo)
     {
         atacando=false;
         contAtaque=0;
 
         this.dragao=dragao;
+        this.mundo=mundo;
     }
     
     /**
@@ -87,7 +89,6 @@ public class Guerreiro extends Actor
     
     private void arrumarDirecao()
     {
-        World mundo = getWorld();
         if(getX() == mundo.getWidth()*4/10
             || getX() == mundo.getWidth()*8/10)
         {
@@ -131,6 +132,7 @@ public class Guerreiro extends Actor
         {
             contAtaque=0;
             atacando=false;
+            mundo.aumentaScore(10);
         }
     }
 }

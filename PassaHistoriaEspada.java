@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PassaHistoriaEspada extends Actor
 {
     private MeuMundo mundo;
+    
     public PassaHistoriaEspada(MeuMundo mundo)
     {
         this.mundo=mundo;
