@@ -105,6 +105,11 @@ public class Dragao extends Actor
                 ataqueChamas=false;
             }
         }
+
+        if (vida.getTamanhoAtual()<=0)
+        {
+            mundo.ganhar();
+        }
     }
     
     //Função chave para o funcionamento do dragão.

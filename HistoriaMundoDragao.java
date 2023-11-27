@@ -8,12 +8,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HistoriaMundoDragao extends World
 {
+    private int timer = 6;
+    private boolean possoClicar = false;
 
     public HistoriaMundoDragao()
     { 
         super(750,750,1);
+    }
 
-        PassaHistoriaEspada2 passa2 = new PassaHistoriaEspada2();
-        addObject(passa2, 10000, 430);
+    public void act() {
+        checkKeyPress();
+        if (timer > 0) 
+        {
+            timer--;
+            if (timer == 0) {
+                possoClicar = true;
+            }
+        }
+    }
+
+    public void checkKeyPress() {
+        if(possoClicar)
+        {
+            if (Greenfoot.isKeyDown("enter")) 
+            {
+                Greenfoot.setWorld(new MundoDragao());// Inicia o mundo do dragão
+            }
+        }
     }
 }

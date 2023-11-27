@@ -46,7 +46,7 @@ public class Pontuacao extends World
             showText(Integer.toString(HistoricoPontuacao.consultarTempoJogadorPorId(i) / 60) + "s", 425, 300 + (i * 55));
 
             // mostra cada pontuação em uma linha
-            showText(Integer.toString(HistoricoPontuacao.consultarPontuacaoJogadorPorId(i)), 540, 300 + (i * 55));
+            showText(Integer.toString(HistoricoPontuacao.consultarPontuacaoJogadorPorId(i)) + "pts", 550, 300 + (i * 55));
         }
 
         if (Greenfoot.isKeyDown("enter"))

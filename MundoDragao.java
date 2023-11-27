@@ -53,6 +53,15 @@ public class MundoDragao extends World
         jogador.setPontuacao(score);
         jogador.setTempo(tempoDeVida);
     }
+
+    public void ganhar()
+    {
+        musica.parar();
+        Greenfoot.setWorld(new TelaVitoria());
+        
+        jogador.setPontuacao(score + 10);
+        jogador.setTempo(tempoDeVida);
+    }
     
     public void aumentaScore(int quantidade)
     {

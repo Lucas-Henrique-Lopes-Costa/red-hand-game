@@ -16,8 +16,7 @@ public class TutorialWorld extends World
     public TutorialWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(750, 750, 1); 
-        showText("Pressione ENTER para começar a jogar", 375, 725);
+        super(750, 750, 1);
     }
 
     public void checkKeyPress() {

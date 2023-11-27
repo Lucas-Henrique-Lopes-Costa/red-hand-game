@@ -15,10 +15,18 @@ public class HistoriaStart extends World
      */
     public HistoriaStart()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 750 x 750 cells with a cell size of 1x1 pixels.
         super(750, 750, 1);
-        
-        PassaHistoria passa = new PassaHistoria();
-        addObject(passa, 1000, 430);
+    }
+    
+    public void act() {
+        // Caso o usuário pressione ENTER, ESPAÇO ou clique com o mouse
+        checkKeyPress();
+    }
+    
+    public void checkKeyPress() {
+        if (Greenfoot.isKeyDown("enter")) {
+            Greenfoot.setWorld(new MeuMundo()); // Inicia o jogo de verdade
+        }
     }
 }
