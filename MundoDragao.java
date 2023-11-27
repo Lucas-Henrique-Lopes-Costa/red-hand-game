@@ -11,8 +11,8 @@ public class MundoDragao extends World
     private Musicas musica;
     private Guerreiro guerreiro;
     private Dragao dragao;
-
-    private Jogador jogador = HistoricoPontuacao.getUltimoJogador();
+    
+    private Jogador jogador = HistoricoPontuacao.pegaUltimoJogador();
     private int score;
     private int tempoDeVida;
     /**
@@ -34,8 +34,8 @@ public class MundoDragao extends World
         
         musica = new Musicas("musicaDragao.mp3",40);
         
-        score = 0;
-        score += jogador.getPontuacao();
+        this.score = jogador.getPontuacao();
+        this.tempoDeVida = jogador.getTempo();
     }
     
     public void act()
@@ -52,7 +52,6 @@ public class MundoDragao extends World
         
         jogador.setPontuacao(score);
         jogador.setTempo(tempoDeVida);
-        HistoricoPontuacao.adicionarJogador(jogador);
     }
     
     public void aumentaScore(int quantidade)

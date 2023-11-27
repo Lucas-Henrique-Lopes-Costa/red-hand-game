@@ -17,16 +17,6 @@ public class HistoricoPontuacao {
 
     public static void adicionarJogador(Jogador jogador) 
     {
-        // verifica se já exite o jogador, e se a potuação é maior que a anterior, atualiza
-        for (int i = 0; i < jogadores.size(); i++) {
-            if (jogadores.get(i).getNome().equals(jogador.getNome())) {
-                if (jogadores.get(i).getPontuacao() < jogador.getPontuacao()) {
-                    jogadores.set(i, jogador);
-                }
-                return;
-            }
-        }
-        
         jogadores.add(jogador);
     }
 
@@ -62,9 +52,15 @@ public class HistoricoPontuacao {
             }
         }
     }
-    
-    public static Jogador getUltimoJogador()
+
+    public static Jogador pegaUltimoJogador()
     {
-        return jogadores.get(jogadores.size()-1);
+        int tamanho = jogadores.size();        
+        return jogadores.get(tamanho - 1);
+    }
+
+    public static void removeJogador(Jogador jogador)
+    {
+        jogadores.remove(jogador);
     }
 }
