@@ -6,17 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Fogo extends Actor
+public class Fogo extends Projetil
 {
     private int tempoVivo;
     private int indiceImagem;
-    private MundoDragao mundo;
     
     public Fogo(MundoDragao mundo)
     {
+        super(mundo);
         tempoVivo=0;
         indiceImagem=0;
-        this.mundo=mundo;
     }
     
     /**
@@ -28,14 +27,13 @@ public class Fogo extends Actor
         animar();
         tempoVivo++;
         
-        if(getIntersectingObjects(Guerreiro.class).size()==1)
+        if(tempoVivo==100)
         {
             getWorld().removeObject(this);
-            mundo.perder();
         }
-        else if(tempoVivo==100)
+        else
         {
-            getWorld().removeObject(this);
+            super.conferePerder();
         }
     }
     
