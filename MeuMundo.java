@@ -64,7 +64,7 @@ public class MeuMundo extends World {
 
         jogador.setNome(nome);
         
-        musica = new Musicas("musicaArvore.mp3",30);
+        musica = new Musicas("musicaArvore.wav",30);
     }
     
     private void posicionaTroncos()
@@ -99,7 +99,7 @@ public class MeuMundo extends World {
     {
         if (gameOver || timer.getTamanhoAtual() <= 0)
         {
-            morreu(); // Verifica se o jogador perdeu
+            morreu(); // Verifica se o jogador perde
         }
         
         // Mostra a pontuação no topo da tela

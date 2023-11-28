@@ -20,7 +20,7 @@ public class TelaVitoria extends World
         super(1200, 750, 1);
 
         // para a musica de fundo
-        musicaDeFundo = new Musicas("vitoria.mp3", 40);
+        musicaDeFundo = new Musicas("vitoria.wav", 40);
     }
 
     public void act()

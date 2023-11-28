@@ -32,7 +32,7 @@ public class MundoDragao extends World
         Muro muro = new Muro();
         addObject(muro,getWidth()/2, getHeight()*8/10);
         
-        musica = new Musicas("musicaDragao.mp3",40);
+        musica = new Musicas("musicaDragao.wav",40);
         
         this.score = jogador.getPontuacao();
         this.tempoDeVida = jogador.getTempo();

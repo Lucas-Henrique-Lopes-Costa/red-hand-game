@@ -18,8 +18,15 @@ public class Musicas
     private void tocar(String musica, int volume)
     {
         musicaDeFundo = new GreenfootSound(musica);
-        musicaDeFundo.playLoop();
-        musicaDeFundo.setVolume(volume);
+        try 
+        {
+            musicaDeFundo.playLoop();
+            musicaDeFundo.setVolume(volume);
+        }
+        catch (Exception e) 
+        {
+            System.out.println("Ops.. não foi possível tocar os sons do jogo");
+        }
     }
     
     public void parar()
