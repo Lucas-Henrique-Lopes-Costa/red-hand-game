@@ -6,13 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BolaDeFogo extends Actor
+public class BolaDeFogo extends Projetil
 {
     private int indiceImagem=0;
-    private MundoDragao mundo;
     public BolaDeFogo(MundoDragao mundo)
     {
-        this.mundo=mundo;
+        super(mundo);
     }
     
     /**
@@ -23,18 +22,14 @@ public class BolaDeFogo extends Actor
     {
         animar();
         setLocation(getX(), getY() +5);
-        
-        if(getIntersectingObjects(Guerreiro.class).size()==1)
-        {
-            getWorld().removeObject(this);
-            mundo.perder();
-        }
-        else if(isAtEdge())
+        if(isAtEdge())
         {
             getWorld().removeObject(this);
         }
-        
-        
+        else
+        {
+            super.conferePerder();
+        }
     }
     
     private void animar()

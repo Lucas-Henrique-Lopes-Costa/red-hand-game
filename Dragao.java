@@ -17,7 +17,7 @@ public class Dragao extends Actor
     private PataDragao pata1;
     private PataDragao pata2;
     private PataDragao pataNoAr;
-    private VidaDragao vida;
+    private Barras vida;
     private MundoDragao mundo;
     
     //Sons do dragão
@@ -36,7 +36,7 @@ public class Dragao extends Actor
         
         pata1 = new PataDragao("PATA DA ESQUERDA.png");
         pata2 = new PataDragao("PATA DA DIREITA.png");
-        vida = new VidaDragao();
+        vida = new Barras(1000);
         
         Greenfoot.playSound("barulhoDragao.mp3");
         sons();
