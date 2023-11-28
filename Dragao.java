@@ -138,35 +138,14 @@ public class Dragao extends Actor
     //toda a lógica do ataque das bolas de fogo está nessa função
     private void ataqueBolasDeFogo()
     {
-        BolaDeFogo bola = new BolaDeFogo(mundo);
-        BolaDeFogo bola2 = new BolaDeFogo(mundo);
-        BolaDeFogo bola3 = new BolaDeFogo(mundo);
+        int random = 2*(1+Greenfoot.getRandomNumber(4));
         
-        
-        int random = Greenfoot.getRandomNumber(4);
-        if(random==0)
+        for(int i=2; i<=8; i+=2)
         {
-            mundo.addObject(bola, mundo.getWidth()*2/10, 20);
-            mundo.addObject(bola2, mundo.getWidth()*4/10, 20);
-            mundo.addObject(bola3, mundo.getWidth()*6/10, 20);
-        }
-        else if(random==1)
-        {
-            mundo.addObject(bola, mundo.getWidth()*2/10, 20);
-            mundo.addObject(bola2, mundo.getWidth()*4/10, 20);
-            mundo.addObject(bola3, mundo.getWidth()*8/10, 20);
-        }
-        else if(random==2)
-        {
-            mundo.addObject(bola, mundo.getWidth()*2/10, 20);
-            mundo.addObject(bola2, mundo.getWidth()*6/10, 20);
-            mundo.addObject(bola3, mundo.getWidth()*8/10, 20);
-        }
-        else
-        {
-            mundo.addObject(bola, mundo.getWidth()*4/10, 20);
-            mundo.addObject(bola2, mundo.getWidth()*6/10, 20);
-            mundo.addObject(bola3, mundo.getWidth()*8/10, 20);
+            if(i!=random)
+            {
+                mundo.addObject(new BolaDeFogo(mundo), mundo.getWidth()*i/10, 20);
+            }
         }
         somBolaDeFogo.play();
     }
