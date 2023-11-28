@@ -17,4 +17,6 @@ comment6.params=
 comment6.target=void\ posicionarDireita()
 comment7.params=complemento
 comment7.target=void\ animar(java.lang.String)
-numComments=8
+comment8.params=
+comment8.target=void\ diminiuQuantidadeTempo()
+numComments=9

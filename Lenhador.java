@@ -13,6 +13,7 @@ public class Lenhador extends Actor {
     private boolean atacando;
     private Arvore arvore;
     private MeuMundo mundo;
+    private int quantidadeTempo;
     
     /**
      * Construtor da classe Lenhador
@@ -23,6 +24,7 @@ public class Lenhador extends Actor {
         this.mundo=mundo;
         atacando=false;
         contAnimacao=0;
+        quantidadeTempo=25;
     }
 
     /**
@@ -72,7 +74,7 @@ public class Lenhador extends Actor {
         
         //Adiciona tempo e um ponto
         mundo.aumentaPontos();
-        mundo.aumentaTempo();
+        mundo.aumentaTempo(quantidadeTempo);
         mundo.chanceEspada();
     }
     
@@ -86,7 +88,7 @@ public class Lenhador extends Actor {
         
         //Adiciona tempo e um ponto
         mundo.aumentaPontos();
-        mundo.aumentaTempo();
+        mundo.aumentaTempo(quantidadeTempo);
         mundo.chanceEspada();
     }
     
@@ -140,5 +142,11 @@ public class Lenhador extends Actor {
             atacando=false;
             contAnimacao=0;
         }
+    }
+    
+    public void diminiuQuantidadeTempo()
+    {
+        if(quantidadeTempo>17)
+        quantidadeTempo--;
     }
 }

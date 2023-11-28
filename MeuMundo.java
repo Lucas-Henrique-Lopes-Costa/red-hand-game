@@ -106,6 +106,11 @@ public class MeuMundo extends World {
         showText("Pontos: " + score, 375, 200);
         
         tempoDeVida++;
+        
+        if(tempoDeVida % 300 == 0)
+        {
+            lenhador.diminiuQuantidadeTempo();
+        }
     }
     
     public void gameOver(boolean valor)
@@ -150,9 +155,9 @@ public class MeuMundo extends World {
     }
     
     //Incrementa a barra do tempo
-    public void aumentaTempo()
+    public void aumentaTempo(int quantidade)
     {
-        timer.redimensiona(25);
+        timer.redimensiona(quantidade);
     }
     
     public void chanceEspada()
