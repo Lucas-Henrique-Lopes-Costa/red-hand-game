@@ -135,7 +135,7 @@ public class Dragao extends Actor
         
     }
     
-    //toda a lógica do ataque das bolas de fogo está nessa função
+    //toda a lógica do ataque das bolas de Fogo está nessa função
     private void ataqueBolasDeFogo()
     {
         int random = 2*(1+Greenfoot.getRandomNumber(4));
@@ -170,17 +170,17 @@ public class Dragao extends Actor
     
     private void explosoes()
     {
-        Fogo fogo1 = new Fogo(mundo);
-        Fogo fogo2 = new Fogo(mundo);
+        Explosao Explosao1 = new Explosao(mundo);
+        Explosao Explosao2 = new Explosao(mundo);
         if(pataNoAr == pata1)
         {
-            mundo.addObject(fogo1, mundo.getWidth()*2/10, mundo.getHeight()*7/10-15);
-            mundo.addObject(fogo2, mundo.getWidth()*4/10, mundo.getHeight()*7/10-15);
+            mundo.addObject(Explosao1, mundo.getWidth()*2/10, mundo.getHeight()*7/10);
+            mundo.addObject(Explosao2, mundo.getWidth()*4/10, mundo.getHeight()*7/10);
         }
         else if (pataNoAr == pata2)
         {
-            mundo.addObject(fogo1, mundo.getWidth()*6/10, mundo.getHeight()*7/10-15);
-            mundo.addObject(fogo2, mundo.getWidth()*8/10, mundo.getHeight()*7/10-15);
+            mundo.addObject(Explosao1, mundo.getWidth()*6/10, mundo.getHeight()*7/10);
+            mundo.addObject(Explosao2, mundo.getWidth()*8/10, mundo.getHeight()*7/10);
         }
     }
     
