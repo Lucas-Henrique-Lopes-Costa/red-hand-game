@@ -10,6 +10,12 @@ public class Explosao extends Projetil {
     private int tempoVivo;
     private int indiceImagem;
 
+    /**
+     * Construtor da classe Explosao.
+     * Inicializa o tempo de vida e o índice da imagem da explosão.
+     * 
+     * @param mundo O mundo do dragão onde a explosão ocorre.
+     */
     public Explosao(MundoDragao mundo) {
         super(mundo);
         tempoVivo = 0;
@@ -17,8 +23,10 @@ public class Explosao extends Projetil {
     }
 
     /**
-     * Act - do whatever the Explosão wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Executa as ações da explosão.
+     * Verifica se o tempo de vida da explosão chegou a 100 e remove a explosão do
+     * mundo.
+     * Caso contrário, verifica se o jogador perdeu o jogo.
      */
     public void act() {
         animar();
@@ -31,6 +39,10 @@ public class Explosao extends Projetil {
         }
     }
 
+    /**
+     * Anima a explosão.
+     * Alterna entre as imagens da explosão para dar a impressão de movimento.
+     */
     private void animar() {
         if (indiceImagem < 11) {
             setImage("nuvem1.png");

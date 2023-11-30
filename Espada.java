@@ -10,14 +10,21 @@ public class Espada extends Actor {
     private MeuMundo mundo;
     private Jogador jogador;
 
+    /**
+     * Construtor da classe Espada.
+     * 
+     * @param mundo   O mundo do jogo.
+     * @param jogador O jogador que está utilizando a espada.
+     */
     public Espada(MeuMundo mundo, Jogador jogador) {
         this.mundo = mundo;
         this.jogador = jogador;
     }
 
     /**
-     * Act - do whatever the Espada wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Executa as ações da espada.
+     * Move a espada para baixo e verifica se ela atingiu o lenhador.
+     * Caso tenha atingido, remove a espada do mundo e inicia a história da espada.
      */
     public void act() {
         if (getY() < 700) {
@@ -32,11 +39,15 @@ public class Espada extends Actor {
         }
     }
 
+    /**
+     * Verifica se a espada deve aparecer.
+     * 
+     * @return true se a espada deve aparecer, false caso contrário.
+     */
     public boolean chanceAparecer() {
         if (Greenfoot.getRandomNumber(20) == 0 || mundo.obterPontos() == 50) {
             return true;
         }
         return false;
     }
-
 }
