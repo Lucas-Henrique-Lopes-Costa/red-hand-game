@@ -7,11 +7,11 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Pontuacao extends World {
-    // Chama os métodos estatico de tamanho
+    // Chama os métodos estatico de tamanho da classe HistoricoPontuacao
     private int tamanho = HistoricoPontuacao.obterTamanho();
 
     /**
-     * Construtor para objetos da classe Pontuacao.
+     * Classe responsável por controlar a pontuação do jogo.
      */
     public Pontuacao() {
         // Cria um novo mundo com 750x750 células com um tamanho de célula de 1x1px.
@@ -20,8 +20,15 @@ public class Pontuacao extends World {
         showText("Aperte J para acessar o Tutorial", 375, 720);
     }
 
+    /**
+     * Executa as ações para o objeto atual.
+     * Se o tamanho for maior que 5, define o tamanho como 5.
+     * Se o nome do jogador exceder 10 caracteres, ele é truncado e adicionado
+     * "...".
+     * Se a tecla "enter" for pressionada, define o mundo como MeuMundo.
+     * Se a tecla "j" for pressionada, define o mundo como TutorialWorld.
+     */
     public void act() {
-
         if (tamanho > 5) {
             tamanho = 5;
         }

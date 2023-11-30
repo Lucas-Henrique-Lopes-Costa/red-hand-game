@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class TroncoNormal extends Actor {
-    // Atributos da classe
     private String lado;
     private boolean mover;
     private boolean moverDireita;
@@ -34,9 +33,9 @@ public class TroncoNormal extends Actor {
     }
 
     /**
-     * Act - do whatever the TroncoNormal wants to do. This method is called
-     * whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Executa a ação do tronco.
+     * Move o tronco para a direita ou esquerda, voando e girando.
+     * Caso o tronco saia da tela, ele é removido do mundo.
      */
     public void act() {
         if (mover) {
@@ -52,7 +51,6 @@ public class TroncoNormal extends Actor {
                 getWorld().removeObject(this);
             }
         }
-
     }
 
     /**
@@ -76,6 +74,9 @@ public class TroncoNormal extends Actor {
         moverDireita = true;
     }
 
+    /**
+     * Muda o booleano para o tronco mover para a esquerda
+     */
     public void mover() {
         mover = true;
     }

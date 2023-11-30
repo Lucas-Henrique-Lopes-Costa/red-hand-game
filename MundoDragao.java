@@ -16,8 +16,10 @@ public class MundoDragao extends World {
     private int tempoDeVida;
 
     /**
-     * Constructor for objects of class MundoDragao.
-     * 
+     * Construtor da classe MundoDragao.
+     * Inicializa o mundo com as dimensões especificadas.
+     * Cria e adiciona os objetos dragão, guerreiro e muro ao mundo.
+     * Inicializa a música de fundo.
      */
     public MundoDragao() {
         super(1200, 750, 1);
@@ -37,11 +39,21 @@ public class MundoDragao extends World {
         this.tempoDeVida = jogador.getTempo();
     }
 
+    /**
+     * Atualiza o mundo do jogo.
+     * Exibe a pontuação atual na tela.
+     * Incrementa o tempo de vida do mundo.
+     */
     public void act() {
         showText("Pontos: " + score, getWidth() / 2, 200);
         tempoDeVida++;
     }
 
+    /**
+     * Método responsável por encerrar o jogo quando o jogador perde.
+     * Para a reprodução da música de fundo e cria um novo mundo de derrota.
+     * Atualiza a pontuação e o tempo de vida do jogador.
+     */
     public void perder() {
         musica.parar();
         Greenfoot.setWorld(new LoseWorld(guerreiro.getX(),
@@ -51,6 +63,12 @@ public class MundoDragao extends World {
         jogador.setTempo(tempoDeVida);
     }
 
+    /**
+     * Método responsável por executar as ações necessárias quando o jogador ganha o
+     * jogo.
+     * Para isso, o método para a música de fundo, cria uma nova tela de vitória,
+     * atualiza a pontuação do jogador e define o tempo de vida do jogador.
+     */
     public void ganhar() {
         musica.parar();
         Greenfoot.setWorld(new TelaVitoria());
@@ -59,6 +77,11 @@ public class MundoDragao extends World {
         jogador.setTempo(tempoDeVida);
     }
 
+    /**
+     * Aumenta o score do jogo.
+     * 
+     * @param quantidade a quantidade a ser adicionada ao score
+     */
     public void aumentaScore(int quantidade) {
         score += quantidade;
     }

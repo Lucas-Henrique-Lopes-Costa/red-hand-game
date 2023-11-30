@@ -31,6 +31,11 @@ public class Start extends Actor {
         checkKeyPress();
     }
 
+    /**
+     * Verifica se alguma tecla foi pressionada ou se o mouse foi clicado.
+     * Se a tecla "enter" for pressionada ou o mouse for clicado, inicia o jogo.
+     * Se a tecla "j" for pressionada, inicia o tutorial.
+     */
     public void checkKeyPress() {
         if (Greenfoot.isKeyDown("enter") || Greenfoot.mouseClicked(null)) {
             Greenfoot.setWorld(new HistoriaStart()); // Inicia o jogo de verdade

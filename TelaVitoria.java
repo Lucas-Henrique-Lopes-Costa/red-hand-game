@@ -21,6 +21,13 @@ public class TelaVitoria extends World {
         musicaDeFundo = new Musicas("vitoria.wav", 40);
     }
 
+    /**
+     * Executa ações com base nas teclas pressionadas pelo jogador.
+     * Se a tecla "escape" for pressionada, a música de fundo é interrompida e o
+     * mundo MeuMundo é definido como o mundo atual.
+     * Se a tecla "enter" for pressionada, a música de fundo é interrompida e o
+     * mundo Pontuacao é definido como o mundo atual.
+     */
     public void act() {
         if (Greenfoot.isKeyDown("escape")) {
             musicaDeFundo.parar();

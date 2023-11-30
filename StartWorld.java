@@ -23,7 +23,6 @@ public class StartWorld extends World {
         prepare();
 
         historicoPontuacao = new HistoricoPontuacao();
-
     }
 
     /**
