@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Barras
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Barras\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Barras\ here.\r\n\ \r\n\ @author\ Lucas,\ Pedro,\ Guilherme\ e\ Alex\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=larguraOriginal
 comment1.target=Barras(int)
 comment2.params=

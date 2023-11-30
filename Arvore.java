@@ -76,16 +76,27 @@ public class Arvore
         listaTroncos.remove(id);
     }
     
+    /**
+     * Retorna o tamanho da lista de troncos da árvore.
+     * 
+     * @return o tamanho da lista de troncos
+     */
     private int tamanho()
     {
         return listaTroncos.size();
     }
     
+    /**
+     * Limpa a lista de troncos da árvore.
+     */
     public void limpa()
     {
         listaTroncos.clear();
     }
     
+    /**
+     * Faz com que a árvore caia, fazendo com que todos os troncos da listaTroncos caiam 160 unidades.
+     */
     private void cair()
     {
         for(TroncoNormal tronco : listaTroncos)
@@ -94,6 +105,13 @@ public class Arvore
         }
     }
     
+    /**
+     * Cria um tronco aleatório e o adiciona ao mundo do jogo.
+     * A probabilidade de cada tipo de tronco é a seguinte:
+     * - 20% de chance de cair um tronco com galho para a esquerda
+     * - 20% de chance de cair um tronco com galho para a direita
+     * - 60% de chance de cair um tronco normal
+     */
     private void criaTronco()
     {
         int random = Greenfoot.getRandomNumber(11); // Gera um número aleatório entre 0 e 10
@@ -118,6 +136,11 @@ public class Arvore
         }
     }
     
+    /**
+     * Verifica a direção do galho e aciona o método gameOver se for igual ao lado especificado.
+     * 
+     * @param lado a direção do galho a ser verificada
+     */
     public void direcaoGalho(String lado)
     {
         if (getTronco(1).getLado().equals(lado)) 
