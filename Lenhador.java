@@ -14,139 +14,107 @@ public class Lenhador extends Actor {
     private Arvore arvore;
     private MeuMundo mundo;
     private int quantidadeTempo;
-    
+
     /**
      * Construtor da classe Lenhador
      */
-    public Lenhador(Arvore arvore,MeuMundo mundo) 
-    {
-        this.arvore=arvore;
-        this.mundo=mundo;
-        atacando=false;
-        contAnimacao=0;
-        quantidadeTempo=25;
+    public Lenhador(Arvore arvore, MeuMundo mundo) {
+        this.arvore = arvore;
+        this.mundo = mundo;
+        atacando = false;
+        contAnimacao = 0;
+        quantidadeTempo = 25;
     }
 
     /**
      * Act - do whatever the Lenhador wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        if(atacando)
-        {
-            if(getX() ==215)
-            {
+    public void act() {
+        if (atacando) {
+            if (getX() == 215) {
                 animar("");
-            }
-            else
-            {
+            } else {
                 animar("Invertido");
             }
-        }
-        else
-        {
+        } else {
             String tecla = Greenfoot.getKey();
-            if(tecla!=null)
-            {
-                if(tecla.equals("left"))
-                {
-                    atacando=true;
+            if (tecla != null) {
+                if (tecla.equals("left")) {
+                    atacando = true;
                     posicionarEsquerda();
-                }
-                else if(tecla.equals("right"))
-                {
-                    atacando=true;
+                } else if (tecla.equals("right")) {
+                    atacando = true;
                     posicionarDireita();
-                }   
+                }
             }
         }
 
     }
-    
-    private void acontecimentosEsquerda()
-    {   
-        //Verifica a morte do lenhador
+
+    private void acontecimentosEsquerda() {
+        // Verifica a morte do lenhador
         arvore.direcaoGalho("esquerda");
-        
-        //Aciona as ações necessárias para o funcionamento da arvore
+
+        // Aciona as ações necessárias para o funcionamento da arvore
         arvore.bater(true);
-        
-        //Adiciona tempo e um ponto
+
+        // Adiciona tempo e um ponto
         mundo.aumentaPontos();
         mundo.aumentaTempo(quantidadeTempo);
         mundo.chanceEspada();
     }
-    
-    private void acontecimentosDireita()
-    {
-        //Verifica a morte do lenhador
+
+    private void acontecimentosDireita() {
+        // Verifica a morte do lenhador
         arvore.direcaoGalho("direita");
-        
-        //Aciona as ações necessárias para o funcionamento da arvore
+
+        // Aciona as ações necessárias para o funcionamento da arvore
         arvore.bater(false);
-        
-        //Adiciona tempo e um ponto
+
+        // Adiciona tempo e um ponto
         mundo.aumentaPontos();
         mundo.aumentaTempo(quantidadeTempo);
         mundo.chanceEspada();
     }
-    
-    private void posicionarEsquerda()
-    {
+
+    private void posicionarEsquerda() {
         setLocation(215, getY());
     }
-    
-    private void posicionarDireita()
-    {
+
+    private void posicionarDireita() {
         setLocation(530, getY());
     }
-    
-    private void animar(String complemento)
-    {
-        if(contAnimacao<3)
-        {
+
+    private void animar(String complemento) {
+        if (contAnimacao < 3) {
             contAnimacao++;
             setImage("lenhador" + complemento + "0.png");
-        }
-        else if(contAnimacao<6)
-        {
+        } else if (contAnimacao < 6) {
             contAnimacao++;
             setImage("lenhador" + complemento + "1.png");
-        }
-        else if(contAnimacao<9)
-        {
+        } else if (contAnimacao < 9) {
             contAnimacao++;
             setImage("lenhador" + complemento + "2.png");
-        }
-        else if(contAnimacao<12)
-        {
+        } else if (contAnimacao < 12) {
             contAnimacao++;
             setImage("lenhador" + complemento + "1.png");
-        }
-        else if(contAnimacao<15)
-        {
+        } else if (contAnimacao < 15) {
             contAnimacao++;
             setImage("lenhador" + complemento + "0.png");
-        }
-        else
-        {
-            if(complemento=="")
-            {
+        } else {
+            if (complemento == "") {
                 acontecimentosEsquerda();
-            }
-            else
-            {
+            } else {
                 acontecimentosDireita();
             }
-            atacando=false;
-            contAnimacao=0;
+            atacando = false;
+            contAnimacao = 0;
         }
     }
-    
-    public void diminiuQuantidadeTempo()
-    {
-        if(quantidadeTempo>17)
-        quantidadeTempo--;
+
+    public void diminiuQuantidadeTempo() {
+        if (quantidadeTempo > 17)
+            quantidadeTempo--;
     }
 }

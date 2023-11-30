@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class TutorialWorld here.
@@ -6,15 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
-public class TutorialWorld extends World
-{
-
+public class TutorialWorld extends World {
     /**
      * Constructor for objects of class TutorialWorld.
      * 
      */
-    public TutorialWorld()
-    {    
+    public TutorialWorld() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(750, 750, 1);
     }
@@ -25,15 +22,12 @@ public class TutorialWorld extends World
         }
     }
 
-
-    public void act()
-    {
-        if (Greenfoot.isKeyDown("enter"))
-        {
+    public void act() {
+        if (Greenfoot.isKeyDown("enter")) {
             MeuMundo menu = new MeuMundo();
             Greenfoot.setWorld(menu);
             checkKeyPress();
         }
     }
-    
+
 }

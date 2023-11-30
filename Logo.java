@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Logo here.
@@ -6,10 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
-public class Logo extends Actor
-{
-    public Logo()
-    {
+public class Logo extends Actor {
+    public Logo() {
         getImage().scale(700, 100);
     }
 }

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Muro here.
+ * Essa classe serve apenas para colocar o muro enfreten ao dragão
  * 
  * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)

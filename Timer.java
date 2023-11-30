@@ -7,12 +7,10 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Timer extends Barras {
-    
     /*
      * Construtor da classe Timer
      */
-    public Timer() 
-    {
+    public Timer() {
         super(710);
     }
 

@@ -6,15 +6,14 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
-public class Start extends Actor 
-{
+public class Start extends Actor {
     /**
      * Construtor da classe Start
      */
     public Start() {
         getImage().scale(200, 100); // Redimensiona a imagem
     }
-    
+
     /**
      * Construtor da classe Start com tamanho
      *
@@ -31,13 +30,12 @@ public class Start extends Actor
         // Caso o usuário pressione ENTER ou clique com o mouse
         checkKeyPress();
     }
-    
+
     public void checkKeyPress() {
-            if (Greenfoot.isKeyDown("enter") || Greenfoot.mouseClicked(null)) {
-                Greenfoot.setWorld(new HistoriaStart()); // Inicia o jogo de verdade
-            }
-            else if (Greenfoot.isKeyDown("j")) {
-                Greenfoot.setWorld(new TutorialWorld()); // Inicia o tutorial
-            }
+        if (Greenfoot.isKeyDown("enter") || Greenfoot.mouseClicked(null)) {
+            Greenfoot.setWorld(new HistoriaStart()); // Inicia o jogo de verdade
+        } else if (Greenfoot.isKeyDown("j")) {
+            Greenfoot.setWorld(new TutorialWorld()); // Inicia o tutorial
+        }
     }
 }

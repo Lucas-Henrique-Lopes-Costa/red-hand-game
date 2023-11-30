@@ -13,9 +13,9 @@ public class MeuMundo extends World {
     private Lenhador lenhador;
     private Timer timer = new Timer();
     private Espada espada;
-    
+
     private boolean espadaApareceu;
-    
+
     private static boolean gameOver;
 
     private Jogador jogador = new Jogador();
@@ -23,6 +23,7 @@ public class MeuMundo extends World {
     private int tempoDeVida;
 
     private Musicas musica;
+
     /**
      * Construtor para objetos da classe MeuMundo.
      */
@@ -30,7 +31,7 @@ public class MeuMundo extends World {
         // Cria um novo mundo com 750x750 células com um tamanho de célula de 1x1px.
         super(750, 750, 1);
         prepare(); // Monta o mundo
-        
+
         gameOver = false; // Define o jogo como não finalizado
     }
 
@@ -38,18 +39,17 @@ public class MeuMundo extends World {
      * Prepara o mundo para o início do programa.
      * Ou seja: criar os objetos iniciais e adicioná-los ao mundo.
      */
-    private void prepare() 
-    {
+    private void prepare() {
         arvore = new Arvore(this);
         arvore.limpa();
-        
+
         lenhador = new Lenhador(arvore, this);
         addObject(lenhador, 215, 663);
-        
+
         posicionaTroncos();
-        
-        espadaApareceu=false;
-        
+
+        espadaApareceu = false;
+
         score = 0;
         tempoDeVida = 0;
         timer = new Timer();
@@ -59,16 +59,15 @@ public class MeuMundo extends World {
 
         // pergunta o nome do usuário
         String nome = Greenfoot.ask("Digite seu nome: ");
-        if(nome.length() < 1 || nome == null)
-        nome = "Anônimo";
+        if (nome.length() < 1 || nome == null)
+            nome = "Anônimo";
 
         jogador.setNome(nome);
-        
-        musica = new Musicas("musicaArvore.wav",30);
+
+        musica = new Musicas("musicaArvore.wav", 30);
     }
-    
-    private void posicionaTroncos()
-    {
+
+    private void posicionaTroncos() {
         BaseTronco baseTronco = new BaseTronco();
         addObject(baseTronco, 378, 713);
 
@@ -95,97 +94,84 @@ public class MeuMundo extends World {
      * whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        if (gameOver || timer.getTamanhoAtual() <= 0)
-        {
+    public void act() {
+        if (gameOver || timer.getTamanhoAtual() <= 0) {
             morreu(); // Verifica se o jogador perde
         }
-        
+
         // Mostra a pontuação no topo da tela
         showText("Pontos: " + score, 375, 200);
-        
+
         tempoDeVida++;
-        
-        if(tempoDeVida % 300 == 0)
-        {
+
+        if (tempoDeVida % 300 == 0) {
             lenhador.diminiuQuantidadeTempo();
         }
     }
-    
-    public void gameOver(boolean valor)
-    {
-        gameOver=valor;
+
+    public void gameOver(boolean valor) {
+        gameOver = valor;
     }
-    
+
     /**
      * Verifica se o jogador perdeu
      */
-    public void morreu() 
-    {
+    public void morreu() {
         musica.parar();
-        
-        Greenfoot.setWorld(new LoseWorld(lenhador.getX(), 
-            lenhador.getY(), score, 750, 750, "fundoPadrao.png"));
-            
+
+        Greenfoot.setWorld(new LoseWorld(lenhador.getX(),
+                lenhador.getY(), score, 750, 750, "fundoPadrao.png"));
+
         jogador.setPontuacao(score);
         jogador.setTempo(tempoDeVida);
         HistoricoPontuacao.adicionarJogador(jogador);
     }
-    
+
     /**
      * Retorna se o jogo acabou
      */
     public boolean getGameOver() {
         return gameOver;
     }
-    
+
     public void paraMusica() {
         musica.parar();
     }
-    
-    public void aumentaPontos()
-    {
+
+    public void aumentaPontos() {
         score++;
     }
-    
-    public int obterPontos()
-    {
+
+    public int obterPontos() {
         return score;
     }
-    
-    //Incrementa a barra do tempo
-    public void aumentaTempo(int quantidade)
-    {
+
+    // Incrementa a barra do tempo
+    public void aumentaTempo(int quantidade) {
         timer.redimensiona(quantidade);
     }
-    
-    public void chanceEspada()
-    {
+
+    public void chanceEspada() {
         espada = new Espada(this, jogador);
-        
-        if(!espadaApareceu && score>20 && espada.chanceAparecer())
-        {
-            espadaApareceu=true;
+
+        if (!espadaApareceu && score > 20 && espada.chanceAparecer()) {
+            espadaApareceu = true;
             criaEspada();
         }
     }
-    
-    public void pararMusica()
-    {
+
+    public void pararMusica() {
         musica.parar();
     }
-    
-    private void criaEspada()
-    {
-        if(Greenfoot.getRandomNumber(1)==0)
+
+    private void criaEspada() {
+        if (Greenfoot.getRandomNumber(1) == 0)
             addObject(espada, 215, 0);
         else
             addObject(espada, 530, 0);
     }
-    
-    public void setStatusJogador()
-    {
+
+    public void setStatusJogador() {
         jogador.setPontuacao(score);
         jogador.setTempo(tempoDeVida);
         HistoricoPontuacao.adicionarJogador(jogador);

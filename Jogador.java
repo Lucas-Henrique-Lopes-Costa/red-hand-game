@@ -4,8 +4,7 @@
  * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
-public class Jogador
-{
+public class Jogador {
     private String nome;
     private int pontuacao;
     private int tempo;
@@ -13,40 +12,33 @@ public class Jogador
     /**
      * Constructor for objects of class Jogador
      */
-    public Jogador()
-    {
+    public Jogador() {
         nome = "";
         pontuacao = 0;
         tempo = 0;
     }
 
-    public void setTempo(int tempo)
-    {
+    public void setTempo(int tempo) {
         this.tempo = tempo;
     }
 
-    public String getNome()
-    {
+    public String getNome() {
         return nome;
     }
 
-    public int getPontuacao()
-    {
+    public int getPontuacao() {
         return pontuacao;
     }
 
-    public void setNome(String nome)
-    {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setPontuacao(int pontuacao)
-    {
+    public void setPontuacao(int pontuacao) {
         this.pontuacao = pontuacao;
     }
 
-    public int getTempo()
-    {
+    public int getTempo() {
         return tempo;
     }
 }

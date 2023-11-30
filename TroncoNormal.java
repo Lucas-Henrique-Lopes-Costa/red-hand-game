@@ -20,16 +20,16 @@ public class TroncoNormal extends Actor {
         if (tipo.equals("normal")) { // Caso o tipo seja normal
             setImage("troncoNormal.png");
             lado = tipo;
-            mover=false;
+            mover = false;
         } else if (tipo.equals("esquerda")) { // Caso o tipo seja esquerda
             setImage("troncoGalho.png");
             lado = tipo;
-            mover=false;
+            mover = false;
         } else if (tipo.equals("direita")) { // Caso o tipo seja direita
             setImage("troncoGalho.png");
             getImage().mirrorHorizontally();
             lado = tipo;
-            mover=false;
+            mover = false;
         }
     }
 
@@ -38,26 +38,21 @@ public class TroncoNormal extends Actor {
      * whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        if(mover)
-        {
-            if (moverDireita) 
-            {   // Move o tronco para a direita voando e girando
-                setLocation(getX() + 15, getY()); 
-                turn(20); 
-            } else  
-            {   // Move o tronco para a esquerda voando e girando
-                setLocation(getX() - 15, getY()); 
-                turn(-20); 
+    public void act() {
+        if (mover) {
+            if (moverDireita) { // Move o tronco para a direita voando e girando
+                setLocation(getX() + 15, getY());
+                turn(20);
+            } else { // Move o tronco para a esquerda voando e girando
+                setLocation(getX() - 15, getY());
+                turn(-20);
             }
-    
-            if (getX() < 100 || getX() > 650) 
-            { // Caso o tronco saia da tela
+
+            if (getX() < 100 || getX() > 650) { // Caso o tronco saia da tela
                 getWorld().removeObject(this);
             }
         }
-        
+
     }
 
     /**
@@ -75,20 +70,18 @@ public class TroncoNormal extends Actor {
     }
 
     /**
-     * Muda o booleano para o  tronco mover para a direita
+     * Muda o booleano para o tronco mover para a direita
      */
     public void moverDireita() {
-        moverDireita=true;
+        moverDireita = true;
     }
-    
-    public void mover()
-    {
-        mover=true;
+
+    public void mover() {
+        mover = true;
     }
-    
-    //Som da batida no tronco
-    public void som()
-    {
+
+    // Som da batida no tronco
+    public void som() {
         Greenfoot.playSound("tronco.mp3");
     }
 }
