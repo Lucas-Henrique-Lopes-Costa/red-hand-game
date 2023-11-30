@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class HistoriaDragao here.
  * 
- * @author (your name) 
+ * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
 public class HistoriaEspada extends World

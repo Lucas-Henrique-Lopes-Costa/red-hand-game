@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * Write a description of class Dragao here.
  * 
- * @author (your name) 
+ * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
 public class Dragao extends Actor

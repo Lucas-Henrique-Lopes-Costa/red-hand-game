@@ -4,22 +4,28 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Arvore here.
  * 
- * @author (your name) 
+ * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
 public class Arvore
 {
-    // instance variables - replace the example below with your own
     private  ArrayList<TroncoNormal> listaTroncos = new ArrayList<>();
     private MeuMundo mundo;
+
     /**
-     * Constructor for objects of class Arvore
+     * Construtor da classe Arvore.
+     * @param mundo O mundo em que a árvore está inserida.
      */
-    public Arvore(MeuMundo mundo)
-    {
-        this.mundo=mundo;
+    public Arvore(MeuMundo mundo) {
+        this.mundo = mundo;
     }
     
+    /**
+     * Faz o movimendo quando bate, removendo o tronco atual, movendo os troncos restantes para baixo
+     * e criando um novo tronco no topo.
+     * 
+     * @param moverDireita indica se o tronco deve ser movido para a direita antes de ser removido
+     */
     public void bater(boolean moverDireita)
     {
         TroncoNormal tronco0 = getTronco(0);
@@ -39,18 +45,33 @@ public class Arvore
         criaTronco(); 
     }
     
+    /**
+     * Adiciona um tronco à árvore.
+     * 
+     * @param tronco O tronco a ser adicionado.
+     */
     public void addTronco(TroncoNormal tronco)
     {
         listaTroncos.add(tronco);
     }
     
+    /**
+     * Retorna o objeto TroncoNormal correspondente ao ID fornecido.
+     *
+     * @param id O ID do tronco desejado.
+     * @return O objeto TroncoNormal correspondente ao ID fornecido.
+     */
     private TroncoNormal getTronco(int id)
     {
         return listaTroncos.get(id);
     }
     
+    /**
+     * Remove um tronco da lista de troncos.
+     * 
+     * @param id o identificador do tronco a ser removido
+     */
     private void removeTronco(int id)
-
     {
         listaTroncos.remove(id);
     }

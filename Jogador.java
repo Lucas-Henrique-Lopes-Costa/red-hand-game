@@ -1,7 +1,7 @@
 /**
  * Write a description of class Jogador here.
  * 
- * @author (your name) 
+ * @author Lucas, Pedro, Guilherme e Alex
  * @version (a version number or a date)
  */
 public class Jogador
