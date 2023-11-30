@@ -77,16 +77,6 @@ public class Arvore
     }
     
     /**
-     * Retorna o tamanho da lista de troncos da árvore.
-     * 
-     * @return o tamanho da lista de troncos
-     */
-    private int tamanho()
-    {
-        return listaTroncos.size();
-    }
-    
-    /**
      * Limpa a lista de troncos da árvore.
      */
     public void limpa()

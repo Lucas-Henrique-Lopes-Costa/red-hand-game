@@ -12,6 +12,11 @@ public class Barras extends Actor
     private int tamanhoAtual;
     private GreenfootImage imagem;
     
+    /**
+     * Construtor da classe Barras.
+     * 
+     * @param larguraOriginal a largura original da barra
+     */
     public Barras(int larguraOriginal)
     {
         tamanhoOriginal=larguraOriginal;
@@ -22,6 +27,10 @@ public class Barras extends Actor
         atualizarImagem();
     }
     
+    /**
+     * Atualiza a imagem da barra com base no tamanho atual.
+     * A cor da barra é definida com base no tamanho atual em relação ao tamanho original.
+     */
     public void atualizarImagem()
     {
         imagem.clear();
@@ -45,15 +54,25 @@ public class Barras extends Actor
         
         imagem.fillRect(0, 0, tamanhoAtual, 10);
         
-        setImage(imagem); // Define a imagem do contador
+        setImage(imagem);
     }
     
+    /**
+     * Redimensiona a barra de acordo com o tamanho fornecido.
+     * 
+     * @param tamanho o tamanho a ser adicionado à barra
+     */
     public void redimensiona(int tamanho)
     {
         tamanhoAtual+=tamanho;
         atualizarImagem();
     }
     
+    /**
+     * Retorna o tamanho atual da barra.
+     *
+     * @return o tamanho atual da barra.
+     */
     public int getTamanhoAtual()
     {
         return tamanhoAtual;
