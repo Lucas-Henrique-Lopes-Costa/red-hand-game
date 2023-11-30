@@ -9,6 +9,12 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BolaDeFogo extends Projetil {
     private int indiceImagem = 0;
 
+    /**
+     * Construtor da classe BolaDeFogo.
+     * Cria uma nova instância de BolaDeFogo associada a um mundo específico.
+     * 
+     * @param mundo O mundo do dragão ao qual a bola de fogo pertence.
+     */
     public BolaDeFogo(MundoDragao mundo) {
         super(mundo);
     }
@@ -27,6 +33,12 @@ public class BolaDeFogo extends Projetil {
         }
     }
 
+    /**
+     * Método responsável por animar a bola de fogo.
+     * A cada chamada do método, a imagem da bola de fogo é alterada de acordo com o
+     * índice atual.
+     * Caso o índice atinja o valor máximo, a imagem é reiniciada.
+     */
     private void animar() {
         if (indiceImagem < 7) {
             setImage("BolaDeFogo1.png");

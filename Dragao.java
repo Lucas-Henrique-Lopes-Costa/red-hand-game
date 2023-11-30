@@ -13,17 +13,23 @@ public class Dragao extends Actor {
     private boolean ataquePata;
     private boolean ataqueChamas;
     private int temporizadorChamas;
+
+    private Barras vida;
     private PataDragao pata1;
     private PataDragao pata2;
-    private PataDragao pataNoAr;
-    private Barras vida;
     private MundoDragao mundo;
+    private PataDragao pataNoAr;
 
     // Sons do dragão
     private GreenfootSound somPata;
     private GreenfootSound somChamas;
     private GreenfootSound somBolaDeFogo;
 
+    /**
+     * Construtor da classe Dragao.
+     * 
+     * @param mundo O mundo em que o dragão está.
+     */
     public Dragao(MundoDragao mundo) {
         ataquePata = false;
         jaNasceu = false;
@@ -41,18 +47,13 @@ public class Dragao extends Actor {
         sons();
     }
 
-    private void sons() {
-        somPata = new GreenfootSound("pata.mp3");
-        somPata.setVolume(40);
-        somChamas = new GreenfootSound("chamas.mp3");
-        somChamas.setVolume(80);
-        somBolaDeFogo = new GreenfootSound("bolaDeFogo.mp3");
-        somBolaDeFogo.setVolume(80);
-    }
-
     /**
-     * Act - do whatever the Dragao wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Executa as ações do dragão.
+     * Posiciona as patas do dragão no mundo e realiza ataques de forma periódica.
+     * Verifica se o dragão está conjurando um ataque de pata ou de chamas e executa
+     * a lógica necessária.
+     * Verifica se a vida do dragão chegou a zero e aciona o método de vitória do
+     * mundo.
      */
     public void act() {
         // Posiciona as duas patas do dragao no mundo
@@ -94,15 +95,32 @@ public class Dragao extends Actor {
             }
         }
 
+        // Verifica se a vida do dragão chegou a zero
         if (vida.getTamanhoAtual() <= 0) {
             mundo.ganhar();
         }
     }
 
-    // Função chave para o funcionamento do dragão.
-    // É nela que os ataques são aleatorizados.
-    private void randomizaAtaque() {
+    
+    /**
+     * Método responsável por inicializar os sons do dragão.
+     */
+    private void sons() {
+        somPata = new GreenfootSound("pata.mp3");
+        somPata.setVolume(40);
+        somChamas = new GreenfootSound("chamas.mp3");
+        somChamas.setVolume(80);
+        somBolaDeFogo = new GreenfootSound("bolaDeFogo.mp3");
+        somBolaDeFogo.setVolume(80);
+    }
 
+    /**
+     * Método responsável por randomizar o ataque do dragão.
+     * O dragão pode realizar um dos três ataques: ataque de bolas de fogo, subir a
+     * pata ou ataque de chamas.
+     * A escolha do ataque é feita de forma aleatória.
+     */
+    private void randomizaAtaque() {
         int random = Greenfoot.getRandomNumber(12);
 
         if (random < 4) {
@@ -113,10 +131,14 @@ public class Dragao extends Actor {
             somChamas.play();
             ataqueChamas = true;
         }
-
     }
 
-    // toda a lógica do ataque das bolas de Fogo está nessa função
+    /**
+     * Realiza o ataque de bolas de fogo.
+     * Gera bolas de fogo em posições específicas no mundo do jogo, exceto em uma
+     * posição aleatória.
+     * Reproduz o som das bolas de fogo.
+     */
     private void ataqueBolasDeFogo() {
         int random = 2 * (1 + Greenfoot.getRandomNumber(4));
 
@@ -128,6 +150,11 @@ public class Dragao extends Actor {
         somBolaDeFogo.play();
     }
 
+    /**
+     * Faz o dragão levantar uma das patas aleatoriamente.
+     * A pata levantada será armazenada na variável pataNoAr.
+     * O ataquePata será ativado.
+     */
     private void subirPata() {
         int numero = Greenfoot.getRandomNumber(2);
 
@@ -142,6 +169,11 @@ public class Dragao extends Actor {
         ataquePata = true;
     }
 
+    /**
+     * Método responsável por criar e adicionar explosões no mundo do jogo.
+     * As explosões são adicionadas em posições específicas, dependendo da pata do
+     * dragão que está no ar.
+     */
     private void explosoes() {
         Explosao Explosao1 = new Explosao(mundo);
         Explosao Explosao2 = new Explosao(mundo);
@@ -154,10 +186,16 @@ public class Dragao extends Actor {
         }
     }
 
+    /**
+     * Realiza o ataque de lança-chamas.
+     */
     private void ataqueLancaChamas() {
         World mundo = getWorld();
     }
 
+    /**
+     * Reduz a vida do dragão em 10 pontos.
+     */
     public void perderVida() {
         vida.redimensiona(-10);
     }

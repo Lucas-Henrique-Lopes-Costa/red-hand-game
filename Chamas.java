@@ -10,8 +10,10 @@ public class Chamas extends Projetil {
     private String direcao;
 
     /**
-     * Construtor da Classe chamas. Recebe um inteiro como ângulo para
-     * se direcionar.
+     * Constructor for objects of class Chamas
+     * 
+     * @param direcao direcao que a chama vai seguir
+     * @param mundo   mundo que a chama vai ser criada
      */
     public Chamas(String direcao, MundoDragao mundo) {
         super(mundo);
@@ -19,8 +21,11 @@ public class Chamas extends Projetil {
     }
 
     /**
-     * Act - do whatever the Chamas wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Executa a ação do objeto Chamas.
+     * Move o objeto em uma direção específica e verifica se atingiu o limite
+     * inferior do mundo.
+     * Caso tenha atingido, remove o objeto do mundo. Caso contrário, verifica se o
+     * jogador perdeu o jogo.
      */
     public void act() {
         World mundo = getWorld();
