@@ -13,12 +13,4 @@ public class Lapide extends Actor {
     public Lapide() {
         getImage().scale(160, 160); // Seta o tamanho da imagem
     }
-
-    /**
-     * Act - do whatever the Lapide wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() {
-        // Add your action code here.
-    }
 }
