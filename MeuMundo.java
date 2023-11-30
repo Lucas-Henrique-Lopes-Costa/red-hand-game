@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class MeuMundo extends World {
-    // Atributos
     private Arvore arvore;
     private Lenhador lenhador;
     private Timer timer = new Timer();
@@ -67,6 +66,9 @@ public class MeuMundo extends World {
         musica = new Musicas("musicaArvore.wav", 30);
     }
 
+    /**
+     * Posiciona os troncos no mundo do jogo.
+     */
     private void posicionaTroncos() {
         BaseTronco baseTronco = new BaseTronco();
         addObject(baseTronco, 378, 713);
@@ -90,9 +92,13 @@ public class MeuMundo extends World {
     }
 
     /**
-     * Act - do whatever the TroncoNormal wants to do. This method is called
-     * whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Executa as ações do jogo.
+     * Verifica se o jogo acabou ou se o tempo do timer chegou a zero.
+     * Chama o método "morreu()" caso o jogo tenha acabado.
+     * Mostra a pontuação no topo da tela.
+     * Atualiza o tempo de vida do jogador.
+     * Diminui a quantidade de tempo do lenhador a cada 300 unidades de tempo de
+     * vida.
      */
     public void act() {
         if (gameOver || timer.getTamanhoAtual() <= 0) {
@@ -109,12 +115,19 @@ public class MeuMundo extends World {
         }
     }
 
+    /**
+     * Define o estado do jogo como "game over" ou não.
+     * 
+     * @param valor o valor booleano que indica se o jogo está "game over" ou não
+     */
     public void gameOver(boolean valor) {
         gameOver = valor;
     }
 
     /**
-     * Verifica se o jogador perdeu
+     * Executa as ações necessárias quando o jogador perde.
+     * Para a música, mostra a tela de "Lose" e adiciona o jogador na lista de
+     * pontuação.
      */
     public void morreu() {
         musica.parar();
@@ -134,23 +147,43 @@ public class MeuMundo extends World {
         return gameOver;
     }
 
+    /**
+     * Para a reprodução da música.
+     */
     public void paraMusica() {
         musica.parar();
     }
 
+    /**
+     * Aumenta a pontuação do jogo em 1.
+     */
     public void aumentaPontos() {
         score++;
     }
 
+    /**
+     * Retorna a pontuação do jogo.
+     * 
+     * @return a pontuação do jogo
+     */
     public int obterPontos() {
         return score;
     }
 
-    // Incrementa a barra do tempo
+    /**
+     * Aumenta o tempo do timer em uma quantidade específica.
+     * 
+     * @param quantidade a quantidade de tempo a ser adicionada ao timer
+     */
     public void aumentaTempo(int quantidade) {
         timer.redimensiona(quantidade);
     }
 
+    /**
+     * Verifica a chance de aparecer uma espada no jogo.
+     * Se a pontuação for maior que 20 e a espada tiver chance de aparecer,
+     * uma nova espada é criada.
+     */
     public void chanceEspada() {
         espada = new Espada(this, jogador);
 
@@ -160,10 +193,9 @@ public class MeuMundo extends World {
         }
     }
 
-    public void pararMusica() {
-        musica.parar();
-    }
-
+    /**
+     * Cria uma espada em uma posição aleatória no mundo.
+     */
     private void criaEspada() {
         if (Greenfoot.getRandomNumber(1) == 0)
             addObject(espada, 215, 0);
@@ -171,6 +203,10 @@ public class MeuMundo extends World {
             addObject(espada, 530, 0);
     }
 
+    /**
+     * Define o status do jogador, atualizando sua pontuação e tempo de vida.
+     * Adiciona o jogador ao histórico de pontuações.
+     */
     public void setStatusJogador() {
         jogador.setPontuacao(score);
         jogador.setTempo(tempoDeVida);

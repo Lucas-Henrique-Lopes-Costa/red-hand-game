@@ -8,7 +8,6 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Lenhador extends Actor {
-    // Atributos da classe
     private int contAnimacao;
     private boolean atacando;
     private Arvore arvore;
@@ -27,8 +26,9 @@ public class Lenhador extends Actor {
     }
 
     /**
-     * Act - do whatever the Lenhador wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Executa a ação do ator.
+     * Se estiver atacando, verifica a posição do ator e anima de acordo.
+     * Caso contrário, verifica a tecla pressionada e realiza a ação correspondente.
      */
     public void act() {
         if (atacando) {
@@ -52,6 +52,12 @@ public class Lenhador extends Actor {
 
     }
 
+    /**
+     * Executa os acontecimentos quando o lenhador se move para a esquerda.
+     * Verifica a morte do lenhador, aciona as ações necessárias para o
+     * funcionamento da árvore,
+     * adiciona tempo e um ponto, e verifica a chance de obter uma espada.
+     */
     private void acontecimentosEsquerda() {
         // Verifica a morte do lenhador
         arvore.direcaoGalho("esquerda");
@@ -65,6 +71,12 @@ public class Lenhador extends Actor {
         mundo.chanceEspada();
     }
 
+    /**
+     * Executa uma série de ações quando o lenhador se move para a direita.
+     * Verifica a morte do lenhador, aciona as ações necessárias para o
+     * funcionamento da árvore,
+     * aumenta os pontos e o tempo, e verifica a chance de obter uma espada.
+     */
     private void acontecimentosDireita() {
         // Verifica a morte do lenhador
         arvore.direcaoGalho("direita");
@@ -78,14 +90,25 @@ public class Lenhador extends Actor {
         mundo.chanceEspada();
     }
 
+    /**
+     * Posiciona o lenhador na esquerda da tela.
+     */
     private void posicionarEsquerda() {
         setLocation(215, getY());
     }
 
+    /**
+     * Posiciona o lenhador na direita da tela.
+     */
     private void posicionarDireita() {
         setLocation(530, getY());
     }
 
+    /**
+     * Anima o lenhador com base no complemento fornecido.
+     * 
+     * @param complemento o complemento para a imagem do lenhador
+     */
     private void animar(String complemento) {
         if (contAnimacao < 3) {
             contAnimacao++;
@@ -113,6 +136,10 @@ public class Lenhador extends Actor {
         }
     }
 
+    /**
+     * Diminui a quantidade de tempo.
+     * Se a quantidade de tempo for maior que 17, decrementa em 1.
+     */
     public void diminiuQuantidadeTempo() {
         if (quantidadeTempo > 17)
             quantidadeTempo--;
